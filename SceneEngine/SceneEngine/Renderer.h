@@ -15,8 +15,8 @@ public:
 	Renderer();
 	~Renderer();
 
-	void Awake() override;
-	void Display() override;
+	void Awake() override {}
+	void Display() override {}
 
 	void SetVertices(std::vector<VertexFormat> vertices);
 	void SetVertexShader(std::string fileName, std::string shaderName);

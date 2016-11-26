@@ -3,6 +3,11 @@
 SceneBase::SceneBase()
 {
 	_objectsList.push_back(new GameObject());
+
+	for (ObjectsList::iterator it = _objectsList.begin(); it != _objectsList.end(); it++)
+	{
+		(*it)->Awake();
+	}
 }
 
 SceneBase::~SceneBase()
