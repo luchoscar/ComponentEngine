@@ -45,6 +45,9 @@ void Engine::InitDependencies(
 void Engine::Initialize()
 {
 	currentScene = new SceneBase();
+	currentScene->AddGameObejct(new GameObject("Object_1"));
+	currentScene->Awake();
+	currentScene->Start();
 }
 
 void Engine::Run()

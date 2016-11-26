@@ -10,7 +10,7 @@ public:
 
 	virtual ~ShaderLoader();
 
-	virtual void LoadShader(ShaderType type, char* fileName, char* name) = 0;
+	virtual void LoadShader(ShaderType type, const char* fileName, const char* name) = 0;
 	virtual int CreateProgram() = 0;
 
 	static ShaderLoader* GetInstance();

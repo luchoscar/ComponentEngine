@@ -12,6 +12,11 @@ public:
 	SceneBase();
 	virtual ~SceneBase();
 
+	void AddGameObejct(GameObject * gameObj);
+
+	void Awake();
+	void Start();
+	void Update(float delta);
 	void Draw();
 
 private:

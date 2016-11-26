@@ -24,7 +24,7 @@ ShaderLoader* LoaderGLSL::CreateInstance()
 	return instance;
 }
 
-void LoaderGLSL::LoadShader(ShaderType type, char * fileName, char * name)
+void LoaderGLSL::LoadShader(ShaderType type, const char * fileName, const char * name)
 {
 	GLenum shaderType = _getShaderType(type);
 	string source = _readShaderFile(fileName);
@@ -71,7 +71,7 @@ int LoaderGLSL::CreateProgram()
 
 //--- Private Implementation --------------------------------------------------
 
-string LoaderGLSL::_readShaderFile(char * fileName)
+string LoaderGLSL::_readShaderFile(const char * fileName)
 {
 	string shaderCode;
 
@@ -96,7 +96,7 @@ string LoaderGLSL::_readShaderFile(char * fileName)
 	return shaderCode;
 }
 
-GLuint LoaderGLSL::_createShader(GLenum shaderType, string source, char * name)
+GLuint LoaderGLSL::_createShader(GLenum shaderType, string source, const char * name)
 {
 	int compileResult = 0;
 

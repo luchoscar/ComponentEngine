@@ -4,9 +4,18 @@
 #include "GraphicAPI.h"
 
 typedef ShaderLoader::Type ShaderType;
+int GameObject::ID = 0;
 
-GameObject::GameObject()
+GameObject::GameObject(std::string name)
 {
+	_name = name;
+	_id = ID++;
+}
+
+GameObject::GameObject(const GameObject & obj)
+{
+	_name = obj._name;
+	_id = ID++;
 }
 
 GameObject::~GameObject()
@@ -22,12 +31,32 @@ GameObject::~GameObject()
 	_components.clear();
 }
 
+void GameObject::AddComponent(Component * component)
+{
+	_components.push_back(component);
+}
+
+template<class T>
+T * GameObject::GetComponent()
+{
+	for (ComponentList::iterator it = _components.begin(); it != _components.end(); it++)
+	{
+		if (dynamic_cast<T*>(it) != NULL)
+		{
+			return *it;
+		}
+	}
+
+	return nullptr
+}
+
+int GameObject::GetId()
+{
+	return _id;
+}
+
 void GameObject::Awake()
 {
-	ShaderLoader::GetInstance()->LoadShader(ShaderType::VERTEX, "vertexShader.glsl", "vertShad");
-	ShaderLoader::GetInstance()->LoadShader(ShaderType::FRAGMENT, "fragmentShader.glsl", "fragShad");
-	_shaderId = ShaderLoader::GetInstance()->CreateProgram();
-
 	for (ComponentList::iterator it = _components.begin(); it != _components.end(); it++)
 	{
 		(*it)->Awake();
@@ -56,7 +85,4 @@ void GameObject::Display()
 	{
 		(*it)->Display();
 	}
-
-	ShaderLoader::GetInstance()->LoadShaderById(0);
-	GraphicAPI::GetInstance()->DrawTriangles();
 }

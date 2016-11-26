@@ -9,8 +9,17 @@ typedef std::list<Component*> ComponentList;
 class GameObject
 {
 public:
-	GameObject();
+	GameObject(std::string name);
+	GameObject(const GameObject& obj);
+
 	~GameObject();
+
+	void AddComponent(Component* component);
+
+	template<typename T>
+	T* GetComponent();
+
+	int GetId();
 
 	void Awake();
 	void Start();
@@ -18,7 +27,12 @@ public:
 	void Display();
 
 private:
-	ComponentList _components;
-	unsigned int _shaderId;
-};
+	// GameObject must always have a name used to map to graphics data
+	GameObject() {}	
 
+	ComponentList _components;
+	std::string _name;
+	unsigned int _shaderId;
+	int _id;
+	static int ID;
+};

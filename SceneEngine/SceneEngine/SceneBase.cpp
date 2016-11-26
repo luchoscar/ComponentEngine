@@ -1,13 +1,10 @@
 #include "SceneBase.h"
 
+#include "Renderer.h"
+
 SceneBase::SceneBase()
 {
-	_objectsList.push_back(new GameObject());
-
-	for (ObjectsList::iterator it = _objectsList.begin(); it != _objectsList.end(); it++)
-	{
-		(*it)->Awake();
-	}
+	
 }
 
 SceneBase::~SceneBase()
@@ -18,6 +15,40 @@ SceneBase::~SceneBase()
 	}
 
 	_objectsList.clear();
+}
+
+void SceneBase::AddGameObejct(GameObject * gameObj)
+{
+	Renderer* renderer = new Renderer();
+	renderer->SetVertexData("vertShad", "vertexShader.glsl");
+	renderer->SetFragmentData("fragShad", "fragmentShader.glsl");
+	gameObj->AddComponent(renderer);
+
+	_objectsList.push_back(gameObj);
+}
+
+void SceneBase::Awake()
+{
+	for (ObjectsList::iterator it = _objectsList.begin(); it != _objectsList.end(); it++)
+	{
+		(*it)->Awake();
+	}
+}
+
+void SceneBase::Start()
+{
+	for (ObjectsList::iterator it = _objectsList.begin(); it != _objectsList.end(); it++)
+	{
+		(*it)->Start();
+	}
+}
+
+void SceneBase::Update(float delta)
+{
+	for (ObjectsList::iterator it = _objectsList.begin(); it != _objectsList.end(); it++)
+	{
+		(*it)->Update(delta);
+	}
 }
 
 void SceneBase::Draw()

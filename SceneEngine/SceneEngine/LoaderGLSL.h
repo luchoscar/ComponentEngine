@@ -16,15 +16,15 @@ public:
 
 	static ShaderLoader* CreateInstance();
 
-	void LoadShader(ShaderType type, char* fileName, char* name);
+	void LoadShader(ShaderType type, const char* fileName, const char* name);
 	int CreateProgram();
 
 private:
 	LoaderGLSL() {}
 	LoaderGLSL(LoaderGLSL&) {}
 
-	string _readShaderFile(char * fileName);
-	GLuint _createShader(GLenum shaderType, string source, char* name);
+	string _readShaderFile(const char * fileName);
+	GLuint _createShader(GLenum shaderType, string source, const char* name);
 	GLenum _getShaderType(ShaderType type);
 	bool _buildProgram();
 	GLuint _linkProgram();
