@@ -21,11 +21,16 @@ public:
 	void SetVertexData(std::string name, std::string file);
 	void SetFragmentData(std::string name, std::string file);
 
+	std::vector<VertexFormat> GetVerticesData();
+	void LoadVerticesData(std::vector<VertexFormat> vertices);
+
 private:
 	void _setVertices(std::vector<VertexFormat> vertices);
 
 	std::vector<VertexFormat> _vertices;
 	unsigned int _shaderId;
+	unsigned int _vbo;	// vertex buffer object
+	unsigned int _vao;	// vertex array object
 
 	std::string _vertexName;
 	std::string _vertexFileName;

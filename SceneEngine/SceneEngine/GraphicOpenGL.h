@@ -1,4 +1,10 @@
+#ifndef _GRAPHICS_OPENGL_H_
+#define _GRAPHICS_OPENGL_H_
+
 #pragma once
+
+#include "../Dependencies/glew/glew.h"
+#include "../Dependencies/freeglut/freeglut.h"
 
 #include "GraphicAPI.h"
 
@@ -6,6 +12,8 @@ class GraphicOpenGL :
 	public GraphicAPI
 {
 public:
+	typedef GraphicAPI::DrawType DrawingType;
+
 	~GraphicOpenGL() {}
 
 	static GraphicAPI* CreateInstance();
@@ -14,7 +22,7 @@ public:
 	void ClearScreen();
 	void SwapBuffers();
 	void Run();
-	void DrawTriangles();
+	void DrawTriangles(DrawingType drawType, int from, int to);
 	void ExitLoop();
 
 	void SetUpdateCallBack(void(*callBack)(void));
@@ -26,5 +34,8 @@ public:
 private:
 	GraphicOpenGL() {}
 	GraphicOpenGL(GraphicOpenGL&) {}
+
+	GLenum _getDrawType(DrawingType drawType);
 };
 
+#endif;

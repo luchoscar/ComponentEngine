@@ -127,6 +127,7 @@
     <ClCompile Include="GraphicAPI.cpp" />
     <ClCompile Include="GraphicOpenGL.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ModelManager.cpp" />
     <ClCompile Include="Models.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SceneBase.cpp" />
@@ -141,6 +142,7 @@
     <ClInclude Include="LoaderGLSL.h" />
     <ClInclude Include="GraphicAPI.h" />
     <ClInclude Include="GraphicOpenGL.h" />
+    <ClInclude Include="ModelManager.h" />
     <ClInclude Include="Models.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SceneBase.h" />

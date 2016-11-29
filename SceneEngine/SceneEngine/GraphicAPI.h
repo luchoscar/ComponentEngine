@@ -1,3 +1,6 @@
+#ifndef _GAPHICS_API_H_
+#define _GAPHICS_API_H_
+
 #pragma once
 
 class GraphicAPI
@@ -9,6 +12,21 @@ public:
 		DIRECT_X
 	};
 
+	enum DrawType {
+		POINT,
+		LINE,
+		LINE_STRIP,
+		LINE_LOOP,
+		LINE_STRIP_ADJACENCY,
+		LINE_ADJACENCY,
+		TRIANGLE,
+		TRIANGLE_STRIP,
+		TRIANGLE_FAN,
+		TRIANGLE_STRIP_ADJACENCY,
+		TRIANGLE_ADJACENCY,
+		PATCH
+	};
+
 	virtual ~GraphicAPI();
 	
 	static GraphicAPI* GetInstance();
@@ -18,7 +36,7 @@ public:
 	virtual void Run() = 0;
 	virtual void ClearScreen() = 0;
 	virtual void SwapBuffers() = 0;
-	virtual void DrawTriangles() = 0;
+	virtual void DrawTriangles(DrawType drawType, int from, int to) = 0;
 	virtual void ExitLoop() = 0;
 
 	virtual void SetUpdateCallBack(void (*callBack)(void)) = 0;
@@ -30,6 +48,8 @@ public:
 protected:
 	GraphicAPI() {}
 	GraphicAPI(GraphicAPI&) {}
-
+	
 	static GraphicAPI * instance;
 };
+
+#endif;

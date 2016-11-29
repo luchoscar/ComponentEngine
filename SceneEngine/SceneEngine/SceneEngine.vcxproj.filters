@@ -40,6 +40,12 @@
     <Filter Include="Header Files\Components">
       <UniqueIdentifier>{7523df3b-da8f-4830-a925-1a4740eec668}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Shaders\Vertex">
+      <UniqueIdentifier>{9f0e28a5-5da3-4b05-9b20-632f4c523bc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Shaders\Fragment">
+      <UniqueIdentifier>{0ba8a20c-6067-4df5-828f-991f3c56f2e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -66,9 +72,6 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
     <ClCompile Include="Vector3D.cpp">
       <Filter>Source Files\Math</Filter>
     </ClCompile>
@@ -78,8 +81,14 @@
     <ClCompile Include="Models.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
     <ClCompile Include="Renderer.cpp">
-      <Filter>Source Files\Engine</Filter>
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelManager.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -104,9 +113,6 @@
     <ClInclude Include="GameObject.h">
       <Filter>Header Files\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Vector3D.h">
       <Filter>Header Files\Math</Filter>
     </ClInclude>
@@ -116,16 +122,22 @@
     <ClInclude Include="Models.h">
       <Filter>Header Files\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
     <ClInclude Include="Renderer.h">
-      <Filter>Header Files\Engine</Filter>
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelManager.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="vertexShader.glsl">
-      <Filter>Resource Files\Shaders</Filter>
+      <Filter>Resource Files\Shaders\Vertex</Filter>
     </None>
     <None Include="fragmentShader.glsl">
-      <Filter>Resource Files\Shaders</Filter>
+      <Filter>Resource Files\Shaders\Fragment</Filter>
     </None>
   </ItemGroup>
 </Project>

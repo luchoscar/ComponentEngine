@@ -33,6 +33,7 @@ private:
 	ComponentList _components;
 	std::string _name;
 	unsigned int _shaderId;
-	int _id;
-	static int ID;
+	unsigned int _id;
+
+	static unsigned int ID;
 };

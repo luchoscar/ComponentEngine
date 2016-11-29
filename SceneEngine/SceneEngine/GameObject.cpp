@@ -4,18 +4,20 @@
 #include "GraphicAPI.h"
 
 typedef ShaderLoader::Type ShaderType;
-int GameObject::ID = 0;
+unsigned int GameObject::ID = 0;
 
 GameObject::GameObject(std::string name)
 {
+	ID++;
 	_name = name;
-	_id = ID++;
+	_id = ID;
 }
 
 GameObject::GameObject(const GameObject & obj)
 {
+	ID++;
 	_name = obj._name;
-	_id = ID++;
+	_id = ID;
 }
 
 GameObject::~GameObject()
@@ -29,6 +31,8 @@ GameObject::~GameObject()
 	);
 
 	_components.clear();
+
+	ID--;
 }
 
 void GameObject::AddComponent(Component * component)
