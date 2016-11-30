@@ -46,6 +46,12 @@
     <Filter Include="Resource Files\Shaders\Fragment">
       <UniqueIdentifier>{0ba8a20c-6067-4df5-828f-991f3c56f2e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GraphicAPI\OpenGL">
+      <UniqueIdentifier>{cc634aa2-283d-4e8f-b2e0-23a0c94ac1de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GraphicAPI\OpenGL">
+      <UniqueIdentifier>{a5140c43-237f-461b-b678-7fe142c43d63}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -54,16 +60,10 @@
     <ClCompile Include="GraphicAPI.cpp">
       <Filter>Source Files\GraphicAPI</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicOpenGL.cpp">
-      <Filter>Source Files\GraphicAPI</Filter>
-    </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
     <ClCompile Include="ShaderLoader.cpp">
-      <Filter>Source Files\GraphicAPI</Filter>
-    </ClCompile>
-    <ClCompile Include="LoaderGLSL.cpp">
       <Filter>Source Files\GraphicAPI</Filter>
     </ClCompile>
     <ClCompile Include="SceneBase.cpp">
@@ -88,23 +88,23 @@
       <Filter>Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="ModelManager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GraphicAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicOpenGL.cpp">
+      <Filter>Source Files\GraphicAPI\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="LoaderGLSL.cpp">
+      <Filter>Source Files\GraphicAPI\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicAPI.h">
       <Filter>Header Files\GraphicAPI</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicOpenGL.h">
-      <Filter>Header Files\GraphicAPI</Filter>
-    </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="ShaderLoader.h">
-      <Filter>Header Files\GraphicAPI</Filter>
-    </ClInclude>
-    <ClInclude Include="LoaderGLSL.h">
       <Filter>Header Files\GraphicAPI</Filter>
     </ClInclude>
     <ClInclude Include="SceneBase.h">
@@ -129,7 +129,13 @@
       <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="ModelManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GraphicAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicOpenGL.h">
+      <Filter>Header Files\GraphicAPI\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="LoaderGLSL.h">
+      <Filter>Header Files\GraphicAPI\OpenGL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
