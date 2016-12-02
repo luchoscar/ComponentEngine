@@ -36,6 +36,8 @@ private:
 	std::string _vertexFileName;
 	std::string _fragmentName;
 	std::string _fragmentFileName;
+
+	std::string _name;
 };
 
 #endif;

@@ -33,6 +33,8 @@ void GraphicOpenGL::Init(int *argc, char **argv, int xWinPos, int yWinPos, int w
 	{
 		std::cout << "WRN: GLEW 3.3 not supported\n";
 	}
+
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
 void GraphicOpenGL::ClearScreen()
