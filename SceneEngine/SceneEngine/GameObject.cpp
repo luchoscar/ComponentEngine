@@ -3,7 +3,6 @@
 #include "ShaderLoader.h"
 #include "GraphicAPI.h"
 
-typedef ShaderLoader::Type ShaderType;
 unsigned int GameObject::ID = 0;
 
 GameObject::GameObject(std::string name)

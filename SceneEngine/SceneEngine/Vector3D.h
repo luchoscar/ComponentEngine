@@ -1,6 +1,3 @@
-#ifndef _VECTOR_3D_H_
-#define _VECTOR_3D_H_
-
 #pragma once
 
 class Vector3D
@@ -33,4 +30,3 @@ protected:
 	float _coordinates[3];
 };
 
-#endif;

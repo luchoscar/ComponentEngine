@@ -12,8 +12,6 @@ class GraphicOpenGL :
 	public GraphicAPI
 {
 public:
-	typedef GraphicAPI::DrawType DrawingType;
-
 	~GraphicOpenGL() {}
 
 	static GraphicAPI* CreateInstance();

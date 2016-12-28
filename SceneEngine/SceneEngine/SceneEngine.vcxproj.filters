@@ -93,6 +93,9 @@
     <ClCompile Include="LoaderGLSL.cpp">
       <Filter>Source Files\GraphicAPI\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="ShaderUtils.cpp">
+      <Filter>Source Files\GraphicAPI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicAPI.h">
@@ -130,6 +133,9 @@
     </ClInclude>
     <ClInclude Include="LoaderGLSL.h">
       <Filter>Header Files\GraphicAPI\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderUtils.h">
+      <Filter>Header Files\GraphicAPI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

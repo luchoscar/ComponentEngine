@@ -3,8 +3,6 @@
 #include "ShaderLoader.h"
 #include "GraphicAPI.h"
 
-typedef ShaderLoader::Type ShaderType;
-
 Renderer::Renderer()
 {
 }

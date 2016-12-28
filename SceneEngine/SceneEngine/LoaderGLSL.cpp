@@ -4,6 +4,8 @@
 #include <fstream>
 #include <vector>
 
+#include "ShaderUtils.h"
+
 LoaderGLSL::~LoaderGLSL()
 {
 	for (ProgramMap::iterator it = _programMap.begin(); it != _programMap.end(); it++)
@@ -27,14 +29,14 @@ ShaderLoader* LoaderGLSL::CreateInstance()
 void LoaderGLSL::LoadShader(ShaderType type, const char * fileName, const char * name)
 {
 	GLenum shaderType = _getShaderType(type);
-	string source = _readShaderFile(fileName);
+	string source = ShaderUtils::ReadShaderFile(fileName);
 
 	switch (type)
 	{
-	case ShaderLoader::Type::VERTEX:
+	case ShaderType::VERTEX:
 		_vertexShader = _createShader(shaderType, source, name);
 		break;
-	case ShaderLoader::Type::FRAGMENT:
+	case ShaderType::FRAGMENT:
 		_fragmentShader = _createShader(shaderType, source, name);
 		break;
 	default:
@@ -47,15 +49,6 @@ void LoaderGLSL::LoadShader(ShaderType type, const char * fileName, const char *
 
 int LoaderGLSL::CreateProgram()
 {
-	if (!_buildProgram())
-	{
-		std::cout << "ERR: Unintialized shaders.  Cannot create program\n";
-
-		throw std::invalid_argument(
-			"ERR: Unintialized shaders.  Cannot create program"
-		);
-	}
-
 	if (_programMap.find(currentId) != _programMap.end())
 	{
 		std::cout << "ERR: Shader Program ID already exists\n";
@@ -70,31 +63,6 @@ int LoaderGLSL::CreateProgram()
 }
 
 //--- Private Implementation --------------------------------------------------
-
-string LoaderGLSL::_readShaderFile(const char * fileName)
-{
-	string shaderCode;
-
-	std::ifstream file(fileName, std::ios::in);
-
-	if (!file.good())
-	{
-		std::cout << "Shader file " << fileName << " cannot be read\n";
-		std::terminate();
-
-		throw std::invalid_argument("Shader file cannot be read");
-	}
-
-	file.seekg(0, std::ios::end);
-	shaderCode.resize(static_cast<unsigned int>(file.tellg()));
-
-	file.seekg(0, std::ios::beg);
-	file.read(&shaderCode[0], shaderCode.size());
-
-	file.close();
-
-	return shaderCode;
-}
 
 GLuint LoaderGLSL::_createShader(GLenum shaderType, string source, const char * name)
 {
@@ -129,9 +97,10 @@ GLenum LoaderGLSL::_getShaderType(ShaderType type)
 {
 	switch (type)
 	{
-	case ShaderLoader::Type::VERTEX:
+	case ShaderType::VERTEX:
 		return GL_VERTEX_SHADER;
-	case ShaderLoader::Type::FRAGMENT:
+
+	case ShaderType::FRAGMENT:
 		return GL_FRAGMENT_SHADER;
 	default:
 		std::cout << "ERR: Unsupported shader type (" << type
@@ -139,11 +108,6 @@ GLenum LoaderGLSL::_getShaderType(ShaderType type)
 
 		throw std::invalid_argument("ERR: Unsupported shader type");
 	}
-}
-
-bool LoaderGLSL::_buildProgram()
-{
-	return true;
 }
 
 GLuint LoaderGLSL::_linkProgram()

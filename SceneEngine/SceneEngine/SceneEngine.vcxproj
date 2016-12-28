@@ -131,6 +131,7 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SceneBase.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
+    <ClCompile Include="ShaderUtils.cpp" />
     <ClCompile Include="Vector3D.cpp" />
     <ClCompile Include="VertexFormat.cpp" />
   </ItemGroup>
@@ -145,6 +146,7 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SceneBase.h" />
     <ClInclude Include="ShaderLoader.h" />
+    <ClInclude Include="ShaderUtils.h" />
     <ClInclude Include="Vector3D.h" />
     <ClInclude Include="VertexFormat.h" />
   </ItemGroup>

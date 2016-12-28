@@ -1,6 +1,3 @@
-#ifndef _GAPHICS_API_H_
-#define _GAPHICS_API_H_
-
 #pragma once
 
 class GraphicAPI
@@ -26,6 +23,10 @@ public:
 		TRIANGLE_ADJACENCY,
 		PATCH
 	};
+	typedef GraphicAPI::DrawType DrawingType;
+
+	enum ShaderType { VERTEX, FRAGMENT };
+	typedef GraphicAPI::ShaderType ShaderType;
 
 	virtual ~GraphicAPI();
 	
@@ -51,5 +52,3 @@ protected:
 	
 	static GraphicAPI * instance;
 };
-
-#endif;

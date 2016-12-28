@@ -23,10 +23,8 @@ private:
 	LoaderGLSL() {}
 	LoaderGLSL(LoaderGLSL&) {}
 
-	string _readShaderFile(const char * fileName);
 	GLuint _createShader(GLenum shaderType, string source, const char* name);
 	GLenum _getShaderType(ShaderType type);
-	bool _buildProgram();
 	GLuint _linkProgram();
 
 	void _loadShaderById(int id);

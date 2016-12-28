@@ -2,12 +2,13 @@
 
 #include <map>
 
+#include "GraphicAPI.h"
+
+typedef GraphicAPI::ShaderType ShaderType;
+
 class ShaderLoader
 {
 public:
-	enum Type { VERTEX, FRAGMENT };
-	typedef ShaderLoader::Type ShaderType;
-
 	virtual ~ShaderLoader();
 
 	virtual void LoadShader(ShaderType type, const char* fileName, const char* name) = 0;

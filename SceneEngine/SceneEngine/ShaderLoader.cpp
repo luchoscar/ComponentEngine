@@ -4,7 +4,7 @@ ShaderLoader* ShaderLoader::instance = nullptr;
 
 ShaderLoader::~ShaderLoader()
 {
-	currentId = 0;\
+	currentId = 0;
 }
 
 ShaderLoader * ShaderLoader::GetInstance()
