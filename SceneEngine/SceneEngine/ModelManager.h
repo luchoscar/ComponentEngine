@@ -10,6 +10,15 @@
 
 typedef std::vector<VertexFormat> VertexData;
 
+struct Model {
+	VertexData vertices;
+	unsigned int vao;
+	std::vector<unsigned int> vbos;
+	unsigned int shaderId;
+
+	Model() {}
+};
+
 class ModelManager
 {
 public:
@@ -17,20 +26,18 @@ public:
 	
 	static ModelManager *  GetInstance();
 
-private:
-	struct Model {
-		VertexData vertices;
-		unsigned int vao;
-		std::vector<unsigned int> vbos;
-		unsigned int shaderId;
+	void AddModel(std::string name, Model model);
+	Model GetModel(std::string name);
 
-		Model() {}
-	};
+private:
+	
 
 	ModelManager() {}
 	ModelManager(const ModelManager&) {}
 	
 	static ModelManager * _instance;
+
+	std::map <std::string, Model> _modelMap;
 };
 
 #endif;

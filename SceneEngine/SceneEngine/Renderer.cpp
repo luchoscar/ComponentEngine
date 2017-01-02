@@ -3,6 +3,13 @@
 #include "ShaderLoader.h"
 #include "GraphicAPI.h"
 
+#include "../Dependencies/glew/glew.h"
+#include "../Dependencies/freeglut/freeglut.h"
+
+#include "ModelManager.h"
+
+#include <iostream>
+
 Renderer::Renderer()
 {
 }
@@ -28,11 +35,24 @@ void Renderer::Awake()
 
 
 	_shaderId = ShaderLoader::GetInstance()->CreateProgram();
+
+	std::vector<VertexFormat> vertices;
+	vertices.push_back(VertexFormat(Vector3D(0.5f, -0.5f, 0.0f)));
+	vertices.push_back(VertexFormat(Vector3D(-0.5f, -0.5f, 0.0f)));
+	vertices.push_back(VertexFormat(Vector3D(0.5f, 0.5f, 0.0f)));
+	LoadVerticesData("TRIANGLE_1", vertices);
 }
 
 void Renderer::Display()
 {
-	ShaderLoader::GetInstance()->LoadShaderById(_shaderId);
+	Model model = ModelManager::GetInstance()->GetModel(_name);
+	glBindVertexArray(model.vao);
+
+	GLint current_vao;
+	glGetIntegerv(GL_VERTEX_ARRAY_BINDING, &current_vao);
+	std::cout << "Current vao => " << current_vao << "\n";
+
+	ShaderLoader::GetInstance()->LoadShaderById(model.shaderId);
 	GraphicAPI::GetInstance()->DrawTriangles(GraphicAPI::DrawType::TRIANGLE, 0, 3);
 }
 
@@ -51,6 +71,34 @@ void Renderer::SetFragmentData(std::string name, std::string file)
 std::vector<VertexFormat> Renderer::GetVerticesData()
 {
 	return _vertices;
+}
+
+void Renderer::LoadVerticesData(std::string name, std::vector<VertexFormat> vertices)
+{
+	_vertices = vertices;
+	_name = name;
+
+	// VAO
+	unsigned int vao;
+	glGenVertexArrays(1, &vao);
+	glBindVertexArray(vao);
+
+	// VBO
+	unsigned int vbo;
+	glGenBuffers(1, &vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(VertexFormat) * _vertices.size(), &_vertices[0], GL_STATIC_DRAW);
+
+	// binding data
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(VertexFormat), (void*)0);
+
+	Model model;
+	model.vao = vao;
+	model.vbos.push_back(vbo);
+	model.shaderId = _shaderId;
+	model.vertices = _vertices;
+	ModelManager::GetInstance()->AddModel(_name, model);
 }
 
 void Renderer::_setVertices(std::vector<VertexFormat> vertices)

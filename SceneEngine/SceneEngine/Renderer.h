@@ -22,7 +22,7 @@ public:
 	void SetFragmentData(std::string name, std::string file);
 
 	std::vector<VertexFormat> GetVerticesData();
-	void LoadVerticesData(std::vector<VertexFormat> vertices);
+	void LoadVerticesData(std::string name, std::vector<VertexFormat> vertices);
 
 private:
 	void _setVertices(std::vector<VertexFormat> vertices);

@@ -14,3 +14,13 @@ ModelManager * ModelManager::GetInstance()
 
 	return _instance;
 }
+
+void ModelManager::AddModel(std::string name, Model model)
+{
+	_modelMap.insert(std::pair<std::string, Model>(name, model));
+}
+
+Model ModelManager::GetModel(std::string name)
+{
+	return _modelMap.at(name);
+}

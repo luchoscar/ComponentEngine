@@ -1,6 +1,3 @@
-#ifndef _VERTEX_FORMAT_H_
-#define _VERTEX_FORMAT_H_
-
 #pragma once
 
 #include "Vector3D.h"
@@ -19,5 +16,3 @@ public:
 private:
 	Vector3D _position;
 };
-
-#endif;

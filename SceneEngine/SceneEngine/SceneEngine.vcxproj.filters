@@ -52,6 +52,12 @@
     <Filter Include="Header Files\GraphicAPI\OpenGL">
       <UniqueIdentifier>{a5140c43-237f-461b-b678-7fe142c43d63}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Models">
+      <UniqueIdentifier>{727cb76a-6f02-4a0a-a771-e35a53d29378}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models">
+      <UniqueIdentifier>{11556544-ec62-4e2c-b3f5-46070c5ef9cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -75,17 +81,11 @@
     <ClCompile Include="Vector3D.cpp">
       <Filter>Source Files\Math</Filter>
     </ClCompile>
-    <ClCompile Include="VertexFormat.cpp">
-      <Filter>Source Files\GraphicAPI</Filter>
-    </ClCompile>
     <ClCompile Include="Component.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
       <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="ModelManager.cpp">
-      <Filter>Source Files\GraphicAPI</Filter>
     </ClCompile>
     <ClCompile Include="GraphicOpenGL.cpp">
       <Filter>Source Files\GraphicAPI\OpenGL</Filter>
@@ -95,6 +95,12 @@
     </ClCompile>
     <ClCompile Include="ShaderUtils.cpp">
       <Filter>Source Files\GraphicAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexFormat.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelManager.cpp">
+      <Filter>Source Files\Models</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -116,17 +122,11 @@
     <ClInclude Include="Vector3D.h">
       <Filter>Header Files\Math</Filter>
     </ClInclude>
-    <ClInclude Include="VertexFormat.h">
-      <Filter>Header Files\GraphicAPI</Filter>
-    </ClInclude>
     <ClInclude Include="Component.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
       <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="ModelManager.h">
-      <Filter>Header Files\GraphicAPI</Filter>
     </ClInclude>
     <ClInclude Include="GraphicOpenGL.h">
       <Filter>Header Files\GraphicAPI\OpenGL</Filter>
@@ -136,6 +136,12 @@
     </ClInclude>
     <ClInclude Include="ShaderUtils.h">
       <Filter>Header Files\GraphicAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexFormat.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelManager.h">
+      <Filter>Header Files\Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
