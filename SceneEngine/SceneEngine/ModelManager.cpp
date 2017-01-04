@@ -6,6 +6,20 @@
 
 ModelManager * ModelManager::_instance = nullptr;
 
+ModelManager::~ModelManager()
+{
+	std::map<std::string, Model>::iterator it;
+	for (it = _modelMap.begin(); it != _modelMap.end(); it++)
+	{
+		unsigned int* vao = &it->second.vao;	
+		glDeleteVertexArrays(1, vao);
+		glDeleteBuffers(it->second.vbos.size(), &it->second.vbos[0]);
+		it->second.vbos.clear();
+	}
+
+	_modelMap.clear();
+}
+
 ModelManager * ModelManager::GetInstance()
 {
 	if (_instance == nullptr) {
