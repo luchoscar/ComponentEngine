@@ -18,8 +18,8 @@ public:
 	
 	static ModelManager *  GetInstance();
 
-	void AddModel(std::string name, Model model);
-	Model GetModel(std::string name);
+	void AddModel(std::string name, Model* model);
+	Model* GetModel(std::string name);
 
 private:
 	
@@ -29,7 +29,7 @@ private:
 	
 	static ModelManager * _instance;
 
-	std::map <std::string, Model> _modelMap;
+	std::map <std::string, Model*> _modelMap;
 };
 
 #endif;

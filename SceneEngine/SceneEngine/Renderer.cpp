@@ -45,14 +45,14 @@ void Renderer::Awake()
 
 void Renderer::Display()
 {
-	Model model = ModelManager::GetInstance()->GetModel(_name);
-	glBindVertexArray(model.vao);
+	Model* model = ModelManager::GetInstance()->GetModel(_name);
+	glBindVertexArray(model->vao);
 
 	GLint current_vao;
 	glGetIntegerv(GL_VERTEX_ARRAY_BINDING, &current_vao);
 	std::cout << "Current vao => " << current_vao << "\n";
 
-	ShaderLoader::GetInstance()->LoadShaderById(model.shaderId);
+	ShaderLoader::GetInstance()->LoadShaderById(model->shaderId);
 	GraphicAPI::GetInstance()->DrawTriangles(GraphicAPI::DrawType::TRIANGLE, 0, 3);
 }
 
@@ -93,11 +93,11 @@ void Renderer::LoadVerticesData(std::string name, std::vector<VertexFormat> vert
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(VertexFormat), (void*)0);
 
-	Model model;
-	model.vao = vao;
-	model.vbos.push_back(vbo);
-	model.shaderId = _shaderId;
-	model.vertices = _vertices;
+	Model* model = new Model();
+	model->vao = vao;
+	model->vbos.push_back(vbo);
+	model->shaderId = _shaderId;
+	model->vertices = _vertices;
 	ModelManager::GetInstance()->AddModel(_name, model);
 }
 

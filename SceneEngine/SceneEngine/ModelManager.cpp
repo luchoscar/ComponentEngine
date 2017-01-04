@@ -8,13 +8,15 @@ ModelManager * ModelManager::_instance = nullptr;
 
 ModelManager::~ModelManager()
 {
-	std::map<std::string, Model>::iterator it;
+	std::map<std::string, Model*>::iterator it;
 	for (it = _modelMap.begin(); it != _modelMap.end(); it++)
 	{
-		unsigned int* vao = &it->second.vao;	
+		unsigned int* vao = &it->second->vao;	
 		glDeleteVertexArrays(1, vao);
-		glDeleteBuffers(it->second.vbos.size(), &it->second.vbos[0]);
-		it->second.vbos.clear();
+		glDeleteBuffers(it->second->vbos.size(), &it->second->vbos[0]);
+		it->second->vbos.clear();
+
+		delete it->second;
 	}
 
 	_modelMap.clear();
@@ -29,12 +31,12 @@ ModelManager * ModelManager::GetInstance()
 	return _instance;
 }
 
-void ModelManager::AddModel(std::string name, Model model)
+void ModelManager::AddModel(std::string name, Model* model)
 {
-	_modelMap.insert(std::pair<std::string, Model>(name, model));
+	_modelMap.insert(std::pair<std::string, Model*>(name, model));
 }
 
-Model ModelManager::GetModel(std::string name)
+Model* ModelManager::GetModel(std::string name)
 {
 	return _modelMap.at(name);
 }
