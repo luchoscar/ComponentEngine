@@ -7,17 +7,9 @@
 #include <vector>
 
 #include "VertexFormat.h"
+#include "Model.h"
 
 typedef std::vector<VertexFormat> VertexData;
-
-struct Model {
-	VertexData vertices;
-	unsigned int vao;
-	std::vector<unsigned int> vbos;
-	unsigned int shaderId;
-
-	Model() {}
-};
 
 class ModelManager
 {
