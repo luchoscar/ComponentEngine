@@ -19,11 +19,13 @@ Renderer::~Renderer()
 void Renderer::Display()
 {
 	Model* model = ModelManager::GetInstance()->GetModel(_name);
-	ShaderLoader::GetInstance()->BindVertexData(model->vao);
 
-	ShaderLoader::GetInstance()->PrintCurrentVertexArrayObject();
+	ShaderLoader* shaderLoader = ShaderLoader::GetInstance();
+	shaderLoader->BindVertexData(model->vao);
+	shaderLoader->LoadShaderById(model->shaderId);
 
-	ShaderLoader::GetInstance()->LoadShaderById(model->shaderId);
+	shaderLoader->PrintCurrentVertexArrayObject();
+
 	GraphicAPI::GetInstance()->DrawTriangles(GraphicAPI::DrawType::TRIANGLE, 0, 3);
 }
 
@@ -66,18 +68,14 @@ void Renderer::LoadVerticesData(std::string name, std::vector<VertexFormat> vert
 	_vertices = vertices;
 	_name = name;
 
-	// VAO
-	unsigned int vao = ShaderLoader::GetInstance()->CreateVertexArrayObject(1);
-
-	// VBO
-	unsigned int vbo = ShaderLoader::GetInstance()->CreateVertexArrayBuffer(
+	ShaderLoader* shaderLoader = ShaderLoader::GetInstance();
+	unsigned int vao = shaderLoader->CreateVertexArrayObject(1);
+	unsigned int vbo = shaderLoader->CreateVertexArrayBuffer(
 		1, 
 		_vertices,
 		ShaderLoader::BufferDrawType::STATIC_DRAW
 	);
-
-	// binding data
-	ShaderLoader::GetInstance()->BindVertexAttributes(0, 3);
+	shaderLoader->BindVertexAttributes(0, 3);
 
 	Model* model = new Model();
 	model->vao = vao;

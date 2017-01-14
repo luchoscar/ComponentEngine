@@ -4,19 +4,18 @@
 
 #include <iostream>
 
+#include "ShaderLoader.h"
+
 ModelManager * ModelManager::_instance = nullptr;
 
 ModelManager::~ModelManager()
 {
+	ShaderLoader* shaderLoader = ShaderLoader::GetInstance();
+
 	std::map<std::string, Model*>::iterator it;
 	for (it = _modelMap.begin(); it != _modelMap.end(); it++)
 	{
-		unsigned int* vao = &it->second->vao;	
-		glDeleteVertexArrays(1, vao);
-		glDeleteBuffers(it->second->vbos.size(), &it->second->vbos[0]);
-		it->second->vbos.clear();
-
-		delete it->second;
+		_deleteModel(it->second);
 	}
 
 	_modelMap.clear();
@@ -38,5 +37,38 @@ void ModelManager::AddModel(std::string name, Model* model)
 
 Model* ModelManager::GetModel(std::string name)
 {
-	return _modelMap.at(name);
+	if (_modelMap.find(name) != _modelMap.end())
+	{
+		return _modelMap.at(name);
+	}
+
+	return nullptr;
+}
+
+void ModelManager::DeleteModel(std::string name)
+{
+	if (_modelMap.find(name) == _modelMap.end())
+	{
+		return;
+	}
+
+	Model* model = _modelMap[name];
+	_deleteModel(model);
+	
+	_modelMap.erase(name);
+}
+
+//-- Private Implementation ---------------------------------------------------
+
+void ModelManager::_deleteModel(Model* model)
+{
+	ShaderLoader* shaderLoader = ShaderLoader::GetInstance();
+
+	shaderLoader->DeleteVertexArrayObject(1, &model->vao);
+	shaderLoader->DeleteVertexBufferObject(
+		model->vbos.size(),
+		&model->vbos[0]
+	);
+
+	delete model;
 }

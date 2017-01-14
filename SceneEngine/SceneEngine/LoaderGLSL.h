@@ -24,6 +24,9 @@ public:
 
 	void BindVertexData(unsigned int vao);
 
+	void DeleteVertexArrayObject(int amount, unsigned int* vaoAddress);
+	void DeleteVertexBufferObject(int amount, unsigned int* vbosAddress);
+
 	// Debug Functions
 	void PrintCurrentVertexArrayObject();
 

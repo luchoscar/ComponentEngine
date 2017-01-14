@@ -21,8 +21,10 @@ public:
 	void AddModel(std::string name, Model* model);
 	Model* GetModel(std::string name);
 
+	void DeleteModel(std::string name);
+
 private:
-	
+	void _deleteModel(Model* model);
 
 	ModelManager() {}
 	ModelManager(const ModelManager&) {}

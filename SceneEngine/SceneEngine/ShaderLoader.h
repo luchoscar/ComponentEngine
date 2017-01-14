@@ -13,6 +13,7 @@ class ShaderLoader
 public:
 	enum BufferDrawType
 	{
+		DYNAMIC_DRAW,
 		STATIC_DRAW
 	};
 
@@ -26,6 +27,9 @@ public:
 
 	virtual void BindVertexData(unsigned int vao) = 0;
 	
+	virtual void DeleteVertexArrayObject(int amount, unsigned int* vaoAddress) = 0;
+	virtual void DeleteVertexBufferObject(int amount, unsigned int* vbosAddress) = 0;
+
 	static ShaderLoader* GetInstance();
 
 	void LoadShaderById(int id);

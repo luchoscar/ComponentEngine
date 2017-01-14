@@ -94,6 +94,16 @@ void LoaderGLSL::BindVertexData(unsigned int vao)
 	glBindVertexArray(vao);
 }
 
+void LoaderGLSL::DeleteVertexArrayObject(int amount, unsigned int* vaoAddress)
+{
+	glDeleteVertexArrays(amount, vaoAddress);
+}
+
+void LoaderGLSL::DeleteVertexBufferObject(int amount, unsigned int* vbosAddress)
+{
+	glDeleteBuffers(amount, vbosAddress);
+}
+
 void LoaderGLSL::PrintCurrentVertexArrayObject()
 {
 	GLint current_vao;
@@ -190,6 +200,7 @@ GLenum LoaderGLSL::_getDrawType(BufferDrawType drawType)
 	switch (drawType)
 	{
 	case BufferDrawType::STATIC_DRAW:	return GL_STATIC_DRAW;
+	case BufferDrawType::DYNAMIC_DRAW:	return GL_DYNAMIC_DRAW;
 	default:							throw std::invalid_argument("Buffer Draw Type not supported");
 	}
 }
