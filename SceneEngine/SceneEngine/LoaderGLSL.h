@@ -18,6 +18,14 @@ public:
 
 	void LoadShader(ShaderType type, const char* fileName, const char* name);
 	int CreateProgram();
+	unsigned int CreateVertexArrayObject(unsigned int amount);
+	unsigned int CreateVertexArrayBuffer(unsigned int amount, std::vector<VertexFormat> vertices, BufferDrawType bufferDrawType);
+	void BindVertexAttributes(unsigned int index, int size);
+
+	void BindVertexData(unsigned int vao);
+
+	// Debug Functions
+	void PrintCurrentVertexArrayObject();
 
 private:
 	LoaderGLSL() {}
@@ -28,6 +36,8 @@ private:
 	GLuint _linkProgram();
 
 	void _loadShaderById(int id);
+
+	GLenum _getDrawType(BufferDrawType drawType);
 
 	GLuint _vertexShader = 0;
 	GLuint _fragmentShader = 0;

@@ -20,6 +20,7 @@ public:
 	T* GetComponent();
 
 	int GetId();
+	std::string GetName();
 
 	void Awake();
 	void Start();

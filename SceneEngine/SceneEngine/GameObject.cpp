@@ -58,6 +58,11 @@ int GameObject::GetId()
 	return _id;
 }
 
+std::string GameObject::GetName()
+{
+	return _name;
+}
+
 void GameObject::Awake()
 {
 	for (ComponentList::iterator it = _components.begin(); it != _components.end(); it++)

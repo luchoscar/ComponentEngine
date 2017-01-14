@@ -93,32 +93,20 @@ void GraphicOpenGL::SetCloseCallBack(void(*callBack)(void))
 
 GLenum GraphicOpenGL::_getDrawType(DrawingType drawType)
 {
-	switch (drawType) {
-	case DrawingType::POINT:
-		return GL_POINTS;
-	case DrawingType::LINE:
-		return GL_LINES;
-	case DrawingType::LINE_STRIP:
-		return GL_LINE_STRIP;
-	case DrawingType::LINE_LOOP:
-		return GL_LINE_LOOP;
-	case DrawingType::LINE_STRIP_ADJACENCY:
-		return GL_LINE_STRIP_ADJACENCY;
-	case DrawingType::LINE_ADJACENCY:
-		return GL_LINES_ADJACENCY;
-	case DrawingType::TRIANGLE:
-		return GL_TRIANGLES;
-	case DrawingType::TRIANGLE_STRIP:
-		return GL_TRIANGLE_STRIP;
-	case DrawingType::TRIANGLE_FAN:
-		return GL_TRIANGLE_FAN;
-	case DrawingType::TRIANGLE_STRIP_ADJACENCY:
-		return GL_TRIANGLE_STRIP_ADJACENCY;
-	case DrawingType::TRIANGLE_ADJACENCY:
-		return GL_TRIANGLES_ADJACENCY;
-	case DrawingType::PATCH:
-		return GL_PATCHES;
-	default:
-		throw std::invalid_argument("Draw type not supported");
+	switch (drawType) 
+	{
+	case DrawingType::POINT:					return GL_POINTS;
+	case DrawingType::LINE:						return GL_LINES;
+	case DrawingType::LINE_STRIP:				return GL_LINE_STRIP;
+	case DrawingType::LINE_LOOP:				return GL_LINE_LOOP;
+	case DrawingType::LINE_STRIP_ADJACENCY:		return GL_LINE_STRIP_ADJACENCY;
+	case DrawingType::LINE_ADJACENCY:			return GL_LINES_ADJACENCY;
+	case DrawingType::TRIANGLE:					return GL_TRIANGLES;
+	case DrawingType::TRIANGLE_STRIP:			return GL_TRIANGLE_STRIP;
+	case DrawingType::TRIANGLE_FAN:				return GL_TRIANGLE_FAN;
+	case DrawingType::TRIANGLE_STRIP_ADJACENCY:	return GL_TRIANGLE_STRIP_ADJACENCY;
+	case DrawingType::TRIANGLE_ADJACENCY:		return GL_TRIANGLES_ADJACENCY;
+	case DrawingType::PATCH:					return GL_PATCHES;
+	default:									throw std::invalid_argument("Draw type not supported");
 	}
 }

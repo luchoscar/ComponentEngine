@@ -22,6 +22,14 @@ void SceneBase::AddGameObejct(GameObject * gameObj)
 	Renderer* renderer = new Renderer();
 	renderer->SetVertexData("vertShad", "vertexShader.glsl");
 	renderer->SetFragmentData("fragShad", "fragmentShader.glsl");
+	renderer->CreateShaderProgram();
+
+	std::vector<VertexFormat> vertices;
+	vertices.push_back(VertexFormat(Vector3D(0.5f, -0.5f, 0.0f)));
+	vertices.push_back(VertexFormat(Vector3D(-0.5f, -0.5f, 0.0f)));
+	vertices.push_back(VertexFormat(Vector3D(0.5f, 0.5f, 0.0f)));
+	renderer->LoadVerticesData(gameObj->GetName(), vertices);
+
 	gameObj->AddComponent(renderer);
 
 	_objectsList.push_back(gameObj);

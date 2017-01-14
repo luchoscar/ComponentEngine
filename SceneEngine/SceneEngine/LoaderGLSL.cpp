@@ -62,6 +62,45 @@ int LoaderGLSL::CreateProgram()
 	return currentId - 1;
 }
 
+unsigned int LoaderGLSL::CreateVertexArrayObject(unsigned int amount)
+{
+	unsigned int vao;
+	glGenVertexArrays(1, &vao);
+	glBindVertexArray(vao);
+
+	return vao;
+}
+
+unsigned int LoaderGLSL::CreateVertexArrayBuffer(unsigned int amount, std::vector<VertexFormat> vertices, BufferDrawType bufferDrawType)
+{
+	GLenum drawType = _getDrawType(bufferDrawType);
+
+	unsigned int vbo;
+	glGenBuffers(1, &vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(VertexFormat) * vertices.size(), &vertices[0], drawType);
+
+	return vbo;
+}
+
+void LoaderGLSL::BindVertexAttributes(unsigned int index, int size)
+{
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(index, size, GL_FLOAT, GL_FALSE, sizeof(VertexFormat), (void*)0);
+}
+
+void LoaderGLSL::BindVertexData(unsigned int vao)
+{
+	glBindVertexArray(vao);
+}
+
+void LoaderGLSL::PrintCurrentVertexArrayObject()
+{
+	GLint current_vao;
+	glGetIntegerv(GL_VERTEX_ARRAY_BINDING, &current_vao);
+	std::cout << "Current vao => " << current_vao << "\n";
+}
+
 //--- Private Implementation --------------------------------------------------
 
 GLuint LoaderGLSL::_createShader(GLenum shaderType, string source, const char * name)
@@ -144,4 +183,13 @@ GLuint LoaderGLSL::_linkProgram()
 void LoaderGLSL::_loadShaderById(int id)
 {
 	glUseProgram(_programMap.at(id));
+}
+
+GLenum LoaderGLSL::_getDrawType(BufferDrawType drawType)
+{
+	switch (drawType)
+	{
+	case BufferDrawType::STATIC_DRAW:	return GL_STATIC_DRAW;
+	default:							throw std::invalid_argument("Buffer Draw Type not supported");
+	}
 }

@@ -15,11 +15,11 @@ public:
 	Renderer();
 	~Renderer();
 
-	void Awake() override;
 	void Display() override;
 
 	void SetVertexData(std::string name, std::string file);
 	void SetFragmentData(std::string name, std::string file);
+	void CreateShaderProgram();
 
 	std::vector<VertexFormat> GetVerticesData();
 	void LoadVerticesData(std::string name, std::vector<VertexFormat> vertices);
