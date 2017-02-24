@@ -8,5 +8,6 @@ class ShaderUtils
 
 public:
 	static string ReadShaderFile(const char * fileName);
+	static unsigned int GetVertexFormatPostionOffset();
+	static unsigned int GetVertexFormatColorOffset();
 };
-

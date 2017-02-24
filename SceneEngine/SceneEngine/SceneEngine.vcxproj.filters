@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\GraphicAPI">
-      <UniqueIdentifier>{016493cb-03cc-40da-afef-a67dd8788bc5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GraphicAPI">
-      <UniqueIdentifier>{01ae344f-c7b9-4adc-a9aa-3796021e488c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Engine">
       <UniqueIdentifier>{b9ea6211-46f3-42e2-949a-78e8a27070dc}</UniqueIdentifier>
     </Filter>
@@ -46,17 +40,23 @@
     <Filter Include="Resource Files\Shaders\Fragment">
       <UniqueIdentifier>{0ba8a20c-6067-4df5-828f-991f3c56f2e4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\GraphicAPI\OpenGL">
-      <UniqueIdentifier>{cc634aa2-283d-4e8f-b2e0-23a0c94ac1de}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\GraphicAPI\OpenGL">
-      <UniqueIdentifier>{a5140c43-237f-461b-b678-7fe142c43d63}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Models">
       <UniqueIdentifier>{727cb76a-6f02-4a0a-a771-e35a53d29378}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Models">
       <UniqueIdentifier>{11556544-ec62-4e2c-b3f5-46070c5ef9cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GraphicAPI">
+      <UniqueIdentifier>{016493cb-03cc-40da-afef-a67dd8788bc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GraphicAPI\OpenGL">
+      <UniqueIdentifier>{a5140c43-237f-461b-b678-7fe142c43d63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GraphicAPI">
+      <UniqueIdentifier>{01ae344f-c7b9-4adc-a9aa-3796021e488c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GraphicAPI\OpenGL">
+      <UniqueIdentifier>{cc634aa2-283d-4e8f-b2e0-23a0c94ac1de}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -102,8 +102,14 @@
     <ClCompile Include="ModelManager.cpp">
       <Filter>Source Files\Models</Filter>
     </ClCompile>
+    <ClCompile Include="Vector4D.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Managers.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
     <ClCompile Include="Model.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Models</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -146,8 +152,14 @@
     <ClInclude Include="ModelManager.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
+    <ClInclude Include="Vector4D.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
     <ClInclude Include="Model.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Managers.h">
+      <Filter>Header Files\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

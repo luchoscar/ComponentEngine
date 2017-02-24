@@ -25,9 +25,18 @@ void SceneBase::AddGameObejct(GameObject * gameObj)
 	renderer->CreateShaderProgram();
 
 	std::vector<VertexFormat> vertices;
-	vertices.push_back(VertexFormat(Vector3D(0.5f, -0.5f, 0.0f)));
-	vertices.push_back(VertexFormat(Vector3D(-0.5f, -0.5f, 0.0f)));
-	vertices.push_back(VertexFormat(Vector3D(0.5f, 0.5f, 0.0f)));
+	vertices.push_back(VertexFormat(
+		Vector3D(0.5f, -0.5f, 0.0f),
+		Vector4D(1, 0, 0, 1)
+	));
+	vertices.push_back(VertexFormat(
+		Vector3D(-0.5f, -0.5f, 0.0f),
+		Vector4D(0, 1, 0, 1)
+	));
+	vertices.push_back(VertexFormat(
+		Vector3D(0.5f, 0.5f, 0.0f),
+		Vector4D(0, 0, 1, 1)
+	));
 	renderer->LoadVerticesData(gameObj->GetName(), vertices);
 
 	gameObj->AddComponent(renderer);

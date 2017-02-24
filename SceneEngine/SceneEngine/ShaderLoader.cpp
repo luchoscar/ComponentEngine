@@ -1,4 +1,5 @@
 #include "ShaderLoader.h"
+#include "ShaderUtils.h"
 
 ShaderLoader* ShaderLoader::instance = nullptr;
 
@@ -22,4 +23,14 @@ ShaderLoader * ShaderLoader::GetInstance()
 void ShaderLoader::LoadShaderById(int id)
 {
 	_loadShaderById(id);
+}
+
+unsigned int ShaderLoader::GetVertexPositionOffset()
+{
+	return ShaderUtils::GetVertexFormatPostionOffset();
+}
+
+unsigned int ShaderLoader::GetVertexColorOffset()
+{
+	return ShaderUtils::GetVertexFormatColorOffset();
 }

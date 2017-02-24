@@ -2,26 +2,19 @@
 
 VertexFormat::VertexFormat()
 {
-	_position = Vector3D();
+	position = Vector3D();
+	color = Vector4D();
 }
 
 VertexFormat::VertexFormat(const VertexFormat &vert)
 {
-	_position = vert.GetPosition();
+	position = vert.position;
+	color = vert.color;
 }
 
-VertexFormat::VertexFormat(Vector3D pos)
+VertexFormat::VertexFormat(Vector3D pos, Vector4D col)
 {
-	_position = pos;
-}
-
-void VertexFormat::SetPosition(Vector3D vectPos)
-{
-	_position = vectPos;
-}
-
-Vector3D VertexFormat::GetPosition() const
-{
-	return _position;
+	position = pos;
+	color = col;
 }
 

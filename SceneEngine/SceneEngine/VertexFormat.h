@@ -1,18 +1,16 @@
 #pragma once
 
 #include "Vector3D.h"
+#include "Vector4D.h"
 
 struct VertexFormat
 {
 public:
+	Vector3D position;
+	Vector4D color;
+
 	VertexFormat();
 	VertexFormat(const VertexFormat &vert);
 
-	VertexFormat(Vector3D pos);
-
-	void SetPosition(Vector3D vectPos);
-	Vector3D GetPosition() const;
-
-private:
-	Vector3D _position;
+	VertexFormat(Vector3D pos, Vector4D col);	
 };

@@ -20,7 +20,7 @@ public:
 	int CreateProgram();
 	unsigned int CreateVertexArrayObject(unsigned int amount);
 	unsigned int CreateVertexArrayBuffer(unsigned int amount, std::vector<VertexFormat> vertices, BufferDrawType bufferDrawType);
-	void BindVertexAttributes(unsigned int index, int size);
+	void BindVertexAttributes(unsigned int location, int size, bool normalized, unsigned int offset);
 
 	void BindVertexData(unsigned int vao);
 
@@ -46,4 +46,3 @@ private:
 	GLuint _fragmentShader = 0;
 	ProgramMap _programMap;
 };
-

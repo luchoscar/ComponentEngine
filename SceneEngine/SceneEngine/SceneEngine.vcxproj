@@ -127,6 +127,7 @@
     <ClCompile Include="GraphicAPI.cpp" />
     <ClCompile Include="GraphicOpenGL.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Managers.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModelManager.cpp" />
     <ClCompile Include="Renderer.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="ShaderLoader.cpp" />
     <ClCompile Include="ShaderUtils.cpp" />
     <ClCompile Include="Vector3D.cpp" />
+    <ClCompile Include="Vector4D.cpp" />
     <ClCompile Include="VertexFormat.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +145,7 @@
     <ClInclude Include="LoaderGLSL.h" />
     <ClInclude Include="GraphicAPI.h" />
     <ClInclude Include="GraphicOpenGL.h" />
+    <ClInclude Include="Managers.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelManager.h" />
     <ClInclude Include="Renderer.h" />
@@ -150,6 +153,7 @@
     <ClInclude Include="ShaderLoader.h" />
     <ClInclude Include="ShaderUtils.h" />
     <ClInclude Include="Vector3D.h" />
+    <ClInclude Include="Vector4D.h" />
     <ClInclude Include="VertexFormat.h" />
   </ItemGroup>
   <ItemGroup>

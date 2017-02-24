@@ -3,6 +3,8 @@
 #include <iostream>
 #include <fstream>
 
+#include "VertexFormat.h"
+
 std::string ShaderUtils::ReadShaderFile(const char * fileName)
 {
 	string shaderCode;
@@ -26,4 +28,14 @@ std::string ShaderUtils::ReadShaderFile(const char * fileName)
 	file.close();
 
 	return shaderCode;
+}
+
+unsigned int ShaderUtils::GetVertexFormatPostionOffset()
+{
+	return offsetof(VertexFormat, VertexFormat::position);
+}
+
+unsigned int ShaderUtils::GetVertexFormatColorOffset()
+{
+	return offsetof(VertexFormat, VertexFormat::color);
 }

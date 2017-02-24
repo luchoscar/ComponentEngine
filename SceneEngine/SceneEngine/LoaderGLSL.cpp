@@ -83,10 +83,10 @@ unsigned int LoaderGLSL::CreateVertexArrayBuffer(unsigned int amount, std::vecto
 	return vbo;
 }
 
-void LoaderGLSL::BindVertexAttributes(unsigned int index, int size)
+void LoaderGLSL::BindVertexAttributes(unsigned int location, int size, bool normalized, unsigned int offset)
 {
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(index, size, GL_FLOAT, GL_FALSE, sizeof(VertexFormat), (void*)0);
+	glEnableVertexAttribArray(location);
+	glVertexAttribPointer(location, size, GL_FLOAT, normalized, sizeof(VertexFormat), (void*)offset);
 }
 
 void LoaderGLSL::BindVertexData(unsigned int vao)

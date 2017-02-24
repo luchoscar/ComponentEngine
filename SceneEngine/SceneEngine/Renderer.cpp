@@ -75,7 +75,12 @@ void Renderer::LoadVerticesData(std::string name, std::vector<VertexFormat> vert
 		_vertices,
 		ShaderLoader::BufferDrawType::STATIC_DRAW
 	);
-	shaderLoader->BindVertexAttributes(0, 3);
+	
+	unsigned int positonOffset = shaderLoader->GetVertexPositionOffset();
+	shaderLoader->BindVertexAttributes(0, 3, false, positonOffset);
+
+	unsigned int colorOffset = shaderLoader->GetVertexColorOffset();
+	shaderLoader->BindVertexAttributes(1, 4, false, colorOffset);
 
 	Model* model = new Model();
 	model->vao = vao;
