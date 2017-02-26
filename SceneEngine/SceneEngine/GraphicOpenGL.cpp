@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+using namespace CoreManagers;
+
 GraphicAPI* GraphicOpenGL::CreateInstance()
 {
 	if (instance == nullptr)

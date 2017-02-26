@@ -6,6 +6,8 @@
 
 #include "ShaderLoader.h"
 
+using namespace CoreManagers;
+
 ModelManager * ModelManager::_instance = nullptr;
 
 ModelManager::~ModelManager()

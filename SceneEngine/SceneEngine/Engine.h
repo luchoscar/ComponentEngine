@@ -2,17 +2,18 @@
 
 #include "GraphicOpenGL.h"
 #include "SceneBase.h"
+#include "Managers.h"
 
-typedef GraphicAPI::Type GraphicType;
+using namespace CoreManagers;
 
 class Engine
 {
 public:
 	static float deltaTime;
 
+	Engine();
 	~Engine();
 
-	void SetGraphicAPI(GraphicType apiType);
 	void InitDependencies(
 		int* argc, 
 		char* argv[], 
@@ -35,9 +36,8 @@ public:
 
 private:
 
-	static GraphicAPI* graphics;
-	
-	static float previousTime;
+	static GraphicAPI * _getGraohicAPI();
 
-	static SceneBase* currentScene;
+	static float _previousTime;
+	static SceneBase* _currentScene;
 };

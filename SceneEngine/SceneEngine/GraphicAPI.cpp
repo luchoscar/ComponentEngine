@@ -3,6 +3,8 @@
 #include "GraphicAPI.h"
 #include "GraphicOpenGL.h"
 
+using namespace CoreManagers;
+
 GraphicAPI* GraphicAPI::instance = nullptr;
 
 GraphicAPI::~GraphicAPI()

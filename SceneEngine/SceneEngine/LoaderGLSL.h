@@ -5,44 +5,47 @@
 
 #include "ShaderLoader.h"
 
-typedef std::string string;
-typedef std::map<int, GLuint> ProgramMap;
-
-class LoaderGLSL :
-	public ShaderLoader
+namespace CoreManagers
 {
-public:
-	~LoaderGLSL();
+	typedef std::string string;
+	typedef std::map<int, GLuint> ProgramMap;
 
-	static ShaderLoader* CreateInstance();
+	class LoaderGLSL :
+		public ShaderLoader
+	{
+	public:
+		~LoaderGLSL();
 
-	void LoadShader(ShaderType type, const char* fileName, const char* name);
-	int CreateProgram();
-	unsigned int CreateVertexArrayObject(unsigned int amount);
-	unsigned int CreateVertexArrayBuffer(unsigned int amount, std::vector<VertexFormat> vertices, BufferDrawType bufferDrawType);
-	void BindVertexAttributes(unsigned int location, int size, bool normalized, unsigned int offset);
+		static ShaderLoader* CreateInstance();
 
-	void BindVertexData(unsigned int vao);
+		void LoadShader(ShaderType type, const char* fileName, const char* name);
+		int CreateProgram();
+		unsigned int CreateVertexArrayObject(unsigned int amount);
+		unsigned int CreateVertexArrayBuffer(unsigned int amount, std::vector<VertexFormat> vertices, BufferDrawType bufferDrawType);
+		void BindVertexAttributes(unsigned int location, int size, bool normalized, unsigned int offset);
 
-	void DeleteVertexArrayObject(int amount, unsigned int* vaoAddress);
-	void DeleteVertexBufferObject(int amount, unsigned int* vbosAddress);
+		void BindVertexData(unsigned int vao);
 
-	// Debug Functions
-	void PrintCurrentVertexArrayObject();
+		void DeleteVertexArrayObject(int amount, unsigned int* vaoAddress);
+		void DeleteVertexBufferObject(int amount, unsigned int* vbosAddress);
 
-private:
-	LoaderGLSL() {}
-	LoaderGLSL(LoaderGLSL&) {}
+		// Debug Functions
+		void PrintCurrentVertexArrayObject();
 
-	GLuint _createShader(GLenum shaderType, string source, const char* name);
-	GLenum _getShaderType(ShaderType type);
-	GLuint _linkProgram();
+	private:
+		LoaderGLSL() {}
+		LoaderGLSL(LoaderGLSL&) {}
 
-	void _loadShaderById(int id);
+		GLuint _createShader(GLenum shaderType, string source, const char* name);
+		GLenum _getShaderType(ShaderType type);
+		GLuint _linkProgram();
 
-	GLenum _getDrawType(BufferDrawType drawType);
+		void _loadShaderById(int id);
 
-	GLuint _vertexShader = 0;
-	GLuint _fragmentShader = 0;
-	ProgramMap _programMap;
-};
+		GLenum _getDrawType(BufferDrawType drawType);
+
+		GLuint _vertexShader = 0;
+		GLuint _fragmentShader = 0;
+		ProgramMap _programMap;
+	};
+}

@@ -1,6 +1,8 @@
 #include "ShaderLoader.h"
 #include "ShaderUtils.h"
 
+using namespace CoreManagers;
+
 ShaderLoader* ShaderLoader::instance = nullptr;
 
 ShaderLoader::~ShaderLoader()

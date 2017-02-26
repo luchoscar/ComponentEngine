@@ -3,28 +3,17 @@
 #include "Engine.h"
 #include "LoaderGLSL.h"
 
-GraphicAPI* Engine::graphics = nullptr;
-SceneBase* Engine::currentScene = nullptr;
+using namespace CoreManagers;
+
+SceneBase* Engine::_currentScene = nullptr;
+
+Engine::Engine()
+{ 
+	
+}
 
 Engine::~Engine()
-{
-	delete graphics;
-}
-
-
-void Engine::SetGraphicAPI(GraphicType apiType)
-{
-	switch (apiType)
-	{
-	case GraphicAPI::OPEN_GL:
-		graphics = GraphicOpenGL::CreateInstance();
-		LoaderGLSL::CreateInstance();
-		break;
-	default:
-		throw std::invalid_argument("Graphic API not supported");
-		break;
-	}
-}
+{ }
 
 void Engine::InitDependencies(
 	int * argc, 
@@ -35,6 +24,7 @@ void Engine::InitDependencies(
 	int winHieght
 )
 {
+	GraphicAPI * graphics = _getGraohicAPI();
 	graphics->Init(argc, argv, xWinPos, yWinPos, winWidth, winHieght);
 
 	graphics->SetUpdateCallBack(Update);
@@ -44,22 +34,24 @@ void Engine::InitDependencies(
 
 void Engine::Initialize()
 {
-	currentScene = new SceneBase();
-	currentScene->AddGameObejct(new GameObject("Object_1"));
-	currentScene->Awake();
-	currentScene->Start();
+	_currentScene = new SceneBase();
+	_currentScene->AddGameObejct(new GameObject("Object_1"));
+	_currentScene->Awake();
+	_currentScene->Start();
 }
 
 void Engine::Run()
 {
+	GraphicAPI * graphics = _getGraohicAPI();
 	graphics->Run();
 }
 
 void Engine::Display()
 {
+	GraphicAPI * graphics = _getGraohicAPI();
 	graphics->ClearScreen();
 	
-	currentScene->Draw();
+	_currentScene->Draw();
 
 	graphics->SwapBuffers();
 }
@@ -71,7 +63,15 @@ void Engine::Update()
 
 void Engine::Close()
 {
+	GraphicAPI * graphics = _getGraohicAPI();
 	graphics->ExitLoop();
+}
+
+//--- Private Implementation --------------------------------------------------
+
+GraphicAPI * Engine::_getGraohicAPI()
+{
+	return Managers::GetInstance()->GetGraphicsManager();
 }
 
 

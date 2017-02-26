@@ -9,29 +9,31 @@
 #include "VertexFormat.h"
 #include "Model.h"
 
-typedef std::vector<VertexFormat> VertexData;
-
-class ModelManager
+namespace CoreManagers
 {
-public:
-	~ModelManager();
-	
-	static ModelManager *  GetInstance();
+	typedef std::vector<VertexFormat> VertexData;
 
-	void AddModel(std::string name, Model* model);
-	Model* GetModel(std::string name);
+	class ModelManager
+	{
+	public:
+		~ModelManager();
 
-	void DeleteModel(std::string name);
+		static ModelManager *  GetInstance();
 
-private:
-	void _deleteModel(Model* model);
+		void AddModel(std::string name, Model* model);
+		Model* GetModel(std::string name);
 
-	ModelManager() {}
-	ModelManager(const ModelManager&) {}
-	
-	static ModelManager * _instance;
+		void DeleteModel(std::string name);
 
-	std::map <std::string, Model*> _modelMap;
-};
+	private:
+		void _deleteModel(Model* model);
 
+		ModelManager() {}
+		ModelManager(const ModelManager&) {}
+
+		static ModelManager * _instance;
+
+		std::map <std::string, Model*> _modelMap;
+	};
+}
 #endif;

@@ -7,7 +7,6 @@
 int main(int argc, char **argv)
 {
 	Engine engine;
-	engine.SetGraphicAPI(GraphicType::OPEN_GL);
 	engine.InitDependencies(&argc, argv, 600, 200, 800, 600);
 	engine.Initialize();
 

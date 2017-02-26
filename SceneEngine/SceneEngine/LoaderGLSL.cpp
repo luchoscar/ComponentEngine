@@ -6,6 +6,8 @@
 
 #include "ShaderUtils.h"
 
+using namespace CoreManagers;
+
 LoaderGLSL::~LoaderGLSL()
 {
 	for (ProgramMap::iterator it = _programMap.begin(); it != _programMap.end(); it++)

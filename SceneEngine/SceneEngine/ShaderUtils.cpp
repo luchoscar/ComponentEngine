@@ -5,6 +5,8 @@
 
 #include "VertexFormat.h"
 
+using namespace CoreManagers;
+
 std::string ShaderUtils::ReadShaderFile(const char * fileName)
 {
 	string shaderCode;

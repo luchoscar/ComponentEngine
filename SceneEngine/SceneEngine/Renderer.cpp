@@ -1,26 +1,24 @@
 #include "Renderer.h"
 
-#include "ShaderLoader.h"
-#include "GraphicAPI.h"
-
-#include "ModelManager.h"
+#include "Managers.h"
 
 #include <iostream>
 
+using namespace CoreManagers;
+
 Renderer::Renderer()
-{
-}
+{ }
 
 
 Renderer::~Renderer()
-{
-}
+{ }
 
 void Renderer::Display()
 {
-	Model* model = ModelManager::GetInstance()->GetModel(_name);
+	ModelManager * modelManager = Managers::GetInstance()->GetModelManager();
+	Model* model = modelManager->GetModel(_name);
 
-	ShaderLoader* shaderLoader = ShaderLoader::GetInstance();
+	ShaderLoader* shaderLoader = Managers::GetInstance()->GetShaderManager();
 	shaderLoader->BindVertexData(model->vao);
 	shaderLoader->LoadShaderById(model->shaderId);
 
@@ -68,7 +66,7 @@ void Renderer::LoadVerticesData(std::string name, std::vector<VertexFormat> vert
 	_vertices = vertices;
 	_name = name;
 
-	ShaderLoader* shaderLoader = ShaderLoader::GetInstance();
+	ShaderLoader* shaderLoader = Managers::GetInstance()->GetShaderManager();
 	unsigned int vao = shaderLoader->CreateVertexArrayObject(1);
 	unsigned int vbo = shaderLoader->CreateVertexArrayBuffer(
 		1, 
@@ -87,7 +85,9 @@ void Renderer::LoadVerticesData(std::string name, std::vector<VertexFormat> vert
 	model->vbos.push_back(vbo);
 	model->shaderId = _shaderId;
 	model->vertices = _vertices;
-	ModelManager::GetInstance()->AddModel(_name, model);
+
+	ModelManager * modelManager = Managers::GetInstance()->GetModelManager();
+	modelManager->AddModel(_name, model);
 }
 
 void Renderer::_setVertices(std::vector<VertexFormat> vertices)
