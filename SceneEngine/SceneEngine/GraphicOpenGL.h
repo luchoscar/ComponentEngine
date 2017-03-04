@@ -18,7 +18,15 @@ namespace CoreManagers
 
 		static GraphicAPI* CreateInstance();
 
-		void Init(int *argc, char **argv, int xWinPos, int yWinPos, int winWidth, int winHieght);
+		void Init(
+			int *argc, 
+			char **argv, 
+			int xWinPos, 
+			int yWinPos, 
+			int winWidth, 
+			int winHieght
+		);
+
 		void ClearScreen();
 		void SwapBuffers();
 		void Run();

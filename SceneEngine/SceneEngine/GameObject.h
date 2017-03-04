@@ -28,10 +28,12 @@ public:
 	void Display();
 
 private:
-	// GameObject must always have a name used to map to graphics data
+	
 	GameObject() {}	
 
 	ComponentList _components;
+
+	// Mapping values used by the managers
 	std::string _name;
 	unsigned int _shaderId;
 	unsigned int _id;

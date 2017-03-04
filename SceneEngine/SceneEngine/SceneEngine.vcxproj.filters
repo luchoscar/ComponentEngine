@@ -46,17 +46,29 @@
     <Filter Include="Source Files\Models">
       <UniqueIdentifier>{11556544-ec62-4e2c-b3f5-46070c5ef9cd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\GraphicAPI">
+    <Filter Include="Header Files\Managers">
+      <UniqueIdentifier>{245d89b8-804a-4f49-ae30-10bc23fb45df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Managers\GraphicAPI">
       <UniqueIdentifier>{016493cb-03cc-40da-afef-a67dd8788bc5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\GraphicAPI\OpenGL">
+    <Filter Include="Header Files\Managers\GraphicAPI\OpenGL">
       <UniqueIdentifier>{a5140c43-237f-461b-b678-7fe142c43d63}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\GraphicAPI">
+    <Filter Include="Source Files\Managers">
+      <UniqueIdentifier>{f66a1e55-0dfe-436d-b32b-237f44e8ff6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Managers\GraphicAPI">
       <UniqueIdentifier>{01ae344f-c7b9-4adc-a9aa-3796021e488c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\GraphicAPI\OpenGL">
+    <Filter Include="Source Files\Managers\GraphicAPI\OpenGL">
       <UniqueIdentifier>{cc634aa2-283d-4e8f-b2e0-23a0c94ac1de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Managers\Models">
+      <UniqueIdentifier>{7b468a02-e9b6-4faa-b0b2-5f22bf0e6873}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Managers\Models">
+      <UniqueIdentifier>{3b9cdfdf-1e71-483d-a989-e056237c8403}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -64,13 +76,13 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GraphicAPI.cpp">
-      <Filter>Source Files\GraphicAPI</Filter>
+      <Filter>Source Files\Managers\GraphicAPI</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
     <ClCompile Include="ShaderLoader.cpp">
-      <Filter>Source Files\GraphicAPI</Filter>
+      <Filter>Source Files\Managers\GraphicAPI</Filter>
     </ClCompile>
     <ClCompile Include="SceneBase.cpp">
       <Filter>Source Files\Engine</Filter>
@@ -88,39 +100,39 @@
       <Filter>Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="GraphicOpenGL.cpp">
-      <Filter>Source Files\GraphicAPI\OpenGL</Filter>
+      <Filter>Source Files\Managers\GraphicAPI\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="LoaderGLSL.cpp">
-      <Filter>Source Files\GraphicAPI\OpenGL</Filter>
+      <Filter>Source Files\Managers\GraphicAPI\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="ShaderUtils.cpp">
-      <Filter>Source Files\GraphicAPI</Filter>
+      <Filter>Source Files\Managers\GraphicAPI</Filter>
     </ClCompile>
     <ClCompile Include="VertexFormat.cpp">
-      <Filter>Source Files\Models</Filter>
-    </ClCompile>
-    <ClCompile Include="ModelManager.cpp">
       <Filter>Source Files\Models</Filter>
     </ClCompile>
     <ClCompile Include="Vector4D.cpp">
       <Filter>Source Files\Math</Filter>
     </ClCompile>
-    <ClCompile Include="Managers.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
     <ClCompile Include="Model.cpp">
       <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Managers.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelManager.cpp">
+      <Filter>Source Files\Managers\Models</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicAPI.h">
-      <Filter>Header Files\GraphicAPI</Filter>
+      <Filter>Header Files\Managers\GraphicAPI</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="ShaderLoader.h">
-      <Filter>Header Files\GraphicAPI</Filter>
+      <Filter>Header Files\Managers\GraphicAPI</Filter>
     </ClInclude>
     <ClInclude Include="SceneBase.h">
       <Filter>Header Files\Engine</Filter>
@@ -138,18 +150,15 @@
       <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="GraphicOpenGL.h">
-      <Filter>Header Files\GraphicAPI\OpenGL</Filter>
+      <Filter>Header Files\Managers\GraphicAPI\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="LoaderGLSL.h">
-      <Filter>Header Files\GraphicAPI\OpenGL</Filter>
+      <Filter>Header Files\Managers\GraphicAPI\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="ShaderUtils.h">
-      <Filter>Header Files\GraphicAPI</Filter>
+      <Filter>Header Files\Managers\GraphicAPI</Filter>
     </ClInclude>
     <ClInclude Include="VertexFormat.h">
-      <Filter>Header Files\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="ModelManager.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
     <ClInclude Include="Vector4D.h">
@@ -159,7 +168,10 @@
       <Filter>Header Files\Models</Filter>
     </ClInclude>
     <ClInclude Include="Managers.h">
-      <Filter>Header Files\Engine</Filter>
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelManager.h">
+      <Filter>Header Files\Managers\Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

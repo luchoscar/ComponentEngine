@@ -15,7 +15,14 @@ GraphicAPI* GraphicOpenGL::CreateInstance()
 	return instance;
 }
 
-void GraphicOpenGL::Init(int *argc, char **argv, int xWinPos, int yWinPos, int winWidth, int winHieght)
+void GraphicOpenGL::Init(
+	int *argc, 
+	char **argv, 
+	int xWinPos, 
+	int yWinPos, 
+	int winWidth, 
+	int winHieght
+)
 {
 	glutInit(argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
@@ -73,7 +80,9 @@ void GraphicOpenGL::SetUpdateCallBack(void(*callBack)(void))
 	glutIdleFunc(callBack);
 }
 
-void GraphicOpenGL::SetKeyboardCallBack(void(*callBack)(unsigned char c, int x, int y))
+void GraphicOpenGL::SetKeyboardCallBack(
+	void(*callBack)(unsigned char c, int x, int y)
+)
 {
 	glutKeyboardFunc(callBack);
 }
@@ -109,6 +118,7 @@ GLenum GraphicOpenGL::_getDrawType(DrawingType drawType)
 	case DrawingType::TRIANGLE_STRIP_ADJACENCY:	return GL_TRIANGLE_STRIP_ADJACENCY;
 	case DrawingType::TRIANGLE_ADJACENCY:		return GL_TRIANGLES_ADJACENCY;
 	case DrawingType::PATCH:					return GL_PATCHES;
-	default:									throw std::invalid_argument("Draw type not supported");
+	default:									
+		throw std::invalid_argument("Draw type not supported");
 	}
 }

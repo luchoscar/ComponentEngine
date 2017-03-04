@@ -6,11 +6,14 @@
 
 #include "ShaderUtils.h"
 
+using namespace ModelData;
 using namespace CoreManagers;
 
 LoaderGLSL::~LoaderGLSL()
 {
-	for (ProgramMap::iterator it = _programMap.begin(); it != _programMap.end(); it++)
+	typedef ProgramMap::iterator ProgramIt;
+
+	for (ProgramIt it = _programMap.begin(); it != _programMap.end(); it++)
 	{
 		glDeleteProgram(it->second);
 	}
@@ -28,7 +31,11 @@ ShaderLoader* LoaderGLSL::CreateInstance()
 	return instance;
 }
 
-void LoaderGLSL::LoadShader(ShaderType type, const char * fileName, const char * name)
+void LoaderGLSL::LoadShader(
+	ShaderType type, 
+	const char * fileName, 
+	const char * name
+)
 {
 	GLenum shaderType = _getShaderType(type);
 	string source = ShaderUtils::ReadShaderFile(fileName);
@@ -73,22 +80,43 @@ unsigned int LoaderGLSL::CreateVertexArrayObject(unsigned int amount)
 	return vao;
 }
 
-unsigned int LoaderGLSL::CreateVertexArrayBuffer(unsigned int amount, std::vector<VertexFormat> vertices, BufferDrawType bufferDrawType)
+unsigned int LoaderGLSL::CreateVertexArrayBuffer(
+	unsigned int amount, 
+	VertexDataVector vertices, 
+	BufferDrawType bufferDrawType
+)
 {
 	GLenum drawType = _getDrawType(bufferDrawType);
 
 	unsigned int vbo;
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(VertexFormat) * vertices.size(), &vertices[0], drawType);
+	glBufferData(
+		GL_ARRAY_BUFFER, 
+		sizeof(VertexFormat) * vertices.size(), 
+		&vertices[0], 
+		drawType
+	);
 
 	return vbo;
 }
 
-void LoaderGLSL::BindVertexAttributes(unsigned int location, int size, bool normalized, unsigned int offset)
+void LoaderGLSL::BindVertexAttributes(
+	unsigned int location, 
+	int size, 
+	bool normalized, 
+	unsigned int offset
+)
 {
 	glEnableVertexAttribArray(location);
-	glVertexAttribPointer(location, size, GL_FLOAT, normalized, sizeof(VertexFormat), (void*)offset);
+	glVertexAttribPointer(
+		location, 
+		size, 
+		GL_FLOAT, 
+		normalized, 
+		sizeof(VertexFormat), 
+		(void*)offset
+	);
 }
 
 void LoaderGLSL::BindVertexData(unsigned int vao)
@@ -115,7 +143,11 @@ void LoaderGLSL::PrintCurrentVertexArrayObject()
 
 //--- Private Implementation --------------------------------------------------
 
-GLuint LoaderGLSL::_createShader(GLenum shaderType, string source, const char * name)
+GLuint LoaderGLSL::_createShader(
+	GLenum shaderType, 
+	string source, 
+	const char * name
+)
 {
 	int compileResult = 0;
 
@@ -203,6 +235,7 @@ GLenum LoaderGLSL::_getDrawType(BufferDrawType drawType)
 	{
 	case BufferDrawType::STATIC_DRAW:	return GL_STATIC_DRAW;
 	case BufferDrawType::DYNAMIC_DRAW:	return GL_DYNAMIC_DRAW;
-	default:							throw std::invalid_argument("Buffer Draw Type not supported");
+	default:							
+		throw std::invalid_argument("Buffer Draw Type not supported");
 	}
 }

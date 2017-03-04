@@ -34,7 +34,14 @@ namespace CoreManagers
 
 		static GraphicAPI* GetInstance();
 
-		virtual void Init(int *argc, char **argv, int xWinPos, int yWinPos, int winWidth, int winHieght) = 0;
+		virtual void Init(
+			int *argc, 
+			char **argv, 
+			int xWinPos, 
+			int yWinPos, 
+			int winWidth, 
+			int winHieght
+		) = 0;
 
 		virtual void Run() = 0;
 		virtual void ClearScreen() = 0;
@@ -44,7 +51,9 @@ namespace CoreManagers
 
 		virtual void SetUpdateCallBack(void(*callBack)(void)) = 0;
 		virtual void SetDisplayCallBack(void(*callBack)(void)) = 0;
-		virtual void SetKeyboardCallBack(void(*callBack)(unsigned char c, int x, int y)) = 0;
+		virtual void SetKeyboardCallBack(
+			void(*callBack)(unsigned char c, int x, int y)
+		) = 0;
 		virtual void SetResizeCallBack(void(*callBack)(int width, int height)) = 0;
 		virtual void SetCloseCallBack(void(*callBack)(void)) = 0;
 

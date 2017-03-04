@@ -2,6 +2,8 @@
 
 #include "Renderer.h"
 
+typedef ObjectsList::iterator ObjListIt;
+
 SceneBase::SceneBase()
 {
 	
@@ -46,7 +48,7 @@ void SceneBase::AddGameObejct(GameObject * gameObj)
 
 void SceneBase::Awake()
 {
-	for (ObjectsList::iterator it = _objectsList.begin(); it != _objectsList.end(); it++)
+	for (ObjListIt it = _objectsList.begin(); it != _objectsList.end(); it++)
 	{
 		(*it)->Awake();
 	}
@@ -54,7 +56,7 @@ void SceneBase::Awake()
 
 void SceneBase::Start()
 {
-	for (ObjectsList::iterator it = _objectsList.begin(); it != _objectsList.end(); it++)
+	for (ObjListIt it = _objectsList.begin(); it != _objectsList.end(); it++)
 	{
 		(*it)->Start();
 	}
@@ -62,7 +64,7 @@ void SceneBase::Start()
 
 void SceneBase::Update(float delta)
 {
-	for (ObjectsList::iterator it = _objectsList.begin(); it != _objectsList.end(); it++)
+	for (ObjListIt it = _objectsList.begin(); it != _objectsList.end(); it++)
 	{
 		(*it)->Update(delta);
 	}
@@ -70,7 +72,7 @@ void SceneBase::Update(float delta)
 
 void SceneBase::Draw()
 {
-	for (ObjectsList::iterator it = _objectsList.begin(); it != _objectsList.end(); it++)
+	for (ObjListIt it = _objectsList.begin(); it != _objectsList.end(); it++)
 	{
 		(*it)->Display();
 	}

@@ -8,6 +8,10 @@
 #include "Component.h"
 #include "VertexFormat.h"
 
+using namespace ModelData;
+
+typedef std::vector<VertexFormat> VertexDataVect;
+
 class Renderer :
 	public Component
 {
@@ -22,7 +26,7 @@ public:
 	void CreateShaderProgram();
 
 	std::vector<VertexFormat> GetVerticesData();
-	void LoadVerticesData(std::string name, std::vector<VertexFormat> vertices);
+	void LoadVerticesData(std::string name, VertexDataVect vertices);
 
 private:
 	void _setVertices(std::vector<VertexFormat> vertices);

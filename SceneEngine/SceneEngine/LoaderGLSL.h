@@ -21,8 +21,17 @@ namespace CoreManagers
 		void LoadShader(ShaderType type, const char* fileName, const char* name);
 		int CreateProgram();
 		unsigned int CreateVertexArrayObject(unsigned int amount);
-		unsigned int CreateVertexArrayBuffer(unsigned int amount, std::vector<VertexFormat> vertices, BufferDrawType bufferDrawType);
-		void BindVertexAttributes(unsigned int location, int size, bool normalized, unsigned int offset);
+		unsigned int CreateVertexArrayBuffer(
+			unsigned int amount, 
+			VertexDataVector vertices, 
+			BufferDrawType bufferDrawType
+		);
+		void BindVertexAttributes(
+			unsigned int location, 
+			int size, 
+			bool normalized, 
+			unsigned int offset
+		);
 
 		void BindVertexData(unsigned int vao);
 

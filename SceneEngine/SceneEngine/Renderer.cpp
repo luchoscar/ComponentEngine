@@ -6,6 +6,8 @@
 
 using namespace CoreManagers;
 
+typedef GraphicAPI::DrawType DrawType;
+
 Renderer::Renderer()
 { }
 
@@ -24,7 +26,7 @@ void Renderer::Display()
 
 	shaderLoader->PrintCurrentVertexArrayObject();
 
-	GraphicAPI::GetInstance()->DrawTriangles(GraphicAPI::DrawType::TRIANGLE, 0, 3);
+	GraphicAPI::GetInstance()->DrawTriangles(DrawType::TRIANGLE, 0, 3);
 }
 
 void Renderer::SetVertexData(std::string name, std::string file)
@@ -61,7 +63,7 @@ std::vector<VertexFormat> Renderer::GetVerticesData()
 	return _vertices;
 }
 
-void Renderer::LoadVerticesData(std::string name, std::vector<VertexFormat> vertices)
+void Renderer::LoadVerticesData(std::string name, VertexDataVect vertices)
 {
 	_vertices = vertices;
 	_name = name;

@@ -6,9 +6,12 @@
 #include "GraphicAPI.h"
 #include "VertexFormat.h"
 
+using namespace ModelData;
+
 namespace CoreManagers
 {
 	typedef GraphicAPI::ShaderType ShaderType;
+	typedef std::vector<VertexFormat> VertexDataVector;
 
 	class ShaderLoader
 	{
@@ -21,11 +24,20 @@ namespace CoreManagers
 
 		virtual ~ShaderLoader();
 
-		virtual void LoadShader(ShaderType type, const char* fileName, const char* name) = 0;
+		virtual void LoadShader(
+			ShaderType type, 
+			const char* fileName, 
+			const char* name
+		) = 0;
 		virtual int CreateProgram() = 0;
 		virtual unsigned int CreateVertexArrayObject(unsigned int amount) = 0;
-		virtual unsigned int CreateVertexArrayBuffer(unsigned int amount, std::vector<VertexFormat> vertices, BufferDrawType bufferDrawType) = 0;
-		virtual void BindVertexAttributes(unsigned int location, int size, bool normalized, unsigned int offset) = 0;
+		virtual unsigned int CreateVertexArrayBuffer(
+			unsigned int amount, 
+			VertexDataVector vertices,
+			BufferDrawType bufferDrawType
+		) = 0;
+		virtual void BindVertexAttributes(
+			unsigned int location, int size, bool normalized, unsigned int offset) = 0;
 
 		virtual void BindVertexData(unsigned int vao) = 0;
 

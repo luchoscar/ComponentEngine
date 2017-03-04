@@ -9,6 +9,8 @@
 #include "VertexFormat.h"
 #include "Model.h"
 
+using namespace ModelData;
+
 namespace CoreManagers
 {
 	typedef std::vector<VertexFormat> VertexData;

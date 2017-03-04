@@ -1,5 +1,7 @@
 #include "VertexFormat.h"
 
+using namespace ModelData;
+
 VertexFormat::VertexFormat()
 {
 	position = Vector3D();

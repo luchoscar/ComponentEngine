@@ -3,6 +3,8 @@
 #include "ShaderLoader.h"
 #include "GraphicAPI.h"
 
+typedef ComponentList::iterator CompListIt;
+
 unsigned int GameObject::ID = 0;
 
 GameObject::GameObject(std::string name)
@@ -42,7 +44,7 @@ void GameObject::AddComponent(Component * component)
 template<class T>
 T * GameObject::GetComponent()
 {
-	for (ComponentList::iterator it = _components.begin(); it != _components.end(); it++)
+	for (CompListIt it = _components.begin(); it != _components.end(); it++)
 	{
 		if (dynamic_cast<T*>(it) != NULL)
 		{
@@ -65,7 +67,7 @@ std::string GameObject::GetName()
 
 void GameObject::Awake()
 {
-	for (ComponentList::iterator it = _components.begin(); it != _components.end(); it++)
+	for (CompListIt it = _components.begin(); it != _components.end(); it++)
 	{
 		(*it)->Awake();
 	}
@@ -73,7 +75,7 @@ void GameObject::Awake()
 
 void GameObject::Start()
 {
-	for (ComponentList::iterator it = _components.begin(); it != _components.end(); it++)
+	for (CompListIt it = _components.begin(); it != _components.end(); it++)
 	{
 		(*it)->Start();
 	}
@@ -81,7 +83,7 @@ void GameObject::Start()
 
 void GameObject::Update(float delta)
 {
-	for (ComponentList::iterator it = _components.begin(); it != _components.end(); it++)
+	for (CompListIt it = _components.begin(); it != _components.end(); it++)
 	{
 		(*it)->Update(delta);
 	}
@@ -89,7 +91,7 @@ void GameObject::Update(float delta)
 
 void GameObject::Display()
 {
-	for (ComponentList::iterator it = _components.begin(); it != _components.end(); it++)
+	for (CompListIt it = _components.begin(); it != _components.end(); it++)
 	{
 		(*it)->Display();
 	}
