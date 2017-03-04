@@ -1,5 +1,9 @@
 #pragma once
 
+#include "WindowInfo.h"
+
+using namespace Core;
+
 namespace CoreManagers
 {
 	class GraphicAPI
@@ -34,14 +38,7 @@ namespace CoreManagers
 
 		static GraphicAPI* GetInstance();
 
-		virtual void Init(
-			int *argc, 
-			char **argv, 
-			int xWinPos, 
-			int yWinPos, 
-			int winWidth, 
-			int winHieght
-		) = 0;
+		virtual void Init(int *argc, char **argv, WindowInfo window) = 0;
 
 		virtual void Run() = 0;
 		virtual void ClearScreen() = 0;

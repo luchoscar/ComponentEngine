@@ -70,6 +70,12 @@
     <Filter Include="Source Files\Managers\Models">
       <UniqueIdentifier>{3b9cdfdf-1e71-483d-a989-e056237c8403}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Window">
+      <UniqueIdentifier>{ed41fe15-5b17-4152-a4ae-9fd0fdf864e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Window">
+      <UniqueIdentifier>{ae4eb16f-d75a-4dd1-8e97-cae511c6c4a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -123,6 +129,12 @@
     <ClCompile Include="ModelManager.cpp">
       <Filter>Source Files\Managers\Models</Filter>
     </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowInfo.cpp">
+      <Filter>Source Files\Window</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicAPI.h">
@@ -172,6 +184,12 @@
     </ClInclude>
     <ClInclude Include="ModelManager.h">
       <Filter>Header Files\Managers\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowInfo.h">
+      <Filter>Header Files\Window</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

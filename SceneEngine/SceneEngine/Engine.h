@@ -14,14 +14,7 @@ public:
 	Engine();
 	~Engine();
 
-	void InitDependencies(
-		int* argc, 
-		char* argv[], 
-		int xWinPos, 
-		int yWinPos, 
-		int winWidth, 
-		int winHieght
-	);
+	void InitDependencies(int* argc, char* argv[], WindowInfo window);
 
 	void Initialize();
 

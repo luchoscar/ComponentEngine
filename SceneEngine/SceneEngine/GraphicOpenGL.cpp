@@ -15,20 +15,18 @@ GraphicAPI* GraphicOpenGL::CreateInstance()
 	return instance;
 }
 
-void GraphicOpenGL::Init(
-	int *argc, 
-	char **argv, 
-	int xWinPos, 
-	int yWinPos, 
-	int winWidth, 
-	int winHieght
-)
+void GraphicOpenGL::Init(int *argc, char **argv, WindowInfo window)
 {
 	glutInit(argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
-	glutInitWindowPosition(xWinPos, yWinPos);//optional
-	glutInitWindowSize(winWidth, winHieght); //optional
-	glutCreateWindow("OpenGL First Window");
+
+	Vector2D<int> position = window.GetPosition();
+	glutInitWindowPosition(position.GetX(), position.GetY());
+
+	Vector2D<int> size = window.GetSize();
+	glutInitWindowSize(size.GetX(), size.GetY());
+
+	glutCreateWindow(window.GetName().c_str());
 
 	glEnable(GL_DEPTH_TEST);
 

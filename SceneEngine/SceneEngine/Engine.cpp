@@ -2,7 +2,9 @@
 
 #include "Engine.h"
 #include "LoaderGLSL.h"
+#include "WindowInfo.h"
 
+using namespace Core;
 using namespace CoreManagers;
 
 SceneBase* Engine::_currentScene = nullptr;
@@ -15,17 +17,10 @@ Engine::Engine()
 Engine::~Engine()
 { }
 
-void Engine::InitDependencies(
-	int * argc, 
-	char * argv[], 
-	int xWinPos, 
-	int yWinPos, 
-	int winWidth, 
-	int winHieght
-)
+void Engine::InitDependencies(int * argc, char * argv[], WindowInfo window)
 {
 	GraphicAPI * graphics = _getGraohicAPI();
-	graphics->Init(argc, argv, xWinPos, yWinPos, winWidth, winHieght);
+	graphics->Init(argc, argv, window);
 
 	graphics->SetUpdateCallBack(Update);
 	graphics->SetDisplayCallBack(Display);
