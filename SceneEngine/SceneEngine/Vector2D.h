@@ -1,24 +1,14 @@
 #pragma once
 
-#include <iostream>
+#include "Vector2D.cpp"
 
 template <class T>
 class Vector2D
 {
 public:
 	Vector2D() {}
-
-	Vector2D(T x, T y)
-	{
-		_coordinates[0] = x;
-		_coordinates[1] = y;
-	}
-
-	Vector2D(const Vector2D& vect)
-	{
-		_coordinates[0] = vect.GetX();
-		_coordinates[1] = vect.GetY();
-	}
+	Vector2D(T x, T y);
+	Vector2D(const Vector2D& vect);
 
 	void SetX(T x) { _coordinates[0] = x; }
 	void SetY(T y) { _coordinates[1] = y; }
@@ -30,46 +20,70 @@ public:
 
 	~Vector2D() {}
 
-	Vector2D operator+(const Vector2D& vect)
-	{
-		Vector2D out;
-		out.SetX(this->GetX() + vect.GetX());
-		out.SetY(this->GetY() + vect.GetY());
+	Vector2D operator+(const Vector2D& vect);
+	Vector2D operator-(const Vector2D& vect);
+	Vector2D operator+=(const Vector2D& vect);
+	Vector2D operator-=(const Vector2D& vect);
 
-		return out;
-	}
-
-	Vector2D operator-(const Vector2D& vect)
-	{
-		Vector2D out;
-		out.SetX(this->GetX() - vect.GetX());
-		out.SetY(this->GetY() - vect.GetY());
-
-		return out;
-	}
-
-	Vector2D operator+=(const Vector2D& vect)
-	{
-		this->_coordinates[0] += vect.GetX();
-		this->_coordinates[1] += vect.GetY();
-
-		return *this;
-	}
-
-	Vector2D operator-=(const Vector2D& vect)
-	{
-		this->_coordinates[0] -= vect.GetX();
-		this->_coordinates[1] -= vect.GetY();
-
-		return *this;
-	}
-
-	void Print()
-	{
-		std::cout << "(" << GetX() << ", " << GetY() << ")\n";
-	}
+	void Print();
 
 protected:
 	T _coordinates[2];
 };
 
+template <class T>
+Vector2D<T>::Vector2D(T x, T y)
+{
+	_coordinates[0] = x;
+	_coordinates[1] = y;
+}
+template<class T>
+Vector2D<T>::Vector2D(const Vector2D & vect)
+{
+	_coordinates[0] = vect.GetX();
+	_coordinates[1] = vect.GetY();
+}
+
+template <class T>
+Vector2D<T> Vector2D<T>::operator+(const Vector2D<T> & vect)
+{
+	Vector2D out;
+	out.SetX(this->GetX() + vect.GetX());
+	out.SetY(this->GetY() + vect.GetY());
+
+	return out;
+}
+
+template <class T>
+Vector2D<T>  Vector2D<T>::operator-(const Vector2D<T> & vect)
+{
+	Vector2D out;
+	out.SetX(this->GetX() - vect.GetX());
+	out.SetY(this->GetY() - vect.GetY());
+
+	return out;
+}
+
+template <class T>
+Vector2D<T> Vector2D<T>::operator+=(const Vector2D<T> & vect)
+{
+	this->_coordinates[0] += vect.GetX();
+	this->_coordinates[1] += vect.GetY();
+
+	return *this;
+}
+
+template <class T>
+Vector2D<T> Vector2D<T>::operator-=(const Vector2D<T> & vect)
+{
+	this->_coordinates[0] -= vect.GetX();
+	this->_coordinates[1] -= vect.GetY();
+
+	return *this;
+}
+
+template <class T>
+void Vector2D<T>::Print()
+{
+	std::cout << "(" << GetX() << ", " << GetY() << ")\n";
+}
