@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	WindowInfo window("Component Base Engine", size, position, true);
 
 	engine.InitDependencies(&argc, argv, window);
-	engine.Initialize();
+	engine.InitializeGame();
 
 	engine.Run();
 

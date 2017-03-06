@@ -124,7 +124,10 @@
   <ItemGroup>
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="FrameBufferInfo.cpp" />
+    <ClCompile Include="GLUTFrameBufferInfo.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GraphicsInfo.cpp" />
     <ClCompile Include="LoaderGLSL.cpp" />
     <ClCompile Include="GraphicAPI.cpp" />
     <ClCompile Include="GraphicOpenGL.cpp" />
@@ -145,7 +148,10 @@
   <ItemGroup>
     <ClInclude Include="Component.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="FrameBufferInfo.h" />
+    <ClInclude Include="GLUTFrameBufferInfo.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GraphicsInfo.h" />
     <ClInclude Include="LoaderGLSL.h" />
     <ClInclude Include="GraphicAPI.h" />
     <ClInclude Include="GraphicOpenGL.h" />

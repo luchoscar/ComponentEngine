@@ -8,7 +8,7 @@ using namespace CoreManagers;
 
 typedef GraphicAPI::DrawType DrawType;
 
-Renderer::Renderer()
+Renderer::Renderer() : Component()
 { }
 
 

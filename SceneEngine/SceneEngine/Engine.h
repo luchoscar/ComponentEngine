@@ -16,7 +16,7 @@ public:
 
 	void InitDependencies(int* argc, char* argv[], WindowInfo window);
 
-	void Initialize();
+	void InitializeGame();
 
 	void Run();
 

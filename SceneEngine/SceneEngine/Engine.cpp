@@ -27,7 +27,7 @@ void Engine::InitDependencies(int * argc, char * argv[], WindowInfo window)
 	graphics->SetCloseCallBack(Close);
 }
 
-void Engine::Initialize()
+void Engine::InitializeGame()
 {
 	_currentScene = new SceneBase();
 	_currentScene->AddGameObejct(new GameObject("Object_1"));

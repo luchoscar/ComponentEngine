@@ -30,7 +30,12 @@ void GraphicOpenGL::Init(int *argc, char **argv, WindowInfo window)
 
 	glEnable(GL_DEPTH_TEST);
 
-	glewInit();
+	glewExperimental = GL_TRUE;
+
+	if (glewInit() == GLEW_OK)
+	{
+		std::cout << "GLEW Initialized\n"; 
+	}
 
 	if (glewIsSupported("GL_VERSION_3_3"))
 	{
