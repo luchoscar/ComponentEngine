@@ -45,3 +45,18 @@ private:
 
 	static unsigned int ID;
 };
+
+template<typename T>
+inline T * GameObject::GetComponent()
+{
+	for (ComponentList::iterator it = _components.begin(); it != _components.end(); it++)
+	{
+		T* outComp = dynamic_cast<T*>(*it);
+		if (outComp != NULL)
+		{
+			return outComp;
+		}
+	}
+
+	return nullptr;
+}

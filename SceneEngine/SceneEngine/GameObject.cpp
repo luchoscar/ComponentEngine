@@ -1,8 +1,5 @@
 #include "GameObject.h"
 
-#include "ShaderLoader.h"
-#include "GraphicAPI.h"
-
 typedef ComponentList::iterator CompListIt;
 
 unsigned int GameObject::ID = 0;
@@ -39,20 +36,6 @@ GameObject::~GameObject()
 void GameObject::AddComponent(Component * component)
 {
 	_components.push_back(component);
-}
-
-template<class T>
-T * GameObject::GetComponent()
-{
-	for (CompListIt it = _components.begin(); it != _components.end(); it++)
-	{
-		if (dynamic_cast<T*>(it) != NULL)
-		{
-			return *it;
-		}
-	}
-
-	return nullptr
 }
 
 int GameObject::GetId()
