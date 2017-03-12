@@ -28,6 +28,10 @@ void GraphicOpenGL::Init(int *argc, char **argv, InitData initData)
 	glEnable(GL_DEPTH_TEST);
 
 	glewExperimental = GL_TRUE;
+	glutSetOption(
+		GLUT_ACTION_ON_WINDOW_CLOSE,
+		GLUT_ACTION_GLUTMAINLOOP_RETURNS
+	);
 
 	if (glewInit() == GLEW_OK)
 	{
