@@ -39,10 +39,11 @@ void SceneBase::AddGameObejct(GameObject * gameObj)
 		Vector3D(0.5f, 0.5f, 0.0f),
 		Vector4D(0, 0, 1, 1)
 	));
-	renderer->LoadVerticesData(gameObj->GetName(), vertices);
+	renderer->CreateVerticesData(gameObj->GetName(), vertices);
 
 	gameObj->AddComponent(renderer);
 
+	
 	_objectsList.push_back(gameObj);
 }
 

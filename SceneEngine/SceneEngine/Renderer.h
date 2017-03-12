@@ -26,7 +26,7 @@ public:
 	void SetShaderProgram();
 
 	std::vector<VertexFormat> GetVerticesData();
-	void LoadVerticesData(std::string name, VertexDataVect vertices);
+	void CreateVerticesData(std::string name, VertexDataVect vertices);
 
 private:
 	void _setVertices(std::vector<VertexFormat> vertices);

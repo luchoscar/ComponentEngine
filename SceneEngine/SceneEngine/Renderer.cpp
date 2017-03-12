@@ -59,7 +59,7 @@ std::vector<VertexFormat> Renderer::GetVerticesData()
 	return _vertices;
 }
 
-void Renderer::LoadVerticesData(std::string name, VertexDataVect vertices)
+void Renderer::CreateVerticesData(std::string name, VertexDataVect vertices)
 {
 	_vertices = vertices;
 	_name = name;
