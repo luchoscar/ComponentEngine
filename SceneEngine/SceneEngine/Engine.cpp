@@ -21,6 +21,10 @@ void Engine::InitializeGame()
 {
 	_addScenes();
 
+	SceneManager * sceneMng = Managers::GetInstance()->GetScenesManager();
+	sceneMng->SetCurrentSceneIndex(0);
+
+	_currentScene = sceneMng->GetCurrentScene();
 	_currentScene->Awake();
 	_currentScene->Start();
 }

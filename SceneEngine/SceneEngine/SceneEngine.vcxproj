@@ -138,6 +138,7 @@
     <ClCompile Include="ModelManager.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SceneBase.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
     <ClCompile Include="ShaderUtils.cpp" />
     <ClCompile Include="Vector2D.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="ModelManager.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SceneBase.h" />
+    <ClInclude Include="SceneManager.h" />
     <ClInclude Include="ShaderLoader.h" />
     <ClInclude Include="ShaderUtils.h" />
     <ClInclude Include="Vector2D.h" />

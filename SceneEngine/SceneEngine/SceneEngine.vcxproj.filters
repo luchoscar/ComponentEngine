@@ -82,6 +82,12 @@
     <Filter Include="Source Files\Core\FramBufferInfo">
       <UniqueIdentifier>{1604feeb-f924-4b64-9230-2928302c4038}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Managers\Scenes">
+      <UniqueIdentifier>{f05bc979-ad9b-4ef3-84a1-60411070c77c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Managers\Scenes">
+      <UniqueIdentifier>{8e7089e1-e95f-4932-ac98-c18c676e8ad4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -153,6 +159,9 @@
     <ClCompile Include="FrameBufferInfo.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source Files\Managers\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicAPI.h">
@@ -223,6 +232,9 @@
     </ClInclude>
     <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Header Files\Managers\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
