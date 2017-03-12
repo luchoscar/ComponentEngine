@@ -89,10 +89,34 @@ void GameObject::Update(float delta)
 	}
 }
 
+void GameObject::PostUpdate(float delta)
+{
+	for (CompListIt it = _components.begin(); it != _components.end(); it++)
+	{
+		(*it)->PostUpdate(delta);
+	}
+}
+
+void GameObject::PreDisplay()
+{
+	for (CompListIt it = _components.begin(); it != _components.end(); it++)
+	{
+		(*it)->PreDisplay();
+	}
+}
+
 void GameObject::Display()
 {
 	for (CompListIt it = _components.begin(); it != _components.end(); it++)
 	{
 		(*it)->Display();
+	}
+}
+
+void GameObject::PostDisplay()
+{
+	for (CompListIt it = _components.begin(); it != _components.end(); it++)
+	{
+		(*it)->PostDisplay();
 	}
 }

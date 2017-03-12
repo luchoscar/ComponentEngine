@@ -24,8 +24,13 @@ public:
 
 	void Awake();
 	void Start();
+
 	void Update(float delta);
+	void PostUpdate(float delta);
+	
+	void PreDisplay();
 	void Display();
+	void PostDisplay();
 
 private:
 	

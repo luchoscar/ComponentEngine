@@ -68,12 +68,27 @@ void SceneBase::Update(float delta)
 	{
 		(*it)->Update(delta);
 	}
+
+	for (ObjListIt it = _objectsList.begin(); it != _objectsList.end(); it++)
+	{
+		(*it)->PostUpdate(delta);
+	}
 }
 
 void SceneBase::Draw()
 {
 	for (ObjListIt it = _objectsList.begin(); it != _objectsList.end(); it++)
 	{
+		(*it)->PreDisplay();
+	}
+
+	for (ObjListIt it = _objectsList.begin(); it != _objectsList.end(); it++)
+	{
 		(*it)->Display();
+	}
+
+	for (ObjListIt it = _objectsList.begin(); it != _objectsList.end(); it++)
+	{
+		(*it)->PostDisplay();
 	}
 }
