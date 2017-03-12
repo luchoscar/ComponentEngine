@@ -3,7 +3,6 @@
 #include "GraphicOpenGL.h"
 #include "SceneBase.h"
 #include "Managers.h"
-#include "ContextInfo.h";
 
 using namespace CoreManagers;
 
@@ -34,4 +33,6 @@ private:
 
 	static float _previousTime;
 	static SceneBase* _currentScene;
+
+	void _addScenes();
 };

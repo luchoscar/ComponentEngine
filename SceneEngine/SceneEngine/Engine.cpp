@@ -19,8 +19,8 @@ void Engine::InitDependencies(int* argc, char* argv[], InitData initData)
 
 void Engine::InitializeGame()
 {
-	_currentScene = new SceneBase();
-	_currentScene->AddGameObejct(new GameObject("Object_1"));
+	_addScenes();
+
 	_currentScene->Awake();
 	_currentScene->Start();
 }
@@ -57,6 +57,15 @@ void Engine::Close()
 GraphicAPI * Engine::_getGraphicAPI()
 {
 	return Managers::GetInstance()->GetGraphicsManager();
+}
+
+void Engine::_addScenes()
+{
+	SceneBase * scene = new SceneBase();
+	scene->AddGameObejct(new GameObject("Object_1"));
+
+	SceneManager * sceneMng = Managers::GetInstance()->GetScenesManager();
+	sceneMng->PushSceneFront(scene);
 }
 
 
