@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	InitData initData = InitData(
 		WindowInfo("Component Base Engine", size, position, true),
 		ContextInfo(),
-		GLUTFrameBufferInfo()
+		GLUTFrameBufferInfo(true, true, true, true)
 	);
 
 	engine.InitDependencies(&argc, argv, initData);
