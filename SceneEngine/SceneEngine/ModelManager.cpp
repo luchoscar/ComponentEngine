@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "ShaderLoader.h"
+#include "Managers.h"
 
 using namespace CoreManagers;
 
@@ -32,6 +33,38 @@ ModelManager * ModelManager::GetInstance()
 	return _instance;
 }
 
+Model * ModelManager::CreateModel(
+	std::string name, 
+	VertexData vertices, 
+	unsigned int shaderId
+)
+{
+	ShaderLoader* shaderLoader = Managers::GetInstance()->GetShaderManager();
+	unsigned int vao = shaderLoader->CreateVertexArrayObject(1);
+	unsigned int vbo = shaderLoader->CreateVertexArrayBuffer(
+		1,
+		vertices,
+		ShaderLoader::BufferDrawType::STATIC_DRAW
+	);
+
+	unsigned int positonOffset = shaderLoader->GetVertexPositionOffset();
+	shaderLoader->BindVertexAttributes(0, 3, false, positonOffset);
+
+	unsigned int colorOffset = shaderLoader->GetVertexColorOffset();
+	shaderLoader->BindVertexAttributes(1, 4, false, colorOffset);
+
+	Model* model = new Model();
+	model->vao = vao;
+	model->vbos.push_back(vbo);
+	model->shaderId = shaderId;
+	model->vertices = vertices;
+
+	ModelManager * modelManager = Managers::GetInstance()->GetModelManager();
+	modelManager->AddModel(name, model);
+
+	return model;
+}
+
 void ModelManager::AddModel(std::string name, Model* model)
 {
 	_modelMap.insert(std::pair<std::string, Model*>(name, model));
@@ -39,7 +72,7 @@ void ModelManager::AddModel(std::string name, Model* model)
 
 Model* ModelManager::GetModel(std::string name)
 {
-	if (_modelExists(name))
+	if (ModelExists(name))
 	{
 		return _modelMap.at(name);
 	}
@@ -60,12 +93,12 @@ void ModelManager::DeleteModel(std::string name)
 	_modelMap.erase(name);
 }
 
-//-- Private Implementation ---------------------------------------------------
-
-bool ModelManager::_modelExists(std::string name)
+bool ModelManager::ModelExists(std::string name)
 {
 	return _modelMap.find(name) != _modelMap.end();
 }
+
+//-- Private Implementation ---------------------------------------------------
 
 void ModelManager::_deleteModel(Model* model)
 {

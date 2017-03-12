@@ -22,13 +22,18 @@ namespace CoreManagers
 
 		static ModelManager *  GetInstance();
 
+		Model * CreateModel(
+			std::string name, 
+			VertexData vertices,
+			unsigned int shaderId
+		);
 		void AddModel(std::string name, Model* model);
 		Model* GetModel(std::string name);
 
 		void DeleteModel(std::string name);
+		bool ModelExists(std::string name);
 
 	private:
-		bool _modelExists(std::string name);
 		void _deleteModel(Model* model);
 
 		ModelManager() {}
