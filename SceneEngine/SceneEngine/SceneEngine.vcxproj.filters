@@ -141,14 +141,17 @@
     <ClCompile Include="WindowInfo.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicsInfo.cpp">
+    <ClCompile Include="GLUTFrameBufferInfo.cpp">
+      <Filter>Source Files\Core\FramBufferInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="InitData.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ContextInfo.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="FrameBufferInfo.cpp">
-      <Filter>Source Files\Core\FramBufferInfo</Filter>
-    </ClCompile>
-    <ClCompile Include="GLUTFrameBufferInfo.cpp">
-      <Filter>Source Files\Core\FramBufferInfo</Filter>
+      <Filter>Source Files\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -206,14 +209,20 @@
     <ClInclude Include="WindowInfo.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicsInfo.h">
+    <ClInclude Include="GLUTFrameBufferInfo.h">
+      <Filter>Header Files\Core\FramBufferInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="InitData.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ContextInfo.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="FrameBufferInfo.h">
-      <Filter>Header Files\Core\FramBufferInfo</Filter>
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="GLUTFrameBufferInfo.h">
-      <Filter>Header Files\Core\FramBufferInfo</Filter>
+    <ClInclude Include="main.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

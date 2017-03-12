@@ -2,8 +2,8 @@
 //#include "../Dependencies/freeglut/freeglut.h"
 
 #include "Engine.h"
-#include "Vector3D.h"
-#include "WindowInfo.h"
+#include "GLUTFrameBufferInfo.h"
+#include "main.h"
 
 using namespace Core;
 
@@ -20,9 +20,13 @@ int main(int argc, char **argv)
 	size.SetX(800);
 	size.SetY(600);
 	
-	WindowInfo window("Component Base Engine", size, position, true);
+	InitData initData = InitData(
+		WindowInfo("Component Base Engine", size, position, true),
+		ContextInfo(),
+		GLUTFrameBufferInfo()
+	);
 
-	engine.InitDependencies(&argc, argv, window);
+	engine.InitDependencies(&argc, argv, initData);
 	engine.InitializeGame();
 
 	engine.Run();

@@ -2,12 +2,12 @@
 
 namespace Core
 {
-	class GraphicsInfo
+	class ContextInfo
 	{
 	public:
-		GraphicsInfo();
-		GraphicsInfo(int majorVersion, int minorVersion, bool core);
-		~GraphicsInfo() {}
+		ContextInfo();
+		ContextInfo(int majorVersion, int minorVersion, bool core);
+		~ContextInfo() {}
 
 		int GetMajorVersion() { return _majorVersion; }
 		int GetMinorVersion() { return _minorVersion; }

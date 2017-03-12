@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Vector2D.cpp"
-
 template <class T>
 class Vector2D
 {

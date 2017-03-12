@@ -1,6 +1,6 @@
 #pragma once
 
-#include "WindowInfo.h"
+#include "InitData.h"
 
 using namespace Core;
 
@@ -34,11 +34,11 @@ namespace CoreManagers
 		enum ShaderType { VERTEX, FRAGMENT };
 		typedef GraphicAPI::ShaderType ShaderType;
 
-		virtual ~GraphicAPI();
+		virtual ~GraphicAPI() {}
 
 		static GraphicAPI* GetInstance();
 
-		virtual void Init(int *argc, char **argv, WindowInfo window) = 0;
+		virtual void Init(int *argc, char **argv, InitData initData) = 0;
 
 		virtual void Run() = 0;
 		virtual void ClearScreen() = 0;
@@ -58,6 +58,6 @@ namespace CoreManagers
 		GraphicAPI() {}
 		GraphicAPI(GraphicAPI&) {}
 
-		static GraphicAPI * instance;
+		static GraphicAPI * _instance;
 	};
 }

@@ -35,10 +35,6 @@ WindowInfo::WindowInfo(const WindowInfo& window)
 	_resizable = window._resizable;
 }
 
-WindowInfo::~WindowInfo()
-{
-}
-
 std::string Core::WindowInfo::GetName()
 {
 	return _name;

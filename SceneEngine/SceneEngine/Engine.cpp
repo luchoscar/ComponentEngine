@@ -1,26 +1,16 @@
 #include <stdexcept>
 
 #include "Engine.h"
-#include "LoaderGLSL.h"
-#include "WindowInfo.h"
 
 using namespace Core;
 using namespace CoreManagers;
 
 SceneBase* Engine::_currentScene = nullptr;
 
-Engine::Engine()
-{ 
-	
-}
-
-Engine::~Engine()
-{ }
-
-void Engine::InitDependencies(int * argc, char * argv[], WindowInfo window)
+void Engine::InitDependencies(int* argc, char* argv[], InitData initData)
 {
-	GraphicAPI * graphics = _getGraohicAPI();
-	graphics->Init(argc, argv, window);
+	GraphicAPI * graphics = _getGraphicAPI();
+	graphics->Init(argc, argv, initData);
 
 	graphics->SetUpdateCallBack(Update);
 	graphics->SetDisplayCallBack(Display);
@@ -37,13 +27,13 @@ void Engine::InitializeGame()
 
 void Engine::Run()
 {
-	GraphicAPI * graphics = _getGraohicAPI();
+	GraphicAPI * graphics = _getGraphicAPI();
 	graphics->Run();
 }
 
 void Engine::Display()
 {
-	GraphicAPI * graphics = _getGraohicAPI();
+	GraphicAPI * graphics = _getGraphicAPI();
 	graphics->ClearScreen();
 	
 	_currentScene->Draw();
@@ -58,13 +48,13 @@ void Engine::Update()
 
 void Engine::Close()
 {
-	GraphicAPI * graphics = _getGraohicAPI();
+	GraphicAPI * graphics = _getGraphicAPI();
 	graphics->ExitLoop();
 }
 
 //--- Private Implementation --------------------------------------------------
 
-GraphicAPI * Engine::_getGraohicAPI()
+GraphicAPI * Engine::_getGraphicAPI()
 {
 	return Managers::GetInstance()->GetGraphicsManager();
 }

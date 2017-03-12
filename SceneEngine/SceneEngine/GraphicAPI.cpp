@@ -5,21 +5,16 @@
 
 using namespace CoreManagers;
 
-GraphicAPI* GraphicAPI::instance = nullptr;
-
-GraphicAPI::~GraphicAPI()
-{
-	delete instance;
-}
+GraphicAPI* GraphicAPI::_instance = nullptr;
 
 GraphicAPI * GraphicAPI::GetInstance()
 {
-	if (instance == nullptr)
+	if (_instance == nullptr)
 	{
 		throw std::invalid_argument(
 			"GraphicAPI instance has not been initialized"
 		);
 	}
 
-	return instance;
+	return _instance;
 }

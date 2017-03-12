@@ -4,13 +4,18 @@
 
 using namespace Core;
 
-Core::GLUTFrameBufferInfo::GLUTFrameBufferInfo() : FrameBufferInfo()
+GLUTFrameBufferInfo::GLUTFrameBufferInfo() : FrameBufferInfo()
 {
 	_flags = GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH;
 	_msaa = false;
 }
 
-Core::GLUTFrameBufferInfo::GLUTFrameBufferInfo(bool color, bool depth, bool stencil, bool msaa) : FrameBufferInfo()
+GLUTFrameBufferInfo::GLUTFrameBufferInfo(
+	bool color, 
+	bool depth, 
+	bool stencil, 
+	bool msaa
+) : FrameBufferInfo()
 {
 	_flags = GLUT_DOUBLE;
 

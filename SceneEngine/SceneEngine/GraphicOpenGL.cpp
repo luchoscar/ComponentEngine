@@ -7,26 +7,23 @@ using namespace CoreManagers;
 
 GraphicAPI* GraphicOpenGL::CreateInstance()
 {
-	if (instance == nullptr)
+	if (_instance == nullptr)
 	{
-		instance = new GraphicOpenGL();
+		_instance = new GraphicOpenGL();
 	}
 
-	return instance;
+	return _instance;
 }
 
-void GraphicOpenGL::Init(int *argc, char **argv, WindowInfo window)
+void GraphicOpenGL::Init(int *argc, char **argv, InitData initData)
 {
 	glutInit(argc, argv);
-	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 
-	Vector2D<int> position = window.GetPosition();
-	glutInitWindowPosition(position.GetX(), position.GetY());
+	_initContext(initData.GetContext());
 
-	Vector2D<int> size = window.GetSize();
-	glutInitWindowSize(size.GetX(), size.GetY());
+	_initFramBuffer(initData.GetFrameBuffer());
 
-	glutCreateWindow(window.GetName().c_str());
+	_initWindow(initData.GetWindow());
 
 	glEnable(GL_DEPTH_TEST);
 
@@ -34,16 +31,7 @@ void GraphicOpenGL::Init(int *argc, char **argv, WindowInfo window)
 
 	if (glewInit() == GLEW_OK)
 	{
-		std::cout << "GLEW Initialized\n"; 
-	}
-
-	if (glewIsSupported("GL_VERSION_3_3"))
-	{
-		std::cout << "MSG: GLEW Version is 3.3\n";
-	}
-	else
-	{
-		std::cout << "WRN: GLEW 3.3 not supported\n";
+		_printOpenGLInfo();
 	}
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -105,6 +93,7 @@ void GraphicOpenGL::SetCloseCallBack(void(*callBack)(void))
 	glutCloseFunc(callBack);
 }
 
+//-- Private Implementation ---------------------------------------------------
 GLenum GraphicOpenGL::_getDrawType(DrawingType drawType)
 {
 	switch (drawType) 
@@ -124,4 +113,46 @@ GLenum GraphicOpenGL::_getDrawType(DrawingType drawType)
 	default:									
 		throw std::invalid_argument("Draw type not supported");
 	}
+}
+
+void CoreManagers::GraphicOpenGL::_initContext(ContextInfo context)
+{
+	if (context.IsCore())
+	{
+		glutInitContextVersion(
+			context.GetMajorVersion(),
+			context.GetMinorVersion()
+		);
+
+		glutInitContextProfile(GLUT_CORE_PROFILE);
+	}
+	else
+	{
+		glutInitContextProfile(GLUT_COMPATIBILITY_PROFILE);
+	}
+}
+
+void CoreManagers::GraphicOpenGL::_initWindow(WindowInfo window)
+{
+	Vector2D<int> position = window.GetPosition();
+	glutInitWindowPosition(position.GetX(), position.GetY());
+
+	Vector2D<int> size = window.GetSize();
+	glutInitWindowSize(size.GetX(), size.GetY());
+
+	glutCreateWindow(window.GetName().c_str());
+}
+
+void CoreManagers::GraphicOpenGL::_initFramBuffer(FrameBufferInfo frameBufer)
+{
+	//glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
+	glutInitDisplayMode(frameBufer.GetFlags());
+}
+
+void CoreManagers::GraphicOpenGL::_printOpenGLInfo()
+{
+	std::cout << "GLUT Initialized\n"
+		<< "\tVendor   : " << glGetString(GL_VENDOR) << "\n"
+		<< "\tRenderer : " << glGetString(GL_RENDERER) << "\n"
+		<< "\tOpenGL   : " << glGetString(GL_VERSION) << std::endl;
 }

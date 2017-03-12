@@ -17,9 +17,7 @@ namespace Core
 			bool resizable
 		);
 		WindowInfo(const WindowInfo& window);
-
-		~WindowInfo();
-
+		
 		std::string GetName();
 		Vector2D<int> GetSize(); 
 		Vector2D<int> GetPosition();

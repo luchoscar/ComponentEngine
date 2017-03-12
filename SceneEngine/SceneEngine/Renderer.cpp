@@ -11,10 +11,6 @@ typedef GraphicAPI::DrawType DrawType;
 Renderer::Renderer() : Component()
 { }
 
-
-Renderer::~Renderer()
-{ }
-
 void Renderer::Display()
 {
 	ModelManager * modelManager = Managers::GetInstance()->GetModelManager();

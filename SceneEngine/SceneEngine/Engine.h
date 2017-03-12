@@ -3,6 +3,7 @@
 #include "GraphicOpenGL.h"
 #include "SceneBase.h"
 #include "Managers.h"
+#include "ContextInfo.h";
 
 using namespace CoreManagers;
 
@@ -11,10 +12,10 @@ class Engine
 public:
 	static float deltaTime;
 
-	Engine();
-	~Engine();
+	Engine() {}
+	~Engine() {}
 
-	void InitDependencies(int* argc, char* argv[], WindowInfo window);
+	void InitDependencies(int* argc, char* argv[], InitData initData);
 
 	void InitializeGame();
 
@@ -29,7 +30,7 @@ public:
 
 private:
 
-	static GraphicAPI * _getGraohicAPI();
+	static GraphicAPI * _getGraphicAPI();
 
 	static float _previousTime;
 	static SceneBase* _currentScene;

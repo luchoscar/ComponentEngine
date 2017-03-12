@@ -17,7 +17,7 @@ class Renderer :
 {
 public:
 	Renderer();
-	~Renderer();
+	~Renderer() {}
 
 	void Display() override;
 

@@ -18,7 +18,7 @@ namespace CoreManagers
 
 		static GraphicAPI* CreateInstance();
 
-		void Init(int *argc, char **argv, WindowInfo window);
+		void Init(int *argc, char **argv, InitData initData);
 
 		void ClearScreen();
 		void SwapBuffers();
@@ -37,6 +37,11 @@ namespace CoreManagers
 		GraphicOpenGL(GraphicOpenGL&) {}
 
 		GLenum _getDrawType(DrawingType drawType);
+		void _initContext(ContextInfo contextInfo);
+		void _initWindow(WindowInfo window);
+		void _initFramBuffer(FrameBufferInfo frameBufer);
+
+		void _printOpenGLInfo();
 	};
 }
 #endif;
