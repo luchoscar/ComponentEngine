@@ -39,7 +39,7 @@ void ModelManager::AddModel(std::string name, Model* model)
 
 Model* ModelManager::GetModel(std::string name)
 {
-	if (_modelMap.find(name) != _modelMap.end())
+	if (_modelExists(name))
 	{
 		return _modelMap.at(name);
 	}
@@ -61,6 +61,11 @@ void ModelManager::DeleteModel(std::string name)
 }
 
 //-- Private Implementation ---------------------------------------------------
+
+bool ModelManager::_modelExists(std::string name)
+{
+	return _modelMap.find(name) != _modelMap.end();
+}
 
 void ModelManager::_deleteModel(Model* model)
 {

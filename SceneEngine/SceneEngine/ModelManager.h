@@ -28,6 +28,7 @@ namespace CoreManagers
 		void DeleteModel(std::string name);
 
 	private:
+		bool _modelExists(std::string name);
 		void _deleteModel(Model* model);
 
 		ModelManager() {}

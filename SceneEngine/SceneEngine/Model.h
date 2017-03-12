@@ -18,5 +18,6 @@ namespace ModelData
 
 		Model() {}
 		~Model() {}
+		
 	};
 }
