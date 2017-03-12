@@ -43,10 +43,10 @@ void LoaderGLSL::LoadShader(
 	switch (type)
 	{
 	case ShaderType::VERTEX:
-		_vertexShader = _createShader(shaderType, source, name);
+		_vertexShader = _createOrGetShader(shaderType, source, name);
 		break;
 	case ShaderType::FRAGMENT:
-		_fragmentShader = _createShader(shaderType, source, name);
+		_fragmentShader = _createOrGetShader(shaderType, source, name);
 		break;
 	default:
 		std::cout << "ERR: Unsupported shader type (" << type
@@ -56,8 +56,14 @@ void LoaderGLSL::LoadShader(
 	}
 }
 
-int LoaderGLSL::CreateProgram()
+int LoaderGLSL::CreateOrGetProgram()
 {
+	std::string name = _getCurrentName();
+	if (_programExists(name.c_str()))
+	{
+		return _programNameMap[name.c_str()];
+	}
+
 	if (_programMap.find(currentId) != _programMap.end())
 	{
 		std::cout << "ERR: Shader Program ID already exists\n";
@@ -65,6 +71,7 @@ int LoaderGLSL::CreateProgram()
 	}
 
 	_programMap[currentId] = _linkProgram();
+	_programNameMap[name] = currentId;
 
 	currentId++;
 
@@ -74,6 +81,7 @@ int LoaderGLSL::CreateProgram()
 unsigned int LoaderGLSL::CreateVertexArrayObject(unsigned int amount)
 {
 	unsigned int vao;
+
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 
@@ -89,6 +97,7 @@ unsigned int LoaderGLSL::CreateVertexArrayBuffer(
 	GLenum drawType = _getDrawType(bufferDrawType);
 
 	unsigned int vbo;
+
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(
@@ -143,12 +152,19 @@ void LoaderGLSL::PrintCurrentVertexArrayObject()
 
 //--- Private Implementation --------------------------------------------------
 
-GLuint LoaderGLSL::_createShader(
+GLuint LoaderGLSL::_createOrGetShader(
 	GLenum shaderType, 
 	string source, 
 	const char * name
 )
 {
+	_shaderNames.push_back(name);
+
+	if (_shaderExists(name))
+	{
+		return _shaderMap[name];
+	}
+
 	int compileResult = 0;
 
 	const char* codePointer = source.c_str();
@@ -172,6 +188,8 @@ GLuint LoaderGLSL::_createShader(
 
 		throw std::invalid_argument("ERR: Compiling shader");
 	}
+
+	_shaderMap[name] = shader;
 
 	return shader;
 }

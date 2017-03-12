@@ -8,7 +8,6 @@
 namespace CoreManagers
 {
 	typedef std::string string;
-	typedef std::map<int, GLuint> ProgramMap;
 
 	class LoaderGLSL :
 		public ShaderLoader
@@ -19,7 +18,7 @@ namespace CoreManagers
 		static ShaderLoader* CreateInstance();
 
 		void LoadShader(ShaderType type, const char* fileName, const char* name);
-		int CreateProgram();
+		int CreateOrGetProgram();
 		unsigned int CreateVertexArrayObject(unsigned int amount);
 		unsigned int CreateVertexArrayBuffer(
 			unsigned int amount, 
@@ -45,7 +44,7 @@ namespace CoreManagers
 		LoaderGLSL() {}
 		LoaderGLSL(LoaderGLSL&) {}
 
-		GLuint _createShader(GLenum shaderType, string source, const char* name);
+		GLuint _createOrGetShader(GLenum shaderType, string source, const char* name);
 		GLenum _getShaderType(ShaderType type);
 		GLuint _linkProgram();
 
@@ -55,6 +54,5 @@ namespace CoreManagers
 
 		GLuint _vertexShader = 0;
 		GLuint _fragmentShader = 0;
-		ProgramMap _programMap;
 	};
 }

@@ -2,6 +2,7 @@
 
 #include <map>
 #include <vector>
+#include <list>
 
 #include "GraphicAPI.h"
 #include "VertexFormat.h"
@@ -12,6 +13,11 @@ namespace CoreManagers
 {
 	typedef GraphicAPI::ShaderType ShaderType;
 	typedef std::vector<VertexFormat> VertexDataVector;
+	typedef std::list<std::string> ShaderNames;
+
+	typedef std::map<int, unsigned int> ProgramMap;
+	typedef std::map<std::string, unsigned int> ShaderMap;
+	typedef std::map<std::string, unsigned int> ProgramNameMap;
 
 	class ShaderLoader
 	{
@@ -29,7 +35,7 @@ namespace CoreManagers
 			const char* fileName, 
 			const char* name
 		) = 0;
-		virtual int CreateProgram() = 0;
+		virtual int CreateOrGetProgram() = 0;
 		virtual unsigned int CreateVertexArrayObject(unsigned int amount) = 0;
 		virtual unsigned int CreateVertexArrayBuffer(
 			unsigned int amount, 
@@ -60,8 +66,18 @@ namespace CoreManagers
 
 		virtual void _loadShaderById(int id) = 0;
 
+		std::string _getCurrentName();
+		bool _shaderExists(const char * name);
+		bool _programExists(const char * name);
+
 		static ShaderLoader* instance;
 
+		ShaderNames _shaderNames;
+		const char* currentName;
 		unsigned int currentId = 0;
+
+		ProgramMap _programMap;
+		ShaderMap _shaderMap;
+		ProgramNameMap _programNameMap;
 	};
 }

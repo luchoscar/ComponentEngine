@@ -49,9 +49,9 @@ void Renderer::SetFragmentData(std::string name, std::string file)
 	);
 }
 
-void Renderer::CreateShaderProgram()
+void Renderer::SetShaderProgram()
 {
-	_shaderId = ShaderLoader::GetInstance()->CreateProgram();
+	_shaderId = ShaderLoader::GetInstance()->CreateOrGetProgram();
 }
 
 std::vector<VertexFormat> Renderer::GetVerticesData()

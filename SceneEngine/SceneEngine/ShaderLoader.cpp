@@ -36,3 +36,29 @@ unsigned int ShaderLoader::GetVertexColorOffset()
 {
 	return ShaderUtils::GetVertexFormatColorOffset();
 }
+
+
+std::string ShaderLoader::_getCurrentName()
+{
+	std::string name = "";
+
+	typedef ShaderNames::iterator iterator;
+	for (iterator it = _shaderNames.begin(); it != _shaderNames.end(); it++)
+	{
+		name = name + "_" + *it;
+	}
+
+	_shaderNames.clear();
+
+	return name;
+}
+
+bool ShaderLoader::_shaderExists(const char * name)
+{
+	return _shaderMap.find(name) != _shaderMap.end();
+}
+
+bool CoreManagers::ShaderLoader::_programExists(const char * name)
+{
+	return _programNameMap.find(name) != _programNameMap.end();
+}

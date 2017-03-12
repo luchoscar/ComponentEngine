@@ -23,7 +23,7 @@ public:
 
 	void SetVertexData(std::string name, std::string file);
 	void SetFragmentData(std::string name, std::string file);
-	void CreateShaderProgram();
+	void SetShaderProgram();
 
 	std::vector<VertexFormat> GetVerticesData();
 	void LoadVerticesData(std::string name, VertexDataVect vertices);
