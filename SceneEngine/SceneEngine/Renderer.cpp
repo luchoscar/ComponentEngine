@@ -19,6 +19,20 @@ void Renderer::Display()
 	ShaderLoader* shaderLoader = Managers::GetInstance()->GetShaderManager();
 	shaderLoader->BindVertexData(model->vao);
 	shaderLoader->LoadShaderById(model->shaderId);
+	
+	Matrix3D objectPos = Matrix3D::Identity();
+	objectPos[3] = 0.5f;
+	objectPos[7] = 0.5f;
+	objectPos.ToString();
+
+	Matrix3D cameraPositions = Matrix3D::Identity();
+	cameraPositions[11] = -2.5f;
+	cameraPositions.ToString();
+
+	Matrix3D mvp = GraphicAPI::GetInstance()->GetPerspectiveMatrix() * cameraPositions * objectPos;
+	mvp.ToString();
+
+	shaderLoader->BindUniformMatrix(model->shaderId, "mvp", mvp);
 
 	shaderLoader->PrintCurrentVertexArrayObject();
 

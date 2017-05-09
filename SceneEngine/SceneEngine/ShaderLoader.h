@@ -64,6 +64,8 @@ namespace CoreManagers
 		unsigned int GetVertexPositionOffset();
 		unsigned int GetVertexColorOffset();
 
+		virtual void BindUniformMatrix(int shaderId, std::string name, Matrix3D matrix) = 0;
+
 		// Debug Functions
 		virtual void PrintCurrentVertexArrayObject() = 0;
 

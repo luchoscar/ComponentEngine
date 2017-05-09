@@ -89,6 +89,15 @@ int LoaderGLSL::GetUniformId(unsigned int shaderId, std::string uniformName)
 	return location;
 }
 
+void CoreManagers::LoaderGLSL::BindUniformMatrix(int shaderId, std::string name, Matrix3D matrix)
+{
+	ShaderInfo shaderInfo = _programMap[shaderId];
+	int location = shaderInfo.GetUniformId(name);
+
+	float * data = matrix.getData();
+	glUniformMatrix4fv(location, 1, GL_TRUE, data);
+}
+
 unsigned int LoaderGLSL::CreateVertexArrayObject(unsigned int amount)
 {
 	unsigned int vao;
@@ -259,16 +268,6 @@ void LoaderGLSL::_loadShaderById(int id)
 
 	glUseProgram(shaderInfo.GetProgramId());
 	shaderInfo.Print();
-
-	std::map<std::string, int> shaderUniformIds = shaderInfo.GetUniforms();
-	for (std::map<std::string, int>::iterator it = shaderUniformIds.begin(); it != shaderUniformIds.end(); it++)
-	{
-		int location = (*it).second;
-		Matrix3D mat = Matrix3D::Identity();
-
-		float * data = mat.getData();
-		glUniformMatrix4fv(location, 1, GL_TRUE, data);
-	}
 }
 
 GLenum LoaderGLSL::_getDrawType(BufferDrawType drawType)
