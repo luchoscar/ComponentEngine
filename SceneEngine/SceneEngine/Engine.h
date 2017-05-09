@@ -24,7 +24,7 @@ public:
 	static void Display();
 	static void Update();
 	static void Keyboard(unsigned char c, int x, int y) {}
-	static void Resize(int width, int height) {}
+	static void Resize(int width, int height);
 	static void Close();
 
 private:

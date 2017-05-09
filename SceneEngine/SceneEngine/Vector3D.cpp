@@ -68,6 +68,10 @@ Vector3D Vector3D::operator-=(const Vector3D & vect)
 
 void Vector3D::Print()
 {
-	std::cout << "(" << GetX() << ", " << GetY() << ", " << GetZ() << ")\n";
+	printf("(%f, %f, %f)\n",
+		GetX(),
+		GetY(),
+		GetZ()
+	);
 }
 

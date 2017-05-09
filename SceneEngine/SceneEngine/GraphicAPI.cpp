@@ -2,6 +2,7 @@
 
 #include "GraphicAPI.h"
 #include "GraphicOpenGL.h"
+#include "MatrixUtils.h"
 
 using namespace CoreManagers;
 
@@ -17,4 +18,14 @@ GraphicAPI * GraphicAPI::GetInstance()
 	}
 
 	return _instance;
+}
+
+void GraphicAPI::SetPerspectiveMatrix(double fieldOfView, double aspectRatio, double zNear, double zFar)
+{
+	_perspectiveMatrix = MatrixUtils::BuildPerspectiveMatrix(fieldOfView, aspectRatio, zNear, zFar);
+}
+
+Matrix3D GraphicAPI::GetPerspectiveMatrix()
+{
+	return _perspectiveMatrix;
 }

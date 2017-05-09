@@ -1,6 +1,7 @@
 #pragma once
 
 #include "InitData.h"
+#include "Matrix3D.h"
 
 using namespace Core;
 
@@ -54,10 +55,16 @@ namespace CoreManagers
 		virtual void SetResizeCallBack(void(*callBack)(int width, int height)) = 0;
 		virtual void SetCloseCallBack(void(*callBack)(void)) = 0;
 
+		void SetPerspectiveMatrix(double fieldOfView, double aspectRatio, double zNear, double zFar);
+		Matrix3D GetPerspectiveMatrix();
+
 	protected:
 		GraphicAPI() {}
 		GraphicAPI(GraphicAPI&) {}
 
 		static GraphicAPI * _instance;
+
+	private:
+		Matrix3D _perspectiveMatrix;
 	};
 }

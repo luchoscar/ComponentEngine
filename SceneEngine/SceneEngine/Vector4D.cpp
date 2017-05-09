@@ -75,9 +75,11 @@ Vector4D Vector4D::operator-=(const Vector4D & vect)
 
 void Vector4D::Print()
 {
-	std::cout << "(" << GetX() << ", " 
-		<< GetY() << ", " 
-		<< GetZ() << ", " 
-		<< GetW() << ")\n";
+	printf("(%f, %f, %f, %f)\n", 
+		GetX(),  
+		GetY(), 
+		GetZ(), 
+		GetW()
+	);
 }
 

@@ -1,10 +1,11 @@
 #pragma once
 
+#include "GameObject.h"
+#include "VertexFormat.h"
+
 #include <vector>
 
-#include "GameObject.h"
-
-typedef std::vector<GameObject*> ObjectsList;
+using namespace ModelData;
 
 class SceneBase
 {
@@ -12,7 +13,7 @@ public:
 	SceneBase();
 	virtual ~SceneBase();
 
-	void AddGameObejct(GameObject * gameObj);
+	void AddGameObejct(std::string name, std::vector<VertexFormat> verticesData);
 
 	void Awake();
 	void Start();
@@ -20,6 +21,6 @@ public:
 	void Draw();
 
 private:
-	ObjectsList _objectsList;
+	std::vector<GameObject*> _objectsList;
 };
 

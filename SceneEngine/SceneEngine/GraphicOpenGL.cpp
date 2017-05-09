@@ -66,7 +66,7 @@ void GraphicOpenGL::DrawTriangles(DrawingType drawType, int from, int to)
 
 void GraphicOpenGL::ExitLoop()
 {
-	std::cout << "GLUT:\t Finished" << std::endl;
+	printf("GLUT:\t Finished\n");
 	glutLeaveMainLoop();
 }
 
@@ -146,13 +146,14 @@ void CoreManagers::GraphicOpenGL::_initWindow(WindowInfo window)
 	Vector2D<int> size = window.GetSize();
 	glutInitWindowSize(size.GetX(), size.GetY());
 
-	glutCreateWindow(window.GetName().c_str());
+	std::string name = window.GetName();
+	glutCreateWindow(name.c_str());
 }
 
 void CoreManagers::GraphicOpenGL::_initFramBuffer(FrameBufferInfo frameBufer)
 {
-	//glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
-	glutInitDisplayMode(frameBufer.GetFlags());
+	unsigned int flags = frameBufer.GetFlags();
+	glutInitDisplayMode(flags);
 }
 
 void CoreManagers::GraphicOpenGL::_printOpenGLInfo()

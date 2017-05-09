@@ -15,7 +15,7 @@ LoaderGLSL::~LoaderGLSL()
 
 	for (ProgramIt it = _programMap.begin(); it != _programMap.end(); it++)
 	{
-		glDeleteProgram(it->second);
+		glDeleteProgram(it->second.GetProgramId());
 	}
 
 	_programMap.clear();
@@ -66,16 +66,27 @@ int LoaderGLSL::CreateOrGetProgram()
 
 	if (_programMap.find(currentId) != _programMap.end())
 	{
-		std::cout << "ERR: Shader Program ID already exists\n";
+		printf("ERR: Shader Program ID already exists\n");
 		throw std::invalid_argument("ERR: Shader Program ID already exists");
 	}
 
-	_programMap[currentId] = _linkProgram();
+	unsigned int programId = _linkProgram();
+	ShaderInfo shaderInfo(programId);
+	_programMap[currentId] = shaderInfo;
 	_programNameMap[name] = currentId;
 
 	currentId++;
 
 	return currentId - 1;
+}
+
+int LoaderGLSL::GetUniformId(unsigned int shaderId, std::string uniformName)
+{
+	unsigned int programId = _programMap[shaderId].GetProgramId();
+	int location = glGetUniformLocation(programId, uniformName.c_str());
+	_programMap[shaderId].AddUniform(uniformName, location);
+
+	return location;
 }
 
 unsigned int LoaderGLSL::CreateVertexArrayObject(unsigned int amount)
@@ -147,7 +158,7 @@ void LoaderGLSL::PrintCurrentVertexArrayObject()
 {
 	GLint current_vao;
 	glGetIntegerv(GL_VERTEX_ARRAY_BINDING, &current_vao);
-	std::cout << "Current vao => " << current_vao << "\n";
+	printf("Current vao => %d\n", current_vao);
 }
 
 //--- Private Implementation --------------------------------------------------
@@ -235,7 +246,7 @@ GLuint LoaderGLSL::_linkProgram()
 
 	if (_programMap.find(currentId) != _programMap.end())
 	{
-		std::cout << "ERR: Shader Program ID already exists\n";
+		printf("ERR: Shader Program ID already exists\n");
 		throw std::invalid_argument("ERR: Shader Program ID already exists");
 	}
 
@@ -244,7 +255,20 @@ GLuint LoaderGLSL::_linkProgram()
 
 void LoaderGLSL::_loadShaderById(int id)
 {
-	glUseProgram(_programMap.at(id));
+	ShaderInfo shaderInfo = _programMap.at(id);
+
+	glUseProgram(shaderInfo.GetProgramId());
+	shaderInfo.Print();
+
+	std::map<std::string, int> shaderUniformIds = shaderInfo.GetUniforms();
+	for (std::map<std::string, int>::iterator it = shaderUniformIds.begin(); it != shaderUniformIds.end(); it++)
+	{
+		int location = (*it).second;
+		Matrix3D mat = Matrix3D::Identity();
+
+		float * data = mat.getData();
+		glUniformMatrix4fv(location, 1, GL_TRUE, data);
+	}
 }
 
 GLenum LoaderGLSL::_getDrawType(BufferDrawType drawType)

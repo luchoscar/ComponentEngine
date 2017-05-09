@@ -51,7 +51,10 @@ void Renderer::SetFragmentData(std::string name, std::string file)
 
 void Renderer::SetShaderProgram()
 {
-	_shaderId = ShaderLoader::GetInstance()->CreateOrGetProgram();
+	ShaderLoader * shaderLoader = ShaderLoader::GetInstance();
+	_shaderId = shaderLoader->CreateOrGetProgram();
+
+	int matrixId = shaderLoader->GetUniformId(_shaderId, "mvp");
 }
 
 std::vector<VertexFormat> Renderer::GetVerticesData()

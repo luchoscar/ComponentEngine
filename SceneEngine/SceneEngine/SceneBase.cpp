@@ -2,11 +2,11 @@
 
 #include "Renderer.h"
 
-typedef ObjectsList::iterator ObjListIt;
+typedef std::vector<GameObject*>::iterator ObjListIt;
 
 SceneBase::SceneBase()
 {
-	
+
 }
 
 SceneBase::~SceneBase()
@@ -19,31 +19,20 @@ SceneBase::~SceneBase()
 	_objectsList.clear();
 }
 
-void SceneBase::AddGameObejct(GameObject * gameObj)
+void SceneBase::AddGameObejct(std::string name, std::vector<VertexFormat> verticesData)
 {
+	GameObject * gameObj = new GameObject(name);
+
 	Renderer* renderer = new Renderer();
 	renderer->SetVertexData("vertShad", "vertexShader.glsl");
 	renderer->SetFragmentData("fragShad", "fragmentShader.glsl");
 	renderer->SetShaderProgram();
 
-	std::vector<VertexFormat> vertices;
-	vertices.push_back(VertexFormat(
-		Vector3D(0.5f, -0.5f, 0.0f),
-		Vector4D(1, 0, 0, 1)
-	));
-	vertices.push_back(VertexFormat(
-		Vector3D(-0.5f, -0.5f, 0.0f),
-		Vector4D(0, 1, 0, 1)
-	));
-	vertices.push_back(VertexFormat(
-		Vector3D(0.5f, 0.5f, 0.0f),
-		Vector4D(0, 0, 1, 1)
-	));
-	renderer->CreateVerticesData(gameObj->GetName(), vertices);
+	renderer->CreateVerticesData(gameObj->GetName(), verticesData);
 
 	gameObj->AddComponent(renderer);
 
-	
+
 	_objectsList.push_back(gameObj);
 }
 

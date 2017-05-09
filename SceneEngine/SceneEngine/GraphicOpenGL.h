@@ -31,7 +31,7 @@ namespace CoreManagers
 		void SetDisplayCallBack(void(*callBack)(void));
 		void SetResizeCallBack(void(*callBack)(int width, int height));
 		void SetCloseCallBack(void(*callBack)(void));
-
+		
 	private:
 		GraphicOpenGL() {}
 		GraphicOpenGL(GraphicOpenGL&) {}

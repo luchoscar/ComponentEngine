@@ -16,7 +16,7 @@ std::string ShaderUtils::ReadShaderFile(const char * fileName)
 
 	if (!file.good())
 	{
-		std::cout << "Shader file " << fileName << " cannot be read\n";
+		printf("Shader file %s cannot be read\n", fileName);
 		std::terminate();
 
 		throw std::invalid_argument("Shader file cannot be read");

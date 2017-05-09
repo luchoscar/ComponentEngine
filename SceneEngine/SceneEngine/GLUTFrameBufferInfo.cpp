@@ -41,3 +41,8 @@ GLUTFrameBufferInfo::GLUTFrameBufferInfo(
 
 	_msaa = msaa;
 }
+
+GLUTFrameBufferInfo::GLUTFrameBufferInfo(const GLUTFrameBufferInfo & buffer) : 
+	FrameBufferInfo(buffer)
+{
+}

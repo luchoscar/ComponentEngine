@@ -6,6 +6,7 @@
 
 #include "GraphicAPI.h"
 #include "VertexFormat.h"
+#include "ShaderInfo.h"
 
 using namespace ModelData;
 
@@ -15,7 +16,7 @@ namespace CoreManagers
 	typedef std::vector<VertexFormat> VertexDataVector;
 	typedef std::list<std::string> ShaderNames;
 
-	typedef std::map<int, unsigned int> ProgramMap;
+	typedef std::map<int, ShaderInfo> ProgramMap;
 	typedef std::map<std::string, unsigned int> ShaderMap;
 	typedef std::map<std::string, unsigned int> ProgramNameMap;
 
@@ -36,6 +37,8 @@ namespace CoreManagers
 			const char* name
 		) = 0;
 		virtual int CreateOrGetProgram() = 0;
+		virtual int GetUniformId(unsigned int shaderId, std::string uniformName) = 0;
+		//virtual void LoadUniforms(std::map<std::string, int> uniforms) = 0;
 		virtual unsigned int CreateVertexArrayObject(unsigned int amount) = 0;
 		virtual unsigned int CreateVertexArrayBuffer(
 			unsigned int amount, 
@@ -43,7 +46,11 @@ namespace CoreManagers
 			BufferDrawType bufferDrawType
 		) = 0;
 		virtual void BindVertexAttributes(
-			unsigned int location, int size, bool normalized, unsigned int offset) = 0;
+			unsigned int location, 
+			int size, 
+			bool normalized, 
+			unsigned int offset
+		) = 0;
 
 		virtual void BindVertexData(unsigned int vao) = 0;
 

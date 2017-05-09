@@ -35,12 +35,12 @@ WindowInfo::WindowInfo(const WindowInfo& window)
 	_resizable = window._resizable;
 }
 
-std::string Core::WindowInfo::GetName()
+std::string WindowInfo::GetName()
 {
 	return _name;
 }
 
-Vector2D<int> Core::WindowInfo::GetSize()
+Vector2D<int> WindowInfo::GetSize()
 {
 	return _size;
 }
@@ -50,7 +50,7 @@ Vector2D<int> Core::WindowInfo::GetPosition()
 	return _position;
 }
 
-bool Core::WindowInfo::CanResize()
+bool WindowInfo::CanResize()
 {
 	return _resizable;
 }

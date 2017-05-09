@@ -5,8 +5,8 @@ namespace Core
 	class FrameBufferInfo
 	{
 	public:
-		FrameBufferInfo() {}
-		FrameBufferInfo(const FrameBufferInfo&) {}
+		FrameBufferInfo() { _flags = 0; }
+		FrameBufferInfo(const FrameBufferInfo& buffer);
 
 		virtual ~FrameBufferInfo() {}
 

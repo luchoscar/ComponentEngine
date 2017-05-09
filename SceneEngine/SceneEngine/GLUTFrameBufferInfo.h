@@ -9,6 +9,7 @@ namespace Core
 	public:
 		GLUTFrameBufferInfo();
 		GLUTFrameBufferInfo(bool color, bool depth, bool stencil, bool msaa);
+		GLUTFrameBufferInfo(const GLUTFrameBufferInfo& buffer);
 
 		~GLUTFrameBufferInfo() {}
 	};
