@@ -55,7 +55,7 @@ void Engine::Update()
 void Engine::Resize(int width, int height)
 {
 	float aspectRatio = (float)width / (float)height;
-
+	printf("\nAspect ration %f\n", aspectRatio);
 	GraphicAPI * graphics = _getGraphicAPI();
 	graphics->SetPerspectiveMatrix(65, aspectRatio, 1.0, 1000.0);
 }
@@ -79,38 +79,21 @@ void Engine::_addScenes()
 
 	std::vector<VertexFormat> vertices;
 	vertices.push_back(VertexFormat(
-		Vector3D(0.5f, -0.5f, 0.0f),
+		Vector3D(1.0f, -1.0f, 0.0f),
 		Vector4D(1, 0, 0, 1)
 	));
 	
 	vertices.push_back(VertexFormat(
-		Vector3D(0.5f, 0.5f, 0.0f),
+		Vector3D(1.0f, 1.0f, 0.0f),
 		Vector4D(0, 0, 1, 1)
 	));
 	
 	vertices.push_back(VertexFormat(
-		Vector3D(-0.5f, -0.5f, 0.0f),
+		Vector3D(-1.0, -1.0f, 0.0f),
 		Vector4D(0, 1, 0, 1)
 	)); 
 	
 	scene->AddGameObejct("Object_1", vertices);
-	
-	/*
-	std::vector<VertexFormat> vertices_2;
-	vertices_2.push_back(VertexFormat(
-		Vector3D(-1.0f, -1.0f, 0.0f),
-		Vector4D(1, 0, 0, 1)
-	));
-	vertices_2.push_back(VertexFormat(
-		Vector3D(-0.5f, -1.0f, 0.0f),
-		Vector4D(0, 1, 0, 1)
-	));
-	vertices_2.push_back(VertexFormat(
-		Vector3D(-0.5f, -0.5f, 0.0f),
-		Vector4D(0, 0, 1, 1)
-	));
-	scene->AddGameObejct("Object_2", vertices_2);
-	*/
 
 	SceneManager * sceneMng = Managers::GetInstance()->GetScenesManager();
 	sceneMng->PushSceneFront(scene);
