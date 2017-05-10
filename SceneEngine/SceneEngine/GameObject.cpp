@@ -1,4 +1,6 @@
+
 #include "GameObject.h"
+#include "Transformation.h"
 
 typedef ComponentList::iterator CompListIt;
 
@@ -9,6 +11,8 @@ GameObject::GameObject(std::string name)
 	ID++;
 	_name = name;
 	_id = ID;
+
+	AddComponent(new Transformation());
 }
 
 GameObject::GameObject(const GameObject & obj)
@@ -35,6 +39,7 @@ GameObject::~GameObject()
 
 void GameObject::AddComponent(Component * component)
 {
+	component->SetGameObject(this);
 	_components.push_back(component);
 }
 

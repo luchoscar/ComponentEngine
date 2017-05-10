@@ -1,8 +1,12 @@
 #pragma once
 
+class GameObject;
+
 class Component
 {
 public:
+	void SetGameObject(GameObject * gameObject);
+
 	virtual ~Component() {}
 
 	virtual void Awake() {}
@@ -18,5 +22,7 @@ public:
 protected:
 	Component() {}
 	Component(Component&) {}
+
+	GameObject * _gameObject;
 };
 
