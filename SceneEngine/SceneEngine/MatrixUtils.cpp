@@ -1,5 +1,5 @@
-#include "MatrixUtils.h"
 
+#include "MatrixUtils.h"
 #include "MathUtils.h"
 
 Matrix3D MatrixUtils::BuildPerspectiveMatrix(
@@ -47,12 +47,27 @@ Matrix3D MatrixUtils::BuildPerspectiveMatrix(
 	return outMatrix;
 }
 
-Matrix3D MatrixUtils::BuildTranslationMatrix(Vector3D point)
+Matrix3D MatrixUtils::BuildTranslationMatrix(Vector3D position)
 {
-	Matrix3D matrix = Matrix3D::Identity();
-	matrix[3]	= point.GetX();
-	matrix[7]	= point.GetY();
-	matrix[11]	= point.GetZ();
+	Matrix3D matrix;
+	matrix[3]	= position.GetX();
+	matrix[7]	= position.GetY();
+	matrix[11]	= position.GetZ();
 
 	return matrix;
+}
+
+Matrix3D MatrixUtils::BuildScaleMatrix(Vector3D scale)
+{
+	Matrix3D matrix;
+	matrix[0]	= scale.GetX();
+	matrix[5]	= scale.GetY();
+	matrix[10]	= scale.GetZ();
+
+	return matrix;
+}
+
+Matrix3D MatrixUtils::BuildRotationMatrix(Vector3D rotation)
+{
+	return Matrix3D();
 }

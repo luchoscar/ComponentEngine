@@ -14,7 +14,6 @@ public:
 
 	const int GetSize();
 
-	static Matrix3D Identity();
 	void ToString();
 
 private:

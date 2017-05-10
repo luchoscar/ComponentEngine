@@ -1,9 +1,16 @@
+
 #include "Matrix3D.h"
+
 #include <iostream>
 
 Matrix3D::Matrix3D()
 {
 	_matrix = new float[SIZE];
+	for (int i = 0; i < SIZE; i++)
+	{
+		bool setValue = (i % 5) == 0;
+		_matrix[i] = setValue ? 1 : 0;
+	}
 }
 
 Matrix3D::Matrix3D(const Matrix3D & other)
@@ -80,17 +87,4 @@ void Matrix3D::ToString()
 	}
 
 	std::cout << "\n\n";
-}
-
-Matrix3D Matrix3D::Identity()
-{
-	Matrix3D matrix;
-	
-	for (int i = 0; i < matrix.SIZE; i++)
-	{
-		bool setValue = (i % 5) == 0;
-		matrix[i] = setValue ? 1 : 0;
-	}
-
-	return matrix;
 }

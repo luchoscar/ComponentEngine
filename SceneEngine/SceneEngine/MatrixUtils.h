@@ -15,7 +15,9 @@ public:
 		double zFar
 	);
 
-	static Matrix3D BuildTranslationMatrix(Vector3D point);
+	static Matrix3D BuildTranslationMatrix(Vector3D position);
+	static Matrix3D BuildScaleMatrix(Vector3D scale);
+	static Matrix3D BuildRotationMatrix(Vector3D rotation);
 
 private:
 	MatrixUtils() {}

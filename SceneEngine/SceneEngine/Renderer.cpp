@@ -1,5 +1,5 @@
 #include "Renderer.h"
-
+#include "Transformation.h"
 #include "Managers.h"
 
 #include <iostream>
@@ -20,12 +20,12 @@ void Renderer::Display()
 	shaderLoader->BindVertexData(model->vao);
 	shaderLoader->LoadShaderById(model->shaderId);
 	
-	Matrix3D objectPos = Matrix3D::Identity();
-	objectPos[3] = 0.5f;
-	objectPos[7] = 0.5f;
+	Transformation * transformComponent = _gameObject->GetComponent<Transformation>();
+	transformComponent->SetPosition(Vector3D(0.5f, 0.5f, 0.0f));
+	Matrix3D objectPos = transformComponent->GetModelMatrix();
 	objectPos.ToString();
 
-	Matrix3D cameraPositions = Matrix3D::Identity();
+	Matrix3D cameraPositions;
 	cameraPositions[11] = -2.5f;
 	cameraPositions.ToString();
 
