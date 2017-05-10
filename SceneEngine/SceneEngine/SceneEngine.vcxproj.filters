@@ -171,8 +171,11 @@
     <ClCompile Include="MatrixUtils.cpp">
       <Filter>Source Files\Math</Filter>
     </ClCompile>
+    <ClCompile Include="Transformation.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
     <ClCompile Include="ShaderInfo.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Managers\GraphicAPI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -257,8 +260,11 @@
     <ClInclude Include="MatrixUtils.h">
       <Filter>Header Files\Math</Filter>
     </ClInclude>
+    <ClInclude Include="Transformation.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
     <ClInclude Include="ShaderInfo.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Managers\GraphicAPI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
