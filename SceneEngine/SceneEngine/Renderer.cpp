@@ -25,6 +25,7 @@ void Renderer::Display()
 	Matrix3D objectPos = transformComponent->GetModelMatrix();
 	objectPos.ToString();
 
+	// TODO: Add Camera object to scene and set it as static object for it
 	Matrix3D cameraPositions;
 	cameraPositions[11] = -2.5f;
 	cameraPositions.ToString();
