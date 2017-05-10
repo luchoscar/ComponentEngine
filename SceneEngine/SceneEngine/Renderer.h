@@ -13,12 +13,12 @@ using namespace ModelData;
 
 typedef std::vector<VertexFormat> VertexDataVect;
 
-class Renderer :
+class Renderer final :
 	public Component
 {
 public:
 	Renderer();
-	~Renderer() {}
+	virtual ~Renderer() {}
 
 	void Display() override;
 
