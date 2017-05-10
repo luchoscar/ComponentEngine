@@ -57,6 +57,11 @@ Matrix3D & Matrix3D::operator=(Matrix3D other)
 	return *this;
 }
 
+const int Matrix3D::GetSize()
+{
+	return SIZE;
+}
+
 void Matrix3D::ToString()
 {
 	if (_matrix == nullptr)

@@ -12,9 +12,10 @@ public:
 	Matrix3D& operator * (Matrix3D other);
 	Matrix3D& operator = (Matrix3D other);
 
-	void ToString();
+	const int GetSize();
 
 	static Matrix3D Identity();
+	void ToString();
 
 private:
 	const int SIZE = 16;
