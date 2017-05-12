@@ -9,7 +9,7 @@ typedef std::vector<GameObject*>::iterator ObjListIt;
 
 SceneBase::SceneBase()
 {
-
+	_cameraObject = nullptr;
 }
 
 SceneBase::~SceneBase()
@@ -25,6 +25,17 @@ SceneBase::~SceneBase()
 void SceneBase::AddGameObejct(GameObject * gameObject)
 {
 	_objectsList.push_back(gameObject);
+}
+
+void SceneBase::SetCameraObject(GameObject * camera, Vector3D defaultPosition)
+{
+	camera->GetTransformation()->SetPosition(defaultPosition);
+	_cameraObject = camera;
+}
+
+GameObject * SceneBase::GetCameraObject()
+{
+	return _cameraObject;
 }
 
 void SceneBase::Awake()
@@ -62,9 +73,7 @@ void SceneBase::Draw()
 	// 1. Create and use camera component to build and store view matrix
 	// 2. Add camera component to camera object to be placed in scene
 
-	Matrix3D cameraPositions;
-	cameraPositions[11] = -2.5f;
-	printf("Projection matrix:\n");
+	Matrix3D cameraPositions = _cameraObject->GetTransformation()->GetModelMatrix();
 	cameraPositions.ToString();
 
 	GraphicAPI * graphics = Managers::GetInstance()->GetGraphicsManager();

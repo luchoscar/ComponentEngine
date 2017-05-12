@@ -14,6 +14,11 @@ public:
 	virtual ~SceneBase();
 
 	void AddGameObejct(GameObject * gameObject);
+	void SetCameraObject(
+		GameObject * camera,
+		Vector3D defaultPosition = Vector3D(0.0f, 0.0f, -10.0f)
+	);
+	GameObject * GetCameraObject();
 
 	void Awake();
 	void Start();
@@ -21,6 +26,7 @@ public:
 	void Draw();
 
 private:
+	GameObject * _cameraObject;
 	std::vector<GameObject*> _objectsList;
 };
 

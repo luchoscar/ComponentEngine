@@ -75,13 +75,21 @@ GraphicAPI * Engine::_getGraphicAPI()
 
 void Engine::_addScenes()
 {
+	GameObject * gameObject = nullptr;
+
 	GameObjectBuilder * objectBuilder = 
 		Managers::GetInstance()->GetGameObjectBuilder();
 
 	SceneBase * scene = new SceneBase();
 
+	objectBuilder->LoadGameObject("MainCamera");
+	gameObject = objectBuilder->GetGameObject();
+	scene->SetCameraObject(gameObject);
+	scene->AddGameObejct(gameObject);
+	objectBuilder->UnloadGameObject();
+	gameObject = nullptr;
+
 	objectBuilder->LoadGameObject("Object_1");
-	GameObject * _gameObject = nullptr;
 
 	std::vector<VertexFormat> vertices;
 	vertices.push_back(VertexFormat(
@@ -107,15 +115,15 @@ void Engine::_addScenes()
 		"fragmentShader.glsl"
 	);
 
-	_gameObject = objectBuilder->GetGameObject();
+	gameObject = objectBuilder->GetGameObject();
 	objectBuilder->UnloadGameObject();
 	
-	scene->AddGameObejct(_gameObject);
+	scene->AddGameObejct(gameObject);
 
 	SceneManager * sceneMng = Managers::GetInstance()->GetScenesManager();
 	sceneMng->PushSceneFront(scene);
 
-	_gameObject = nullptr;
+	gameObject = nullptr;
 }
 
 
