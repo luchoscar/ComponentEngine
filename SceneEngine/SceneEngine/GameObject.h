@@ -51,10 +51,13 @@ private:
 template<typename T>
 inline T * GameObject::GetComponent()
 {
+	if (!std::is_base_of<Component, T>::value)
+		return nullptr;
+
 	for (ComponentList::iterator it = _components.begin(); it != _components.end(); it++)
 	{
 		T* outComp = dynamic_cast<T*>(*it);
-		if (outComp != NULL)
+		if (outComp)
 		{
 			return outComp;
 		}
