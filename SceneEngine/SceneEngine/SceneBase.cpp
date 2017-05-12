@@ -1,6 +1,9 @@
 #include "SceneBase.h"
 
 #include "Renderer.h"
+#include "Managers.h"
+
+using namespace CoreManagers;
 
 typedef std::vector<GameObject*>::iterator ObjListIt;
 
@@ -67,6 +70,15 @@ void SceneBase::Update(float delta)
 
 void SceneBase::Draw()
 {
+	Matrix3D cameraPositions;
+	cameraPositions[11] = -2.5f;
+	cameraPositions.ToString();
+
+	GraphicAPI * graphics = Managers::GetInstance()->GetGraphicsManager();
+	Matrix3D viewProjMatrix = graphics->GetPerspectiveMatrix() * 
+		cameraPositions;
+	viewProjMatrix.ToString();
+
 	for (ObjListIt it = _objectsList.begin(); it != _objectsList.end(); it++)
 	{
 		(*it)->PreDisplay();
@@ -74,7 +86,7 @@ void SceneBase::Draw()
 
 	for (ObjListIt it = _objectsList.begin(); it != _objectsList.end(); it++)
 	{
-		(*it)->Display();
+		(*it)->Display(viewProjMatrix);
 	}
 
 	for (ObjListIt it = _objectsList.begin(); it != _objectsList.end(); it++)

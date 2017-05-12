@@ -8,6 +8,7 @@
 
 #include "Component.h"
 #include "VertexFormat.h"
+#include "Matrix3D.h"
 
 using namespace ModelData;
 
@@ -20,7 +21,7 @@ public:
 	Renderer();
 	virtual ~Renderer() {}
 
-	void Display();
+	void Display(Matrix3D viewProjMatrix);
 
 	void SetVertexData(std::string name, std::string file);
 	void SetFragmentData(std::string name, std::string file);

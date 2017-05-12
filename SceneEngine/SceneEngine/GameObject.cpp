@@ -23,6 +23,11 @@ GameObject::GameObject(const GameObject & obj)
 	ID++;
 	_name = obj._name;
 	_id = ID;
+
+	for (ComponentList::const_iterator it = obj._components.begin(); it != obj._components.end(); it++)
+	{
+		AddComponent(*it);
+	}
 }
 
 GameObject::~GameObject()
@@ -101,11 +106,11 @@ void GameObject::PreDisplay()
 	}
 }
 
-void GameObject::Display()
+void GameObject::Display(Matrix3D viewProjMatrix)
 {
 	if (_renderer)
 	{
-		_renderer->Display();
+		_renderer->Display(viewProjMatrix);
 	}
 }
 

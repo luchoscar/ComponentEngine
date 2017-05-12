@@ -29,7 +29,7 @@ public:
 	void PostUpdate();
 	
 	void PreDisplay();
-	void Display();
+	void Display(Matrix3D viewProjMatrix);
 	void PostDisplay();
 
 private:
