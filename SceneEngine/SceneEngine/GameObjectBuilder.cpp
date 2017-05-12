@@ -1,5 +1,7 @@
 #include "GameObjectBuilder.h"
 
+using namespace CoreManagers;
+
 GameObjectBuilder * GameObjectBuilder::_instance = nullptr;
 
 GameObjectBuilder::~GameObjectBuilder()

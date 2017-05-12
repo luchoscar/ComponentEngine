@@ -2,41 +2,44 @@
 
 #include "GameObject.h"
 
-class GameObjectBuilder
+namespace CoreManagers
 {
-public:
-	
-	~GameObjectBuilder();
+	class GameObjectBuilder
+	{
+	public:
 
-	static GameObjectBuilder * GetInstance();
+		~GameObjectBuilder();
 
-	void LoadGameObject(std::string name);
-	GameObject * GetGameObject();
-	void UnloadGameObject();
+		static GameObjectBuilder * GetInstance();
 
-	void AddRenderer(
-		std::vector<VertexFormat> vertexData,
-		std::string vertexShaderName,
-		std::string vertexShaderFile,
-		std::string fragmentShaderName,
-		std::string fragmentShaderFile
-	);
+		void LoadGameObject(std::string name);
+		GameObject * GetGameObject();
+		void UnloadGameObject();
+
+		void AddRenderer(
+			std::vector<VertexFormat> vertexData,
+			std::string vertexShaderName,
+			std::string vertexShaderFile,
+			std::string fragmentShaderName,
+			std::string fragmentShaderFile
+		);
+
+		template<typename T>
+		void AddGenericComponent(T * component);
+
+	private:
+		GameObjectBuilder() { _gameObject = nullptr; }
+		GameObjectBuilder(const GameObjectBuilder &) {}
+
+		static GameObjectBuilder * _instance;
+		GameObject * _gameObject;
+
+		bool _dirty = false;
+	};
 
 	template<typename T>
-	void AddGenericComponent(T * component);
-
-private:
-	GameObjectBuilder() { _gameObject = nullptr; }
-	GameObjectBuilder(const GameObjectBuilder &) {}
-
-	static GameObjectBuilder * _instance;
-	GameObject * _gameObject;
-
-	bool _dirty = false;
-};
-
-template<typename T>
-inline void GameObjectBuilder::AddGenericComponent(T * component)
-{
-	_gameObject->AddComponent(component);
+	inline void GameObjectBuilder::AddGenericComponent(T * component)
+	{
+		_gameObject->AddComponent(component);
+	}
 }
