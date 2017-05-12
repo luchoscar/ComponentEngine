@@ -5,6 +5,7 @@
 #include "ModelManager.h"
 #include "GraphicAPI.h"
 #include "SceneManager.h"
+#include "GameObjectBuilder.h"
 
 namespace CoreManagers
 {
@@ -15,10 +16,11 @@ namespace CoreManagers
 
 		static Managers * GetInstance();
 
-		ShaderLoader	* GetShaderManager();
-		ModelManager	* GetModelManager();
-		GraphicAPI		* GetGraphicsManager();
-		SceneManager	* GetScenesManager();
+		ShaderLoader		* GetShaderManager();
+		ModelManager		* GetModelManager();
+		GraphicAPI			* GetGraphicsManager();
+		SceneManager		* GetScenesManager();
+		GameObjectBuilder	* GetGameObjectBuilder();
 
 	private:
 		Managers();
@@ -27,10 +29,11 @@ namespace CoreManagers
 		static Managers * _instance;
 
 		// managers
-		ShaderLoader	* _shaderManager = nullptr;
-		ModelManager	* _modelManager = nullptr;
-		GraphicAPI		* _graphicsManager = nullptr;
-		SceneManager	* _sceneManager = nullptr;
+		ShaderLoader		* _shaderManager = nullptr;
+		ModelManager		* _modelManager = nullptr;
+		GraphicAPI			* _graphicsManager = nullptr;
+		SceneManager		* _sceneManager = nullptr;
+		GameObjectBuilder	* _gameObjectBuilder = nullptr;
 	};
 }
 

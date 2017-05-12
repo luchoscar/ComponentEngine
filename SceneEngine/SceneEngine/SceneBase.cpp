@@ -22,21 +22,9 @@ SceneBase::~SceneBase()
 	_objectsList.clear();
 }
 
-void SceneBase::AddGameObejct(std::string name, std::vector<VertexFormat> verticesData)
+void SceneBase::AddGameObejct(GameObject * gameObject)
 {
-	GameObject * gameObj = new GameObject(name);
-
-	Renderer* renderer = new Renderer();
-	renderer->SetVertexData("vertShad", "vertexShader.glsl");
-	renderer->SetFragmentData("fragShad", "fragmentShader.glsl");
-	renderer->SetShaderProgram();
-
-	renderer->CreateVerticesData(gameObj->GetName(), verticesData);
-
-	gameObj->AddComponent(renderer);
-
-
-	_objectsList.push_back(gameObj);
+	_objectsList.push_back(gameObject);
 }
 
 void SceneBase::Awake()

@@ -19,6 +19,9 @@ Managers::~Managers()
 	
 	delete _sceneManager;
 	_sceneManager = nullptr;
+
+	delete _gameObjectBuilder;
+	_gameObjectBuilder = nullptr;
 }
 
 Managers * Managers::GetInstance()
@@ -51,6 +54,11 @@ SceneManager * CoreManagers::Managers::GetScenesManager()
 	return _sceneManager;
 }
 
+GameObjectBuilder * CoreManagers::Managers::GetGameObjectBuilder()
+{
+	return _gameObjectBuilder;
+}
+
 //--- Private Functionality ---------------------------------------------------
 
 Managers::Managers()
@@ -59,4 +67,5 @@ Managers::Managers()
 	_shaderManager		= LoaderGLSL::CreateInstance();
 	_modelManager		= ModelManager::GetInstance();
 	_sceneManager		= SceneManager::GetInstance();
+	_gameObjectBuilder	= GameObjectBuilder::GetInstance();
 }

@@ -56,7 +56,9 @@ template<typename T>
 inline T * GameObject::GetComponent()
 {
 	if (!std::is_base_of<Component, T>::value)
-		return nullptr;
+		throw std::invalid_argument(
+			"Class is not a derived component"
+		);
 
 	for (ComponentList::iterator it = _components.begin(); it != _components.end(); it++)
 	{
@@ -66,6 +68,8 @@ inline T * GameObject::GetComponent()
 			return outComp;
 		}
 	}
+
+	printf("Component object could not be located");
 
 	return nullptr;
 }

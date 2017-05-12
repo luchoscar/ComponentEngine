@@ -75,7 +75,13 @@ GraphicAPI * Engine::_getGraphicAPI()
 
 void Engine::_addScenes()
 {
+	GameObjectBuilder * objectBuilder = 
+		Managers::GetInstance()->GetGameObjectBuilder();
+
 	SceneBase * scene = new SceneBase();
+
+	objectBuilder->LoadGameObject("Object_1");
+	GameObject * _gameObject = nullptr;
 
 	std::vector<VertexFormat> vertices;
 	vertices.push_back(VertexFormat(
@@ -92,11 +98,24 @@ void Engine::_addScenes()
 		Vector3D(-1.0, -1.0f, 0.0f),
 		Vector4D(0, 1, 0, 1)
 	)); 
+
+	objectBuilder->AddRenderer(
+		vertices,
+		"vertShad", 
+		"vertexShader.glsl",
+		"fragShad", 
+		"fragmentShader.glsl"
+	);
+
+	_gameObject = objectBuilder->GetGameObject();
+	objectBuilder->UnloadGameObject();
 	
-	scene->AddGameObejct("Object_1", vertices);
+	scene->AddGameObejct(_gameObject);
 
 	SceneManager * sceneMng = Managers::GetInstance()->GetScenesManager();
 	sceneMng->PushSceneFront(scene);
+
+	_gameObject = nullptr;
 }
 
 

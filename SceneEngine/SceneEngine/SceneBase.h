@@ -13,7 +13,7 @@ public:
 	SceneBase();
 	virtual ~SceneBase();
 
-	void AddGameObejct(std::string name, std::vector<VertexFormat> verticesData);
+	void AddGameObejct(GameObject * gameObject);
 
 	void Awake();
 	void Start();

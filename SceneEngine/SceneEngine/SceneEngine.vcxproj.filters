@@ -88,6 +88,12 @@
     <Filter Include="Source Files\Managers\Scenes">
       <UniqueIdentifier>{8e7089e1-e95f-4932-ac98-c18c676e8ad4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Managers\Builders">
+      <UniqueIdentifier>{f77ebdee-1bf6-424e-be4e-d7c552352fb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Managers\Builders">
+      <UniqueIdentifier>{12f095e0-b1c0-43bb-8144-35364856a9bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -177,6 +183,12 @@
     <ClCompile Include="ShaderInfo.cpp">
       <Filter>Source Files\Managers\GraphicAPI</Filter>
     </ClCompile>
+    <ClCompile Include="GameObjectBuilder.cpp">
+      <Filter>Source Files\Managers\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="BehaviorComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicAPI.h">
@@ -265,6 +277,12 @@
     </ClInclude>
     <ClInclude Include="ShaderInfo.h">
       <Filter>Header Files\Managers\GraphicAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectBuilder.h">
+      <Filter>Header Files\Managers\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="BehaviorComponent.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

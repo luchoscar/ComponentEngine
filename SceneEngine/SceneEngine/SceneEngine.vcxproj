@@ -122,9 +122,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BehaviorComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="FrameBufferInfo.cpp" />
+    <ClCompile Include="GameObjectBuilder.cpp" />
     <ClCompile Include="GLUTFrameBufferInfo.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="ContextInfo.cpp" />
@@ -153,9 +155,11 @@
     <ClCompile Include="WindowInfo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BehaviorComponent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="FrameBufferInfo.h" />
+    <ClInclude Include="GameObjectBuilder.h" />
     <ClInclude Include="GLUTFrameBufferInfo.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="ContextInfo.h" />
