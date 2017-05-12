@@ -16,7 +16,6 @@ public:
 	virtual void PostUpdate(float delta) {}
 
 	virtual void PreDisplay() {}
-	virtual void Display() {}
 	virtual void PostDisplay() {}
 
 protected:

@@ -20,7 +20,7 @@ public:
 	Renderer();
 	virtual ~Renderer() {}
 
-	void Display() override;
+	void Display();
 
 	void SetVertexData(std::string name, std::string file);
 	void SetFragmentData(std::string name, std::string file);

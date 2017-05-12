@@ -12,7 +12,10 @@ GameObject::GameObject(std::string name)
 	_name = name;
 	_id = ID;
 
+	_renderer = nullptr;
+
 	AddComponent(new Transformation());
+
 }
 
 GameObject::GameObject(const GameObject & obj)
@@ -41,6 +44,11 @@ void GameObject::AddComponent(Component * component)
 {
 	component->SetGameObject(this);
 	_components.push_back(component);
+
+	if (!_renderer)
+	{
+		_renderer = dynamic_cast<Renderer*>(component);
+	}
 }
 
 int GameObject::GetId()
@@ -95,9 +103,9 @@ void GameObject::PreDisplay()
 
 void GameObject::Display()
 {
-	for (CompListIt it = _components.begin(); it != _components.end(); it++)
+	if (_renderer)
 	{
-		(*it)->Display();
+		_renderer->Display();
 	}
 }
 

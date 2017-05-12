@@ -2,7 +2,7 @@
 
 #include <list>
 
-#include "Component.h"
+#include "Renderer.h"
 
 typedef std::list<Component*> ComponentList;
 
@@ -44,6 +44,8 @@ private:
 	unsigned int _id;
 
 	static unsigned int ID;
+
+	Renderer * _renderer;
 };
 
 template<typename T>
