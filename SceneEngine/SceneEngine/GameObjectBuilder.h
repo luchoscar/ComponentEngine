@@ -23,7 +23,7 @@ public:
 	);
 
 	template<typename T>
-	void AddBehaviorComponent(T * component);
+	void AddGenericComponent(T * component);
 
 private:
 	GameObjectBuilder() { _gameObject = nullptr; }
@@ -36,12 +36,7 @@ private:
 };
 
 template<typename T>
-inline void GameObjectBuilder::AddBehaviorComponent(T * component)
+inline void GameObjectBuilder::AddGenericComponent(T * component)
 {
-	if (!std::is_base_of<BehaviorComponent, T>::value)
-		throw std::invalid_argument(
-			"Class object cannot be added as a behavior component"
-		);
-
 	_gameObject->AddComponent(component);
 }

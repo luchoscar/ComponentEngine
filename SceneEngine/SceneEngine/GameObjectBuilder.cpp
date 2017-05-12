@@ -60,7 +60,7 @@ void GameObjectBuilder::AddRenderer(
 
 	renderer->CreateVerticesData(_gameObject->GetName(), vertexData);
 
-	_gameObject->AddComponent(renderer);
+	AddGenericComponent(renderer);
 
 	renderer = nullptr;
 }
