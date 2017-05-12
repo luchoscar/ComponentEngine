@@ -56,7 +56,7 @@ void Renderer::SetShaderProgram()
 	ShaderLoader * shaderLoader = ShaderLoader::GetInstance();
 	_shaderId = shaderLoader->CreateOrGetProgram();
 
-	int matrixId = shaderLoader->GetUniformId(_shaderId, "mvp");
+	shaderLoader->SetPropertyId(_shaderId, "mvp");
 }
 
 std::vector<VertexFormat> Renderer::GetVerticesData()

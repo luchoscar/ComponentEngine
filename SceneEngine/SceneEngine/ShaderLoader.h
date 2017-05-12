@@ -37,8 +37,8 @@ namespace CoreManagers
 			const char* name
 		) = 0;
 		virtual int CreateOrGetProgram() = 0;
-		virtual int GetUniformId(unsigned int shaderId, std::string uniformName) = 0;
-		//virtual void LoadUniforms(std::map<std::string, int> uniforms) = 0;
+		virtual int SetPropertyId(unsigned int shaderId, std::string uniformName) = 0;
+		
 		virtual unsigned int CreateVertexArrayObject(unsigned int amount) = 0;
 		virtual unsigned int CreateVertexArrayBuffer(
 			unsigned int amount, 

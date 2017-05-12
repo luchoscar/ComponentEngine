@@ -41,7 +41,7 @@ void ShaderInfo::AddUniform(std::string name, int id)
 	_uniformsMap.insert(uniformData);
 }
 
-int ShaderInfo::GetUniformId(std::string name)
+int ShaderInfo::SetPropertyId(std::string name)
 {
 	return _uniformsMap.at(name);
 }

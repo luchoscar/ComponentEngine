@@ -19,7 +19,7 @@ namespace CoreManagers
 
 		void LoadShader(ShaderType type, const char* fileName, const char* name);
 		int CreateOrGetProgram();
-		int GetUniformId(unsigned int shaderId, std::string uniformName);
+		int SetPropertyId(unsigned int shaderId, std::string uniformName);
 		void BindUniformMatrix(int shaderId, std::string name, Matrix3D matrix);
 
 		unsigned int CreateVertexArrayObject(unsigned int amount);

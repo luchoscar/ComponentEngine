@@ -16,7 +16,7 @@ namespace CoreManagers
 		void SetProgramId(unsigned int id);
 		unsigned int GetProgramId();
 		void AddUniform(std::string name, int id);
-		int GetUniformId(std::string name);
+		int SetPropertyId(std::string name);
 		std::map<std::string, int> GetUniforms();
 
 		void Print();

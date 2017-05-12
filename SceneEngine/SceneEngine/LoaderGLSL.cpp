@@ -80,7 +80,7 @@ int LoaderGLSL::CreateOrGetProgram()
 	return currentId - 1;
 }
 
-int LoaderGLSL::GetUniformId(unsigned int shaderId, std::string uniformName)
+int LoaderGLSL::SetPropertyId(unsigned int shaderId, std::string uniformName)
 {
 	unsigned int programId = _programMap[shaderId].GetProgramId();
 	int location = glGetUniformLocation(programId, uniformName.c_str());
@@ -92,7 +92,7 @@ int LoaderGLSL::GetUniformId(unsigned int shaderId, std::string uniformName)
 void CoreManagers::LoaderGLSL::BindUniformMatrix(int shaderId, std::string name, Matrix3D matrix)
 {
 	ShaderInfo shaderInfo = _programMap[shaderId];
-	int location = shaderInfo.GetUniformId(name);
+	int location = shaderInfo.SetPropertyId(name);
 
 	float * data = matrix.getData();
 	glUniformMatrix4fv(location, 1, GL_TRUE, data);
