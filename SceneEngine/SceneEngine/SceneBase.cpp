@@ -76,11 +76,16 @@ void SceneBase::Draw()
 
 	Matrix3D cameraPositions;
 	cameraPositions[11] = -2.5f;
+	printf("Projection matrix:\n");
 	cameraPositions.ToString();
 
 	GraphicAPI * graphics = Managers::GetInstance()->GetGraphicsManager();
-	Matrix3D viewProjMatrix = graphics->GetPerspectiveMatrix() * 
-		cameraPositions;
+	Matrix3D projectionMatrix = graphics->GetPerspectiveMatrix();
+	printf("Projection matrix:\n");
+	projectionMatrix.ToString();
+
+	Matrix3D viewProjMatrix = projectionMatrix * cameraPositions;
+	printf("View Projection matrix:\n"); 
 	viewProjMatrix.ToString();
 
 	for (ObjListIt it = _objectsList.begin(); it != _objectsList.end(); it++)
