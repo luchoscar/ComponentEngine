@@ -130,3 +130,8 @@ void GameObject::PostDisplay()
 		(*it)->PostDisplay();
 	}
 }
+
+Transformation * GameObject::GetTransformation()
+{
+	return _transformation;
+}

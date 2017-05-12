@@ -33,6 +33,8 @@ public:
 	void Display(Matrix3D viewProjMatrix);
 	void PostDisplay();
 
+	Transformation * GetTransformation();
+
 private:
 	
 	GameObject() {}	
