@@ -70,6 +70,10 @@ void SceneBase::Update(float delta)
 
 void SceneBase::Draw()
 {
+	// TODO: 
+	// 1. Create and use camera component to build and store view matrix
+	// 2. Add camera component to camera object to be placed in scene
+
 	Matrix3D cameraPositions;
 	cameraPositions[11] = -2.5f;
 	cameraPositions.ToString();
