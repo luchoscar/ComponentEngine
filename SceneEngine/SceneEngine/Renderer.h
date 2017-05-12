@@ -21,7 +21,7 @@ public:
 	Renderer();
 	virtual ~Renderer() {}
 
-	void Display(Matrix3D viewProjMatrix);
+	void Display(Matrix3D mvpMatrix);
 
 	void SetVertexData(std::string name, std::string file);
 	void SetFragmentData(std::string name, std::string file);

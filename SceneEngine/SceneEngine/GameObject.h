@@ -3,6 +3,7 @@
 #include <list>
 
 #include "Renderer.h"
+#include "Transformation.h"
 
 typedef std::list<Component*> ComponentList;
 
@@ -46,6 +47,7 @@ private:
 	static unsigned int ID;
 
 	Renderer * _renderer;
+	Transformation * _transformation;
 };
 
 template<typename T>

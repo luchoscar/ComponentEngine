@@ -11,7 +11,7 @@ typedef GraphicAPI::DrawType DrawType;
 Renderer::Renderer() : Component()
 { }
 
-void Renderer::Display(Matrix3D viewProjMatrix)
+void Renderer::Display(Matrix3D mvpMatrix)
 {
 	ModelManager * modelManager = Managers::GetInstance()->GetModelManager();
 	Model* model = modelManager->GetModel(_name);
@@ -19,16 +19,8 @@ void Renderer::Display(Matrix3D viewProjMatrix)
 	ShaderLoader* shaderLoader = Managers::GetInstance()->GetShaderManager();
 	shaderLoader->BindVertexData(model->vao);
 	shaderLoader->LoadShaderById(model->shaderId);
-	
-	Transformation * transformComponent = _gameObject->GetComponent<Transformation>();
-	transformComponent->SetPosition(Vector3D(0.5f, 0.5f, 0.0f));
-	Matrix3D objectPos = transformComponent->GetModelMatrix();
-	objectPos.ToString();
 
-	Matrix3D mvp = viewProjMatrix * objectPos;
-	mvp.ToString();
-
-	shaderLoader->BindUniformMatrix(model->shaderId, "mvp", mvp);
+	shaderLoader->BindUniformMatrix(model->shaderId, "mvp", mvpMatrix);
 
 	shaderLoader->PrintCurrentVertexArrayObject();
 

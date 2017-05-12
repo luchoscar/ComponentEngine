@@ -1,6 +1,5 @@
 
 #include "GameObject.h"
-#include "Transformation.h"
 
 typedef ComponentList::iterator CompListIt;
 
@@ -13,8 +12,9 @@ GameObject::GameObject(std::string name)
 	_id = ID;
 
 	_renderer = nullptr;
+	_transformation = new Transformation();
 
-	AddComponent(new Transformation());
+	AddComponent(_transformation);
 
 }
 
@@ -23,6 +23,7 @@ GameObject::GameObject(const GameObject & obj)
 	ID++;
 	_name = obj._name;
 	_id = ID;
+	_transformation = obj._transformation;
 
 	for (ComponentList::const_iterator it = obj._components.begin(); it != obj._components.end(); it++)
 	{
@@ -110,7 +111,9 @@ void GameObject::Display(Matrix3D viewProjMatrix)
 {
 	if (_renderer)
 	{
-		_renderer->Display(viewProjMatrix);
+		Matrix3D modelMatrix = _transformation->GetModelMatrix();
+		Matrix3D mvpMatrix = viewProjMatrix * modelMatrix;
+		_renderer->Display(mvpMatrix);
 	}
 }
 
