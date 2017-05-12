@@ -85,11 +85,11 @@ void GameObject::Update(float delta)
 	}
 }
 
-void GameObject::PostUpdate(float delta)
+void GameObject::PostUpdate()
 {
 	for (CompListIt it = _components.begin(); it != _components.end(); it++)
 	{
-		(*it)->PostUpdate(delta);
+		(*it)->PostUpdate();
 	}
 }
 

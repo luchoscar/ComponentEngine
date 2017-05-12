@@ -26,7 +26,7 @@ public:
 	void Start();
 
 	void Update(float delta);
-	void PostUpdate(float delta);
+	void PostUpdate();
 	
 	void PreDisplay();
 	void Display();

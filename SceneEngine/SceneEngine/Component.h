@@ -13,7 +13,7 @@ public:
 	virtual void Start() {}
 	
 	virtual void Update(float delta) {}
-	virtual void PostUpdate(float delta) {}
+	virtual void PostUpdate() {}
 
 	virtual void PreDisplay() {}
 	virtual void PostDisplay() {}

@@ -61,7 +61,7 @@ void SceneBase::Update(float delta)
 
 	for (ObjListIt it = _objectsList.begin(); it != _objectsList.end(); it++)
 	{
-		(*it)->PostUpdate(delta);
+		(*it)->PostUpdate();
 	}
 }
 
