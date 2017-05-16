@@ -16,7 +16,8 @@ public:
 	void AddGameObejct(GameObject * gameObject);
 	void SetCameraObject(
 		GameObject * camera,
-		Vector3D defaultPosition = Vector3D(0.0f, 0.0f, -10.0f)
+		Vector3D defaultPosition = Vector3D(0.0f, 5.0f, -10.0f),
+		Vector3D lookAt = Vector3D(0.0f, 0.0f, 0.0f)
 	);
 	GameObject * GetCameraObject();
 
@@ -24,6 +25,8 @@ public:
 	void Start();
 	void Update(float delta);
 	void Draw();
+
+	void SetCameraDirty(bool dirty);
 
 private:
 	GameObject * _cameraObject;

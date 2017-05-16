@@ -2,6 +2,8 @@
 
 #include "Renderer.h"
 #include "Managers.h"
+#include "Camera.h"
+#include "MatrixUtils.h"
 
 using namespace CoreManagers;
 
@@ -27,9 +29,11 @@ void SceneBase::AddGameObejct(GameObject * gameObject)
 	_objectsList.push_back(gameObject);
 }
 
-void SceneBase::SetCameraObject(GameObject * camera, Vector3D defaultPosition)
+void SceneBase::SetCameraObject(GameObject * camera, Vector3D position, Vector3D lookAt)
 {
-	camera->GetTransformation()->SetPosition(defaultPosition);
+	camera->GetTransformation()->SetPosition(position);
+	camera->GetComponent<Camera>()->SetLookAtVect(lookAt);
+
 	_cameraObject = camera;
 }
 
@@ -69,19 +73,23 @@ void SceneBase::Update(float delta)
 
 void SceneBase::Draw()
 {
-	// TODO: 
-	// 1. Create and use camera component to build and store view matrix
-	// 2. Add camera component to camera object to be placed in scene
+	Transformation * transComp = _cameraObject->GetTransformation();
 
-	Matrix3D cameraPositions = _cameraObject->GetTransformation()->GetModelMatrix();
-	cameraPositions.ToString();
+	Camera * cameraComp = _cameraObject->GetComponent<Camera>();
+	Matrix3D viewMatrix = cameraComp->GetViewMatrix(
+		transComp->GetPosition(),
+		Vector3D(0.0f, 1.0f, 0.0f)
+	);
+	transComp->Print();
+	cameraComp->Print();
+	viewMatrix.ToString();
 
 	GraphicAPI * graphics = Managers::GetInstance()->GetGraphicsManager();
 	Matrix3D projectionMatrix = graphics->GetPerspectiveMatrix();
 	printf("Projection matrix:\n");
 	projectionMatrix.ToString();
 
-	Matrix3D viewProjMatrix = projectionMatrix * cameraPositions;
+	Matrix3D viewProjMatrix = projectionMatrix * viewMatrix;
 	printf("View Projection matrix:\n"); 
 	viewProjMatrix.ToString();
 
@@ -99,4 +107,9 @@ void SceneBase::Draw()
 	{
 		(*it)->PostDisplay();
 	}
+}
+
+void SceneBase::SetCameraDirty(bool dirty)
+{
+	_cameraObject->GetComponent<Camera>()->SetDirty(dirty);
 }

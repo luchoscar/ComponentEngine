@@ -112,12 +112,7 @@ void GameObject::Display(Matrix3D viewProjMatrix)
 	if (_renderer)
 	{
 		Matrix3D modelMatrix = _transformation->GetModelMatrix();
-		printf("Model matrix:\n");
-		modelMatrix.ToString();
-
 		Matrix3D mvpMatrix = viewProjMatrix * modelMatrix;
-		printf("MVP matrix:\n");
-		mvpMatrix.ToString();
 
 		_renderer->Display(mvpMatrix);
 	}

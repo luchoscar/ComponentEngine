@@ -55,9 +55,16 @@ void Engine::Update()
 void Engine::Resize(int width, int height)
 {
 	float aspectRatio = (float)width / (float)height;
-	printf("\nAspect ration %f\n", aspectRatio);
+	printf(
+		"\n---------------\nAspect ration %f / %f = %f\n---------------\n\n", 
+		(float)width, 
+		(float)height, 
+		aspectRatio
+	);
+
 	GraphicAPI * graphics = _getGraphicAPI();
-	graphics->SetPerspectiveMatrix(65, aspectRatio, 1.0, 1000.0);
+	graphics->SetPerspectiveMatrix(60, aspectRatio, 1.0, 1000.0);
+	_currentScene->SetCameraDirty(true);
 }
 
 void Engine::Close()
@@ -83,6 +90,8 @@ void Engine::_addScenes()
 	SceneBase * scene = new SceneBase();
 
 	objectBuilder->LoadGameObject("MainCamera");
+	objectBuilder->AddCamera();
+
 	gameObject = objectBuilder->GetGameObject();
 	scene->SetCameraObject(gameObject);
 	scene->AddGameObejct(gameObject);
@@ -93,17 +102,17 @@ void Engine::_addScenes()
 
 	std::vector<VertexFormat> vertices;
 	vertices.push_back(VertexFormat(
-		Vector3D(1.0f, -1.0f, 0.0f),
+		Vector3D(0.5f, -0.5f, 0.0f),
 		Vector4D(1, 0, 0, 1)
 	));
 	
 	vertices.push_back(VertexFormat(
-		Vector3D(1.0f, 1.0f, 0.0f),
+		Vector3D(0.0f, 0.5f, 0.0f),
 		Vector4D(0, 0, 1, 1)
 	));
 	
 	vertices.push_back(VertexFormat(
-		Vector3D(-1.0, -1.0f, 0.0f),
+		Vector3D(-0.5, -0.5f, 0.0f),
 		Vector4D(0, 1, 0, 1)
 	)); 
 

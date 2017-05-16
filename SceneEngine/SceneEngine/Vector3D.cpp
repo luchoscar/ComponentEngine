@@ -24,8 +24,37 @@ Vector3D::Vector3D(const Vector3D & vect)
 }
 
 
+float Vector3D::GetMagnitud()
+{
+	return sqrt(
+		GetX() * GetX() +
+		GetY() * GetY() + 
+		GetZ() * GetZ()
+	);
+}
+
+Vector3D Vector3D::GetNormalized()
+{
+	float magnitude = GetMagnitud();
+	return Vector3D(
+		GetX() / magnitude,
+		GetY() / magnitude,
+		GetZ() / magnitude
+	);
+}
+
 Vector3D::~Vector3D()
 {
+}
+
+Vector3D Vector3D::operator*(const int & value)
+{
+	return _multiplyBy(value);
+}
+
+Vector3D Vector3D::operator*(const float & value)
+{
+	return _multiplyBy(value);
 }
 
 Vector3D Vector3D::operator+(const Vector3D & vect)
@@ -66,9 +95,30 @@ Vector3D Vector3D::operator-=(const Vector3D & vect)
 	return *this;
 }
 
+float Vector3D::DotProduct(Vector3D vect1, Vector3D vect2)
+{
+	return vect1.GetX() * vect2.GetX() +
+		vect1.GetY() * vect2.GetY() +
+		vect1.GetZ() * vect2.GetZ();
+}
+
+Vector3D Vector3D::CrossProduct(Vector3D vect1, Vector3D vect2)
+{
+	float xComp = vect1.GetY() * vect2.GetZ() -
+		vect1.GetZ() * vect2.GetY();
+
+	float yComp = vect1.GetZ() * vect2.GetX() -
+		vect1.GetX() * vect2.GetZ();
+
+	float zComp = vect1.GetX() * vect2.GetY() -
+		vect1.GetY() * vect2.GetX();
+
+	return Vector3D(xComp, yComp, zComp);
+}
+
 void Vector3D::Print()
 {
-	printf("(%f, %f, %f)\n",
+	printf("Vector3D (%f, %f, %f)\n",
 		GetX(),
 		GetY(),
 		GetZ()

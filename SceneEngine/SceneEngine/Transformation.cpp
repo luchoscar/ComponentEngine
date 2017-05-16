@@ -1,4 +1,6 @@
 
+#include <iostream>
+
 #include "Transformation.h"
 #include "MatrixUtils.h"
 
@@ -61,4 +63,12 @@ Matrix3D Transformation::GetModelMatrix()
 	_modelMatrix = posMatrix * scaleMatrix * rotationMatrix;
 	
 	return _modelMatrix;
+}
+
+void Transformation::Print()
+{
+	std::cout << "Transformation component\n"
+		<< "\tPosition = (" << _position.GetX() << ", " << _position.GetY() << ", " << _position.GetZ() << ")\n"
+		<< "\tScale = (" << _scale.GetX() << ", " << _scale.GetY() << ", " << _scale.GetZ() << ")\n"
+		<< "\tRotation = (" << _rotation.GetX() << ", " << _rotation.GetY() << ", " << _rotation.GetZ() << ")\n";
 }

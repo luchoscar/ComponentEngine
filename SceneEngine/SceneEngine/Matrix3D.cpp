@@ -6,6 +6,7 @@
 Matrix3D::Matrix3D()
 {
 	_matrix = new float[SIZE];
+
 	for (int i = 0; i < SIZE; i++)
 	{
 		bool setValue = (i % 5) == 0;
@@ -16,6 +17,7 @@ Matrix3D::Matrix3D()
 Matrix3D::Matrix3D(const Matrix3D & other)
 {
 	_matrix = new float[SIZE];
+
 	for (int i = 0; i < SIZE; i++)
 	{
 		_matrix[i] = other._matrix[i];

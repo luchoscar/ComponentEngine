@@ -1,4 +1,5 @@
 #include "GameObjectBuilder.h"
+#include "Camera.h"
 
 using namespace CoreManagers;
 
@@ -45,6 +46,14 @@ void GameObjectBuilder::UnloadGameObject()
 {
 	_dirty = false;
 	_gameObject = nullptr;
+}
+
+void CoreManagers::GameObjectBuilder::AddCamera()
+{
+	Camera * camera = new Camera();
+	AddGenericComponent(camera);
+
+	camera = nullptr;
 }
 
 void GameObjectBuilder::AddRenderer(

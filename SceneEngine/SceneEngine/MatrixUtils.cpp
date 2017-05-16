@@ -2,6 +2,8 @@
 #include "MatrixUtils.h"
 #include "MathUtils.h"
 
+#include <cmath>
+
 Matrix3D MatrixUtils::BuildPerspectiveMatrix(
 	double fieldOfView, 
 	double aspectRatio, 
@@ -45,6 +47,38 @@ Matrix3D MatrixUtils::BuildPerspectiveMatrix(
 	outMatrix[3 * 4 + 3] = 0;
 
 	return outMatrix;
+}
+
+Matrix3D MatrixUtils::BuildLookAtMatrix(
+	Vector3D cameraPosition,
+	Vector3D lookAtPosition,
+	Vector3D vectorUp
+)
+{
+	Vector3D zAxis = cameraPosition - lookAtPosition;
+	zAxis = zAxis.GetNormalized();
+
+	Vector3D xAxis = Vector3D::CrossProduct(vectorUp, zAxis);
+	xAxis = xAxis.GetNormalized();
+
+	Vector3D yAxis = Vector3D::CrossProduct(zAxis, xAxis);
+	yAxis = yAxis.GetNormalized();
+
+	/* Build resulting view matrix. */
+	Matrix3D outMat;
+
+	float axisDotProd = -xAxis.GetX() * cameraPosition.GetX() + -xAxis.GetY() * cameraPosition.GetY() + -xAxis.GetZ() * cameraPosition.GetZ();
+	outMat[0] = xAxis.GetX();  outMat[1] = xAxis.GetY(); outMat[2] = xAxis.GetZ();  outMat[3] = axisDotProd;
+
+	axisDotProd = -yAxis.GetX() * cameraPosition.GetX() + -yAxis.GetY() * cameraPosition.GetY() + -yAxis.GetZ() * cameraPosition.GetZ();
+	outMat[4] = yAxis.GetX();  outMat[5] = yAxis.GetY(); outMat[6] = yAxis.GetZ();  outMat[7] = axisDotProd;
+
+	axisDotProd = -zAxis.GetX() * cameraPosition.GetX() + -zAxis.GetY() * cameraPosition.GetY() + -zAxis.GetZ() * cameraPosition.GetZ();
+	outMat[8] = zAxis.GetX();  outMat[9] = zAxis.GetY(); outMat[10] = zAxis.GetZ();  outMat[11] = axisDotProd;
+
+	outMat[12] = 0.0f;   outMat[13] = 0.0f;  outMat[14] = 0.0f;   outMat[15] = 1.0f;
+
+	return outMat;
 }
 
 Matrix3D MatrixUtils::BuildTranslationMatrix(Vector3D position)

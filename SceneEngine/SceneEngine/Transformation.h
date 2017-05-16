@@ -21,6 +21,10 @@ public:
 
 	Matrix3D GetModelMatrix();
 
+	bool IsDirt() { return _dirty; }
+
+	void Print();
+
 private:
 	Vector3D _position;
 	Vector3D _scale;

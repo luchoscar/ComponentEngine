@@ -8,22 +8,21 @@ class Camera final :
 	public Component
 {
 public:
-	enum CameraType
-	{
-		LOOK_AT
-	};
-
-	Camera(CameraType cameraType) { _cameraType = cameraType; }
+	Camera();
 	~Camera() {}
 
 	Vector3D GetLookAtPoint();
 	void SetLookAtVect(Vector3D lookAt);
-	Matrix3D GetViewMatrix();
+	Matrix3D GetViewMatrix(Vector3D camPos, Vector3D vectUp);
+
+	void SetDirty(bool dirty);
+	bool IsDirt();
+
+	void Print();
 
 private:
 	Vector3D _lookAtPoint;
-	bool _dirty = true;
+	bool _dirty;
 	Matrix3D _viewMatrix;
-	CameraType _cameraType;
 };
 

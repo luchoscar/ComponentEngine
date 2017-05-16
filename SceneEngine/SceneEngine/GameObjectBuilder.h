@@ -16,6 +16,7 @@ namespace CoreManagers
 		GameObject * GetGameObject();
 		void UnloadGameObject();
 
+		void AddCamera();
 		void AddRenderer(
 			std::vector<VertexFormat> vertexData,
 			std::string vertexShaderName,
