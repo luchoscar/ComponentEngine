@@ -1,4 +1,5 @@
 #include <stdexcept>
+#include <iostream>
 
 #include "Engine.h"
 #include "VertexFormat.h"
@@ -6,7 +7,19 @@
 using namespace Core;
 using namespace CoreManagers;
 
+const float FPS = 30.0f;
+int _currentFPS = 0;
+
 SceneBase* Engine::_currentScene = nullptr;
+float Engine::deltaTime; 
+float Engine::_previousTime;
+float Engine::_frameDelay;
+float Engine::_currentFrameDelay;
+
+Engine::Engine() {
+	_frameDelay = 1.0f/ FPS;
+	_currentFrameDelay = _frameDelay;
+}
 
 void Engine::InitDependencies(int* argc, char* argv[], InitData initData)
 {
@@ -14,6 +27,7 @@ void Engine::InitDependencies(int* argc, char* argv[], InitData initData)
 	graphics->Init(argc, argv, initData);
 
 	graphics->SetUpdateCallBack(Update);
+	graphics->SetIdleCallBack(Update);
 	graphics->SetDisplayCallBack(Display);
 	graphics->SetCloseCallBack(Close);
 	graphics->SetResizeCallBack(Resize);
@@ -39,17 +53,41 @@ void Engine::Run()
 
 void Engine::Display()
 {
+	if (_currentFrameDelay < _frameDelay) {
+		return;
+	}
+
 	GraphicAPI * graphics = _getGraphicAPI();
 	graphics->ClearScreen();
 	
 	_currentScene->Draw();
 
 	graphics->SwapBuffers();
+	
+	int currentFPS = 1.0f / _currentFrameDelay;
+	if (currentFPS != _currentFPS) {
+		std::cout << "_currentFrameDelay : " << _currentFrameDelay << std::endl;
+		std::cout << "currentFPS : " << currentFPS << std::endl;
+
+		_currentFPS = currentFPS;
+		
+		std::cout << "_currentFPS : " << _currentFPS << std::endl;
+	}
+
+	_currentFrameDelay = 0.0f;
 }
 
 void Engine::Update()
 {
-	
+	float currentTime = glutGet(GLUT_ELAPSED_TIME);
+	deltaTime = (currentTime - _previousTime) * 0.001;
+
+	_currentScene->Update(deltaTime);
+
+	_previousTime = currentTime;
+	_currentFrameDelay += deltaTime;
+
+	Display();
 }
 
 void Engine::Resize(int width, int height)
@@ -65,6 +103,10 @@ void Engine::Resize(int width, int height)
 	GraphicAPI * graphics = _getGraphicAPI();
 	graphics->SetPerspectiveMatrix(60, aspectRatio, 1.0, 1000.0);
 	_currentScene->SetCameraDirty(true);
+
+	_currentFrameDelay = _frameDelay;
+
+	Display();
 }
 
 void Engine::Close()

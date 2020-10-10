@@ -11,7 +11,7 @@ class Engine
 public:
 	static float deltaTime;
 
-	Engine() {}
+	Engine();
 	~Engine() {}
 
 	void InitDependencies(int* argc, char* argv[], InitData initData);
@@ -32,6 +32,9 @@ private:
 	static GraphicAPI * _getGraphicAPI();
 
 	static float _previousTime;
+	static float  _frameDelay;
+	static float _currentFrameDelay;
+
 	static SceneBase* _currentScene;
 
 	void _addScenes();

@@ -167,7 +167,7 @@ void LoaderGLSL::PrintCurrentVertexArrayObject()
 {
 	GLint current_vao;
 	glGetIntegerv(GL_VERTEX_ARRAY_BINDING, &current_vao);
-	printf("Current vao => %d\n", current_vao);
+	//printf("Current vao => %d\n", current_vao);
 }
 
 //--- Private Implementation --------------------------------------------------
@@ -267,7 +267,7 @@ void LoaderGLSL::_loadShaderById(int id)
 	ShaderInfo shaderInfo = _programMap.at(id);
 
 	glUseProgram(shaderInfo.GetProgramId());
-	shaderInfo.Print();
+	//shaderInfo.Print();
 }
 
 GLenum LoaderGLSL::_getDrawType(BufferDrawType drawType)

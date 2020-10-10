@@ -41,6 +41,10 @@ void GraphicOpenGL::Init(int *argc, char **argv, InitData initData)
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	//glEnable(GL_CULL_FACE);
+	//glCullFace(GL_FRONT);
+	//glFrontFace(GL_CCW);
 }
 
 void GraphicOpenGL::ClearScreen()
@@ -82,6 +86,10 @@ void GraphicOpenGL::SetKeyboardCallBack(
 )
 {
 	glutKeyboardFunc(callBack);
+}
+
+void GraphicOpenGL::SetIdleCallBack(void(*callBack)(void)) {
+	glutIdleFunc(callBack);
 }
 
 void GraphicOpenGL::SetDisplayCallBack(void (*callBack)(void))

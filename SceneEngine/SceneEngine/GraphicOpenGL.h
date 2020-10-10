@@ -28,6 +28,7 @@ namespace CoreManagers
 
 		void SetUpdateCallBack(void(*callBack)(void));
 		void SetKeyboardCallBack(void(*callBack)(unsigned char c, int x, int y));
+		void SetIdleCallBack(void(*callBack)(void));
 		void SetDisplayCallBack(void(*callBack)(void));
 		void SetResizeCallBack(void(*callBack)(int width, int height));
 		void SetCloseCallBack(void(*callBack)(void));

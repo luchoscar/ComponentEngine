@@ -22,6 +22,8 @@ SceneBase::~SceneBase()
 	}
 
 	_objectsList.clear();
+
+	delete _cameraObject;
 }
 
 void SceneBase::AddGameObejct(GameObject * gameObject)
@@ -80,18 +82,14 @@ void SceneBase::Draw()
 		transComp->GetPosition(),
 		Vector3D(0.0f, 1.0f, 0.0f)
 	);
-	transComp->Print();
-	cameraComp->Print();
-	viewMatrix.ToString();
+	//transComp->Print();
+	//cameraComp->Print();
+	//viewMatrix.ToString();
 
 	GraphicAPI * graphics = Managers::GetInstance()->GetGraphicsManager();
 	Matrix3D projectionMatrix = graphics->GetPerspectiveMatrix();
-	printf("Projection matrix:\n");
-	projectionMatrix.ToString();
 
 	Matrix3D viewProjMatrix = projectionMatrix * viewMatrix;
-	printf("View Projection matrix:\n"); 
-	viewProjMatrix.ToString();
 
 	for (ObjListIt it = _objectsList.begin(); it != _objectsList.end(); it++)
 	{

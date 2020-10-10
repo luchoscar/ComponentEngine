@@ -48,6 +48,7 @@ namespace CoreManagers
 		virtual void ExitLoop() = 0;
 
 		virtual void SetUpdateCallBack(void(*callBack)(void)) = 0;
+		virtual void SetIdleCallBack(void(*callBack)(void)) = 0;
 		virtual void SetDisplayCallBack(void(*callBack)(void)) = 0;
 		virtual void SetKeyboardCallBack(
 			void(*callBack)(unsigned char c, int x, int y)
