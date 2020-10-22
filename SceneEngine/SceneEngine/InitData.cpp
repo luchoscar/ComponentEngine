@@ -5,7 +5,7 @@ Core::InitData::InitData()
 
 }
 
-Core::InitData::InitData(WindowInfo wi, ContextInfo ci, FrameBufferInfo fbi)
+Core::InitData::InitData(WindowInfo wi, ContextInfo ci, FrameBufferInfo * fbi)
 {
 	_window = wi;
 	_context = ci;
@@ -14,5 +14,5 @@ Core::InitData::InitData(WindowInfo wi, ContextInfo ci, FrameBufferInfo fbi)
 
 Core::InitData::~InitData()
 {
-
+	_frameBuffer = nullptr;
 }

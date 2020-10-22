@@ -31,6 +31,12 @@ ShaderLoader* LoaderGLSL::CreateInstance()
 	return instance;
 }
 
+char * CoreManagers::LoaderGLSL::GetVersion()
+{
+	//GLubyte * glGetString(GL_SHADING_LANGUAGE_VERSION);
+	return nullptr;
+}
+
 void LoaderGLSL::LoadShader(
 	ShaderType type, 
 	const char * fileName, 

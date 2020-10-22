@@ -31,6 +31,7 @@ namespace CoreManagers
 
 		virtual ~ShaderLoader();
 
+		virtual char* GetVersion() = 0;
 		virtual void LoadShader(
 			ShaderType type, 
 			const char* fileName, 

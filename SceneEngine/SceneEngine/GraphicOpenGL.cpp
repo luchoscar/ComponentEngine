@@ -158,9 +158,9 @@ void CoreManagers::GraphicOpenGL::_initWindow(WindowInfo window)
 	glutCreateWindow(name.c_str());
 }
 
-void CoreManagers::GraphicOpenGL::_initFramBuffer(FrameBufferInfo frameBufer)
+void CoreManagers::GraphicOpenGL::_initFramBuffer(FrameBufferInfo * frameBufer)
 {
-	unsigned int flags = frameBufer.GetFlags();
+	unsigned int flags = frameBufer->GetFlags();
 	glutInitDisplayMode(flags);
 }
 

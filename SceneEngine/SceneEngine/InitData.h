@@ -10,16 +10,16 @@ namespace Core
 	{
 	public:
 		InitData();
-		InitData(WindowInfo wi, ContextInfo ci, FrameBufferInfo fbi);
+		InitData(WindowInfo wi, ContextInfo ci, FrameBufferInfo * fbi);
 		
 		~InitData();
 
 		WindowInfo GetWindow() { return _window; }
 		ContextInfo GetContext() { return _context; }
-		FrameBufferInfo GetFrameBuffer() { return _frameBuffer; }
+		FrameBufferInfo * GetFrameBuffer() { return _frameBuffer; }
 	private:
 		WindowInfo _window;
 		ContextInfo _context;
-		FrameBufferInfo _frameBuffer;
+		FrameBufferInfo * _frameBuffer;
 	};
 }

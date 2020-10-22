@@ -17,35 +17,36 @@ namespace CoreManagers
 
 		static ShaderLoader* CreateInstance();
 
-		void LoadShader(ShaderType type, const char* fileName, const char* name);
-		int CreateOrGetProgram();
-		int SetPropertyId(unsigned int shaderId, std::string uniformName);
-		void BindUniformMatrix(int shaderId, std::string name, Matrix3D matrix);
+		char* GetVersion() override;
+		void LoadShader(ShaderType type, const char* fileName, const char* name) override;
+		int CreateOrGetProgram() override;
+		int SetPropertyId(unsigned int shaderId, std::string uniformName) override;
+		void BindUniformMatrix(int shaderId, std::string name, Matrix3D matrix) override;
 
-		unsigned int CreateVertexArrayObject(unsigned int amount);
+		unsigned int CreateVertexArrayObject(unsigned int amount) override;
 		unsigned int CreateVertexArrayBuffer(
 			unsigned int amount, 
 			VertexDataVector vertices, 
 			BufferDrawType bufferDrawType
-		);
+		) override;
 		void BindVertexAttributes(
 			unsigned int location, 
 			int size, 
 			bool normalized, 
 			unsigned int offset
-		);
+		) override;
 
-		void BindVertexData(unsigned int vao);
+		void BindVertexData(unsigned int vao) override;
 
-		void DeleteVertexArrayObject(int amount, unsigned int* vaoAddress);
-		void DeleteVertexBufferObject(int amount, unsigned int* vbosAddress);
+		void DeleteVertexArrayObject(int amount, unsigned int* vaoAddress) override;
+		void DeleteVertexBufferObject(int amount, unsigned int* vbosAddress) override;
 
 		// Debug Functions
-		void PrintCurrentVertexArrayObject();
+		void PrintCurrentVertexArrayObject() override;
 
 	private:
 		LoaderGLSL() {}
-		LoaderGLSL(LoaderGLSL&) {}
+		LoaderGLSL(LoaderGLSL&) { }
 
 		GLuint _createOrGetShader(GLenum shaderType, string source, const char* name);
 		GLenum _getShaderType(ShaderType type);

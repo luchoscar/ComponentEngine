@@ -40,7 +40,7 @@ namespace CoreManagers
 		GLenum _getDrawType(DrawingType drawType);
 		void _initContext(ContextInfo contextInfo);
 		void _initWindow(WindowInfo window);
-		void _initFramBuffer(FrameBufferInfo frameBufer);
+		void _initFramBuffer(FrameBufferInfo * frameBufer);
 
 		void _printOpenGLInfo();
 	};
