@@ -5,6 +5,7 @@
 
 #include <map>
 #include <vector>
+#include <string>
 
 #include "VertexFormat.h"
 #include "Model.h"

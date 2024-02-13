@@ -1,3 +1,5 @@
+#include <stdexcept>
+
 #include "ShaderLoader.h"
 #include "ShaderUtils.h"
 

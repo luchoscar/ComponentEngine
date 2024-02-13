@@ -1,6 +1,8 @@
 #pragma once
 
 #include <list>
+#include <string>
+#include <stdexcept>
 
 #include "Renderer.h"
 #include "Transformation.h"
