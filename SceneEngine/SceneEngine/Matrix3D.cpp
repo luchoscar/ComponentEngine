@@ -29,12 +29,17 @@ Matrix3D::~Matrix3D()
 	delete[] _matrix;
 }
 
-float & Matrix3D::operator[](int index)
+float Matrix3D::operator[](int index) const
 {
 	return _matrix[index];
 }
 
-Matrix3D & Matrix3D::operator*(Matrix3D other)
+float& Matrix3D::operator[](int index)
+{
+	return _matrix[index];
+}
+
+Matrix3D & Matrix3D::operator*(const Matrix3D& other)
 {
 	Matrix3D & out = *(new Matrix3D());
 

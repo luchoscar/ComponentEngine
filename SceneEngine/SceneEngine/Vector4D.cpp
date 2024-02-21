@@ -31,7 +31,7 @@ Vector4D::~Vector4D()
 {
 }
 
-Vector4D Vector4D::operator+(const Vector4D & vect)
+Vector4D & Vector4D::operator+(const Vector4D & vect)
 {
 	Vector4D out;
 	out.SetX(this->GetX() + vect.GetX());
@@ -42,7 +42,7 @@ Vector4D Vector4D::operator+(const Vector4D & vect)
 	return out;
 }
 
-Vector4D  Vector4D::operator-(const Vector4D & vect)
+Vector4D & Vector4D::operator-(const Vector4D & vect)
 {
 	Vector4D out;
 	out.SetX(this->GetX() - vect.GetX());
@@ -53,7 +53,7 @@ Vector4D  Vector4D::operator-(const Vector4D & vect)
 	return out;
 }
 
-Vector4D Vector4D::operator+=(const Vector4D & vect)
+Vector4D & Vector4D::operator+=(const Vector4D & vect)
 {
 	this->_coordinates[0] += vect.GetX();
 	this->_coordinates[1] += vect.GetY();
@@ -63,7 +63,7 @@ Vector4D Vector4D::operator+=(const Vector4D & vect)
 	return *this;
 }
 
-Vector4D Vector4D::operator-=(const Vector4D & vect)
+Vector4D & Vector4D::operator-=(const Vector4D & vect)
 {
 	this->_coordinates[0] -= vect.GetX();
 	this->_coordinates[1] -= vect.GetY();

@@ -47,17 +47,17 @@ Vector3D::~Vector3D()
 {
 }
 
-Vector3D Vector3D::operator*(const int & value)
+Vector3D & Vector3D::operator*(const int & value)
 {
 	return _multiplyBy(value);
 }
 
-Vector3D Vector3D::operator*(const float & value)
+Vector3D & Vector3D::operator*(const float & value)
 {
 	return _multiplyBy(value);
 }
 
-Vector3D Vector3D::operator+(const Vector3D & vect)
+Vector3D & Vector3D::operator+(const Vector3D & vect)
 {
 	Vector3D out;
 	out.SetX(this->GetX() + vect.GetX());
@@ -67,17 +67,17 @@ Vector3D Vector3D::operator+(const Vector3D & vect)
 	return out;
 }
 
-Vector3D  Vector3D::operator-(const Vector3D & vect)
+Vector3D & Vector3D::operator-(const Vector3D & vect)
 {
-	Vector3D out;
-	out.SetX(this->GetX() - vect.GetX());
-	out.SetY(this->GetY() - vect.GetY());
-	out.SetZ(this->GetZ() - vect.GetZ());
+	float xValue = this->GetX() - vect.GetX();
+	float yValue = this->GetY() - vect.GetY();
+	float zValue = this->GetZ() - vect.GetZ();
 
+	Vector3D out(xValue, yValue, zValue);
 	return out;
 }
 
-Vector3D Vector3D::operator+=(const Vector3D & vect)
+Vector3D & Vector3D::operator+=(const Vector3D & vect)
 {
 	this->_coordinates[0] += vect.GetX();
 	this->_coordinates[1] += vect.GetY();
@@ -86,7 +86,7 @@ Vector3D Vector3D::operator+=(const Vector3D & vect)
 	return *this;
 }
 
-Vector3D Vector3D::operator-=(const Vector3D & vect)
+Vector3D & Vector3D::operator-=(const Vector3D & vect)
 {
 	this->_coordinates[0] -= vect.GetX();
 	this->_coordinates[1] -= vect.GetY();
@@ -102,7 +102,7 @@ float Vector3D::DotProduct(Vector3D vect1, Vector3D vect2)
 		vect1.GetZ() * vect2.GetZ();
 }
 
-Vector3D Vector3D::CrossProduct(Vector3D vect1, Vector3D vect2)
+Vector3D & Vector3D::CrossProduct(Vector3D vect1, Vector3D vect2)
 {
 	float xComp = vect1.GetY() * vect2.GetZ() -
 		vect1.GetZ() * vect2.GetY();
@@ -113,7 +113,8 @@ Vector3D Vector3D::CrossProduct(Vector3D vect1, Vector3D vect2)
 	float zComp = vect1.GetX() * vect2.GetY() -
 		vect1.GetY() * vect2.GetX();
 
-	return Vector3D(xComp, yComp, zComp);
+	Vector3D out(xComp, yComp, zComp);
+	return out;
 }
 
 void Vector3D::Print()

@@ -20,10 +20,10 @@ public:
 
 	~Vector4D();
 
-	Vector4D operator+(const Vector4D& vect);
-	Vector4D operator-(const Vector4D& vect);
-	Vector4D operator+=(const Vector4D& vect);
-	Vector4D operator-=(const Vector4D& vect);
+	Vector4D & operator+(const Vector4D & vect);
+	Vector4D & operator-(const Vector4D & vect);
+	Vector4D & operator+=(const Vector4D & vect);
+	Vector4D & operator-=(const Vector4D & vect);
 
 	void Print();
 

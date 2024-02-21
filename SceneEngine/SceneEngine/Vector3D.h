@@ -22,16 +22,16 @@ public:
 
 	~Vector3D();
 
-	Vector3D operator*(const int& value);
-	Vector3D operator*(const float& value);
+	Vector3D & operator*(const int& value);
+	Vector3D & operator*(const float& value);
 
-	Vector3D operator+(const Vector3D& vect);
-	Vector3D operator-(const Vector3D& vect);
-	Vector3D operator+=(const Vector3D& vect);
-	Vector3D operator-=(const Vector3D& vect);
+	Vector3D & operator+(const Vector3D& vect);
+	Vector3D & operator-(const Vector3D& vect);
+	Vector3D & operator+=(const Vector3D& vect);
+	Vector3D & operator-=(const Vector3D& vect);
 
 	static float DotProduct(Vector3D vect1, Vector3D vect2);
-	static Vector3D CrossProduct(Vector3D vect1, Vector3D vect2);
+	static Vector3D & CrossProduct(Vector3D vect1, Vector3D vect2);
 
 	void Print();
 
@@ -39,11 +39,11 @@ protected:
 	float _coordinates[3];
 
 	template<typename T>
-	Vector3D _multiplyBy(T value);
+	Vector3D & _multiplyBy(T value);
 };
 
 template<typename T>
-inline Vector3D Vector3D::_multiplyBy(T value)
+inline Vector3D & Vector3D::_multiplyBy(T value)
 {
 	Vector3D out;
 	out.SetX(this->GetX() * value);
