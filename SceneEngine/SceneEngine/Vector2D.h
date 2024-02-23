@@ -19,10 +19,10 @@ public:
 
 	~Vector2D() {}
 
-	Vector2D operator+(const Vector2D& vect);
-	Vector2D operator-(const Vector2D& vect);
-	Vector2D operator+=(const Vector2D& vect);
-	Vector2D operator-=(const Vector2D& vect);
+	Vector2D & operator+(const Vector2D& vect);
+	Vector2D & operator-(const Vector2D& vect);
+	Vector2D & operator+=(const Vector2D& vect);
+	Vector2D & operator-=(const Vector2D& vect);
 
 	void Print();
 
@@ -44,7 +44,7 @@ Vector2D<T>::Vector2D(const Vector2D & vect)
 }
 
 template <class T>
-Vector2D<T> Vector2D<T>::operator+(const Vector2D<T> & vect)
+Vector2D<T> & Vector2D<T>::operator+(const Vector2D<T> & vect)
 {
 	Vector2D out;
 	out.SetX(this->GetX() + vect.GetX());
@@ -54,7 +54,7 @@ Vector2D<T> Vector2D<T>::operator+(const Vector2D<T> & vect)
 }
 
 template <class T>
-Vector2D<T>  Vector2D<T>::operator-(const Vector2D<T> & vect)
+Vector2D<T>& Vector2D<T>::operator-(const Vector2D<T> & vect)
 {
 	Vector2D out;
 	out.SetX(this->GetX() - vect.GetX());
@@ -64,7 +64,7 @@ Vector2D<T>  Vector2D<T>::operator-(const Vector2D<T> & vect)
 }
 
 template <class T>
-Vector2D<T> Vector2D<T>::operator+=(const Vector2D<T> & vect)
+Vector2D<T>& Vector2D<T>::operator+=(const Vector2D<T> & vect)
 {
 	this->_coordinates[0] += vect.GetX();
 	this->_coordinates[1] += vect.GetY();
@@ -73,7 +73,7 @@ Vector2D<T> Vector2D<T>::operator+=(const Vector2D<T> & vect)
 }
 
 template <class T>
-Vector2D<T> Vector2D<T>::operator-=(const Vector2D<T> & vect)
+Vector2D<T>& Vector2D<T>::operator-=(const Vector2D<T> & vect)
 {
 	this->_coordinates[0] -= vect.GetX();
 	this->_coordinates[1] -= vect.GetY();
