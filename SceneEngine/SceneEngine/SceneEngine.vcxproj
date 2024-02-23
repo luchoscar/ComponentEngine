@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseVector.cpp" />
     <ClCompile Include="BehaviorComponent.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -151,12 +152,14 @@
     <ClCompile Include="ShaderUtils.cpp" />
     <ClCompile Include="Transformation.cpp" />
     <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="Vector2DNew.cpp" />
     <ClCompile Include="Vector3D.cpp" />
     <ClCompile Include="Vector4D.cpp" />
     <ClCompile Include="VertexFormat.cpp" />
     <ClCompile Include="WindowInfo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseVector.h" />
     <ClInclude Include="BehaviorComponent.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
@@ -185,6 +188,7 @@
     <ClInclude Include="ShaderUtils.h" />
     <ClInclude Include="Transformation.h" />
     <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="Vector2DNew.h" />
     <ClInclude Include="Vector3D.h" />
     <ClInclude Include="Vector4D.h" />
     <ClInclude Include="VertexFormat.h" />
