@@ -5,19 +5,17 @@ using namespace Core;
 WindowInfo::WindowInfo()
 {
 	_name = "Component Engine";
-	_size.SetX(800);
-	_size.SetY(600);
+	_size = Vector2DNew<int>(800, 600);
 
-	_position.SetX(300);
-	_position.SetY(300);
+	_position = Vector2DNew<int>(300, 300);
 
 	_resizable = true;
 }
 
 WindowInfo::WindowInfo(
 	std::string name,
-	Vector2D<int> size,
-	Vector2D<int> position,
+	Vector2DNew<int> size,
+	Vector2DNew<int> position,
 	bool resizable
 )
 {
@@ -40,12 +38,12 @@ std::string WindowInfo::GetName()
 	return _name;
 }
 
-Vector2D<int> WindowInfo::GetSize()
+Vector2DNew<int> WindowInfo::GetSize()
 {
 	return _size;
 }
 
-Vector2D<int> Core::WindowInfo::GetPosition()
+Vector2DNew<int> Core::WindowInfo::GetPosition()
 {
 	return _position;
 }

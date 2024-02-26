@@ -13,15 +13,9 @@ int main(int argc, char **argv)
 {
 	Engine engine;
 
-	Vector2D<int> position;
+	Vector2DNew<int> position = Vector2DNew<int>(600, 200);
+	Vector2DNew<int> size = Vector2DNew<int>(800, 600);
 
-	position.SetX(600);
-	position.SetY(200);
-
-	Vector2D<int> size;
-	size.SetX(800);
-	size.SetY(600);
-	
 	FrameBufferInfo * frameBuffer = nullptr;
 
 #ifdef OPEN_GL_BUFFER

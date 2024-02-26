@@ -148,11 +148,11 @@ void CoreManagers::GraphicOpenGL::_initContext(ContextInfo context)
 
 void CoreManagers::GraphicOpenGL::_initWindow(WindowInfo window)
 {
-	Vector2D<int> position = window.GetPosition();
-	glutInitWindowPosition(position.GetX(), position.GetY());
+	Vector2DNew<int> position = window.GetPosition();
+	glutInitWindowPosition(position[0], position[1]);
 
-	Vector2D<int> size = window.GetSize();
-	glutInitWindowSize(size.GetX(), size.GetY());
+	Vector2DNew<int> size = window.GetSize();
+	glutInitWindowSize(size[0], size[1]);
 
 	std::string name = window.GetName();
 	glutCreateWindow(name.c_str());

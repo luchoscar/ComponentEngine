@@ -59,7 +59,27 @@ public:
 
 		return *dynamic_cast<TVector*>(this);
 	}
-	/*
+
+	template<class TVector, TStreamNumber TValue> requires std::is_base_of<BaseVector<TValue>, TVector>::value
+	TVector& operator=(const TVector& vect) {
+		this->_coordinates.clear();
+		for (int idx = 0; idx < this->SIZE; idx++) {
+			this->_coordinates.push_back(vect._coordinates[idx]);
+		}
+
+		return *dynamic_cast<TVector*>(this);
+	}
+
+	template<class TVector, TStreamNumber TValue> requires std::is_base_of<BaseVector<TValue>, TVector>::value
+	TValue operator[](const int& index) const {
+		return this->_coordinates[index];
+	}
+
+	template<class TVector, TStreamNumber TValue> requires std::is_base_of<BaseVector<TValue>, TVector>::value
+	TValue& operator[](const int& index) {
+		return this->_coordinates[index];
+	}
+
 	void Print()
 	{
 		std::cout << "(" << this->_coordinates[0];
@@ -67,7 +87,7 @@ public:
 			std::cout << ", " << this->_coordinates[idx];
 		}
 		std::cout << ")" << std::endl;
-	}*/
+	}
 
 protected:
 	const int SIZE;

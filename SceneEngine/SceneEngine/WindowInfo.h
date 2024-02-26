@@ -1,8 +1,7 @@
 #pragma once
 
 #include <string>
-
-#include "Vector2D.h"
+#include "Vector2DNew.h"
 
 namespace Core
 {
@@ -12,21 +11,21 @@ namespace Core
 		WindowInfo();
 		WindowInfo(
 			std::string name, 
-			Vector2D<int> size, 
-			Vector2D<int> position, 
+			Vector2DNew<int> size,
+			Vector2DNew<int> position,
 			bool resizable
 		);
 		WindowInfo(const WindowInfo& window);
 		
 		std::string GetName();
-		Vector2D<int> GetSize(); 
-		Vector2D<int> GetPosition();
+		Vector2DNew<int> GetSize();
+		Vector2DNew<int> GetPosition();
 		bool CanResize();
 
 	private:
 		std::string _name;
-		Vector2D<int> _size;
-		Vector2D<int> _position;
+		Vector2DNew<int> _size;
+		Vector2DNew<int> _position;
 		bool _resizable;
 	};
 }
